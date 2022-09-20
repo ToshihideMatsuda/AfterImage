@@ -33,16 +33,27 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
     private let queueSize            = 5;
     private var imageQueue:[CIImage] = []
     
+    private var cameraRotate = true
+    
     override func viewWillAppear(_ animated: Bool) {
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
-        AVCaptureManager.shared.initializeCamera(true, frameRateInput: 20, preset: preset)
+        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
         VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 720, height: 1280))
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         AVCaptureManager.shared.removeVideoListener(listener: self)
         AVCaptureManager.shared.removeVideoListener(listener: self)
+    }
+    
+    @IBAction func rotateCamera(_ sender: Any) {
+        self.cameraRotate.toggle()
+        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
+        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 720, height: 1280))
+    }
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     public func videoCapture(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

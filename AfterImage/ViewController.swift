@@ -39,6 +39,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.showUI()
     }
     
+    @IBAction func tapCameraButton(_ sender: Any) {
+        guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController") else { return }
+        cameraVc.modalPresentationStyle = .fullScreen;
+        self.present(cameraVc, animated: true)
+    }
     private func showUI() {
         
         let photoLibraryPicker = UIImagePickerController()

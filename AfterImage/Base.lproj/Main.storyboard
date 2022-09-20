@@ -32,7 +32,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="camera"/>
                                 <connections>
-                                    <segue destination="1GK-mb-VFc" kind="show" id="G2z-Ju-wmG"/>
+                                    <action selector="tapCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxz-Le-lg8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,23 +47,65 @@
         <!--Camera View Controller-->
         <scene sceneID="wYx-oi-V1H">
             <objects>
-                <viewController id="1GK-mb-VFc" customClass="CameraViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" id="1GK-mb-VFc" customClass="CameraViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4M8-VP-XmV">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81B-Bc-emd" customClass="AVPlayerLayerView" customModule="AfterImage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8X-ER-TL1">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoO-L7-FNh">
+                                        <rect key="frame" x="10.000000000000002" y="731" width="19.666666666666671" height="22"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="hD2-Gu-haz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrowshape.turn.up.left.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="close:" destination="1GK-mb-VFc" eventType="touchUpInside" id="cGs-ZV-sXU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-Nk-Txe">
+                                        <rect key="frame" x="39.666666666666664" y="731" width="24.666666666666664" height="22"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="vwZ-Og-zjN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="camera.rotate" catalog="system"/>
+                                        <connections>
+                                            <action selector="rotateCamera:" destination="1GK-mb-VFc" eventType="touchUpInside" id="rj2-bO-XCn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Adp-Nk-Txe" secondAttribute="bottom" constant="10" id="6Vx-Jm-9L6"/>
+                                    <constraint firstItem="WoO-L7-FNh" firstAttribute="leading" secondItem="J8X-ER-TL1" secondAttribute="leading" constant="10" id="e2n-2p-VFx"/>
+                                    <constraint firstAttribute="bottom" secondItem="WoO-L7-FNh" secondAttribute="bottom" constant="10" id="na9-Xl-WUg"/>
+                                    <constraint firstItem="Adp-Nk-Txe" firstAttribute="leading" secondItem="WoO-L7-FNh" secondAttribute="trailing" constant="10" id="vvs-Al-nBS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jlw-ki-5Z3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="J8X-ER-TL1" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="0uf-rC-7CV"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="81B-Bc-emd" secondAttribute="trailing" id="34z-sh-jBP"/>
                             <constraint firstItem="81B-Bc-emd" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="Adc-3f-VDd"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="81B-Bc-emd" secondAttribute="bottom" id="JPD-o2-tpT"/>
+                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="J8X-ER-TL1" secondAttribute="bottom" id="L6t-bK-FFt"/>
                             <constraint firstItem="81B-Bc-emd" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="LHs-ru-Cvt"/>
+                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="J8X-ER-TL1" secondAttribute="trailing" id="R2B-QJ-OsA"/>
+                            <constraint firstItem="J8X-ER-TL1" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="fvj-Pz-XJI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2gD-Gx-tAl"/>
@@ -73,10 +115,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEg-n8-mNp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="-312"/>
+            <point key="canvasLocation" x="-23.076923076923077" y="-312.08530805687201"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left.circle" catalog="system" width="128" height="123"/>
+        <image name="camera.rotate" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
