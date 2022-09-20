@@ -18,6 +18,8 @@
 		D264549928D9341E007E38AB /* AfterImageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264549828D9341E007E38AB /* AfterImageUITestsLaunchTests.swift */; };
 		D26454A628D94D8C007E38AB /* VisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454A528D94D8C007E38AB /* VisionManager.swift */; };
 		D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454A728D95875007E38AB /* CIImage+extends.swift */; };
+		D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454A928D97305007E38AB /* AVCaptureManager.swift */; };
+		D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D26454B028D973C9007E38AB /* ObjcUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		D264549828D9341E007E38AB /* AfterImageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterImageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D26454A528D94D8C007E38AB /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
 		D26454A728D95875007E38AB /* CIImage+extends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+extends.swift"; sourceTree = "<group>"; };
+		D26454A928D97305007E38AB /* AVCaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureManager.swift; sourceTree = "<group>"; };
+		D26454AE28D973C9007E38AB /* AfterImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AfterImage-Bridging-Header.h"; sourceTree = "<group>"; };
+		D26454AF28D973C9007E38AB /* ObjcUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcUtil.h; sourceTree = "<group>"; };
+		D26454B028D973C9007E38AB /* ObjcUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 		D264546928D9341D007E38AB = {
 			isa = PBXGroup;
 			children = (
+				D26454AB28D9739A007E38AB /* ObjcClass */,
 				D264547428D9341D007E38AB /* AfterImage */,
 				D264548B28D9341D007E38AB /* AfterImageTests */,
 				D264549528D9341E007E38AB /* AfterImageUITests */,
@@ -108,6 +115,7 @@
 				D264547528D9341D007E38AB /* AppDelegate.swift */,
 				D264547728D9341D007E38AB /* SceneDelegate.swift */,
 				D264547928D9341D007E38AB /* ViewController.swift */,
+				D26454A928D97305007E38AB /* AVCaptureManager.swift */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
@@ -131,6 +139,16 @@
 				D264549828D9341E007E38AB /* AfterImageUITestsLaunchTests.swift */,
 			);
 			path = AfterImageUITests;
+			sourceTree = "<group>";
+		};
+		D26454AB28D9739A007E38AB /* ObjcClass */ = {
+			isa = PBXGroup;
+			children = (
+				D26454AF28D973C9007E38AB /* ObjcUtil.h */,
+				D26454B028D973C9007E38AB /* ObjcUtil.m */,
+				D26454AE28D973C9007E38AB /* AfterImage-Bridging-Header.h */,
+			);
+			path = ObjcClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +219,7 @@
 				TargetAttributes = {
 					D264547128D9341D007E38AB = {
 						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
 					};
 					D264548728D9341D007E38AB = {
 						CreatedOnToolsVersion = 14.0;
@@ -269,6 +288,8 @@
 				D26454A628D94D8C007E38AB /* VisionManager.swift in Sources */,
 				D264547628D9341D007E38AB /* AppDelegate.swift in Sources */,
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
+				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
+				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
@@ -462,6 +484,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.AfterImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,6 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
@@ -491,6 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.AfterImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
