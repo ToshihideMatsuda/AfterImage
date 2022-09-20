@@ -9,7 +9,6 @@ import Foundation
 import CoreImage
 import AVFoundation
 
-fileprivate let ciContext = CIContext()
 
 extension CIImage {
     func sampleBuffer(cgSize size:CGSize, originalBuffer:CMSampleBuffer) -> CMSampleBuffer? {

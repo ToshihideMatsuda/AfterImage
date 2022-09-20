@@ -11,10 +11,9 @@ import UIKit
 import AVFoundation
 import CoreImage
 
-fileprivate let ciContext = CIContext()
-
 public class  VisionManager {
-    public init() {}
+    public static let shared : VisionManager = VisionManager()
+    private init() {}
 
     lazy var personSegmentationRequest:VNImageBasedRequest? = {
         let request = VNGeneratePersonSegmentationRequest()
@@ -32,11 +31,9 @@ public class  VisionManager {
         personSegmentationRequest.outputPixelFormat = format
     }
 
-
-    // MARK: Segmentation
     
-
-    fileprivate var clearBackground:CIImage? = nil
+    // MARK: Segmentation
+    private var clearBackground:CIImage? = nil
     public func initClearBackground(cameraSize:CGSize) {
         clearBackground = nil
         UIGraphicsBeginImageContext(cameraSize)
@@ -49,24 +46,21 @@ public class  VisionManager {
         UIGraphicsEndImageContext()
         if let image = image { clearBackground = CIImage(image:image) }
     }
-
-    private func personImage(ciImage:CIImage) -> CIImage? {
+    public func personImage(ciImage:CIImage) -> CIImage? {
         guard let maskImage = personMaskImage(ciImage:ciImage) else { return ciImage }
 
         if let background = clearBackground {
             guard let blended = CIFilter(name: "CIBlendWithMask", parameters: [
                 kCIInputImageKey: ciImage,
                 kCIInputBackgroundImageKey:background,
-                kCIInputMaskImageKey:maskImage])?.outputImage,
-            let safeCGImage = ciContext.createCGImage(blended, from: blended.extent) else { return ciImage }
-            let outCIImage = CIImage(cgImage: safeCGImage)
-            return outCIImage
+                kCIInputMaskImageKey:maskImage])?.outputImage  else { return ciImage }
+            return blended
         } else {
             return ciImage
         }
     }
     
-    public func personMaskImage(ciImage:CIImage) -> CIImage? {
+    private func personMaskImage(ciImage:CIImage) -> CIImage? {
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         do {
             // request
@@ -100,13 +94,13 @@ public class  VisionManager {
             var maskCIImage:CIImage
             let handler = VNImageRequestHandler(ciImage: personCIImage, options: [:])
             do {
-                guard let personSegmentationRequest = self.personSegmentationRequest as? VNGeneratePersonSegmentationRequest else { return }
+                guard let personSegmentationRequest = self.personSegmentationRequest as? VNGeneratePersonSegmentationRequest else { return ciImage }
                 try handler.perform([personSegmentationRequest])
                 guard let result = personSegmentationRequest.results?.first
-                        else { print("Image processing failed.Please try with another image.") ; return nil }
+                        else { print("Image processing failed.Please try with another image.") ; return ciImage }
                 let maskImage = CIImage(cvPixelBuffer: result.pixelBuffer)
                 let scaledMask = maskImage.resize(as: CGSize(width: ciImage.extent.width, height: ciImage.extent.height))
-                guard let safeCGImage = self.ciContext.createCGImage(scaledMask, from: scaledMask.extent) else { print("Image processing failed.Please try with another image.") ; return nil }
+                guard let safeCGImage = ciContext.createCGImage(scaledMask, from: scaledMask.extent) else { print("Image processing failed.Please try with another image.") ; return ciImage }
                 maskCIImage = CIImage(cgImage: safeCGImage)
             } catch let error {
                 print("Vision error \(error)")
@@ -133,10 +127,9 @@ public class  VisionManager {
             guard let blended = CIFilter(name: "CIBlendWithMask", parameters: [
                 kCIInputImageKey: personCIImage,
                 kCIInputBackgroundImageKey:traslatedBG,
-                kCIInputMaskImageKey:maskCIImage])?.outputImage,
-                  let safeCGImage = ciContext.createCGImage(blended, from: blended.extent) else { return ciImage}
-                    let outCIImage = CIImage(cgImage: safeCGImage)
-            return outCIImage
+                kCIInputMaskImageKey:maskCIImage])?.outputImage else { return ciImage }
+            return blended
+            
         } , { err, processedVideoURL in
             guard err == nil else { print(err?.localizedDescription ?? "" ); return }
             completion?(err,processedVideoURL)

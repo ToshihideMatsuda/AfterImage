@@ -20,6 +20,8 @@
 		D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454A728D95875007E38AB /* CIImage+extends.swift */; };
 		D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454A928D97305007E38AB /* AVCaptureManager.swift */; };
 		D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D26454B028D973C9007E38AB /* ObjcUtil.m */; };
+		D26454B328D98182007E38AB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B228D98182007E38AB /* CameraViewController.swift */; };
+		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D26454AE28D973C9007E38AB /* AfterImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AfterImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		D26454AF28D973C9007E38AB /* ObjcUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcUtil.h; sourceTree = "<group>"; };
 		D26454B028D973C9007E38AB /* ObjcUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcUtil.m; sourceTree = "<group>"; };
+		D26454B228D98182007E38AB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CVImageBuffer.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,12 +114,12 @@
 		D264547428D9341D007E38AB /* AfterImage */ = {
 			isa = PBXGroup;
 			children = (
-				D26454A528D94D8C007E38AB /* VisionManager.swift */,
-				D26454A728D95875007E38AB /* CIImage+extends.swift */,
 				D264547528D9341D007E38AB /* AppDelegate.swift */,
 				D264547728D9341D007E38AB /* SceneDelegate.swift */,
+				D26454B628D994A7007E38AB /* Util */,
+				D26454B728D994C3007E38AB /* Manager */,
 				D264547928D9341D007E38AB /* ViewController.swift */,
-				D26454A928D97305007E38AB /* AVCaptureManager.swift */,
+				D26454B228D98182007E38AB /* CameraViewController.swift */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
@@ -149,6 +153,24 @@
 				D26454AE28D973C9007E38AB /* AfterImage-Bridging-Header.h */,
 			);
 			path = ObjcClass;
+			sourceTree = "<group>";
+		};
+		D26454B628D994A7007E38AB /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D26454A728D95875007E38AB /* CIImage+extends.swift */,
+				D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		D26454B728D994C3007E38AB /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D26454A928D97305007E38AB /* AVCaptureManager.swift */,
+				D26454A528D94D8C007E38AB /* VisionManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +312,8 @@
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
 				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
+				D26454B328D98182007E38AB /* CameraViewController.swift in Sources */,
+				D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

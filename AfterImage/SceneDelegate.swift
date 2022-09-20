@@ -7,6 +7,8 @@
 
 import UIKit
 
+public let ciContext = CIContext()
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

@@ -22,8 +22,10 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Please permit camera access</string>
+	<string>This App saves camara datas.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please permit photo library access</string>
+	<string>This App converts photo library movie, and saves it.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This App saves microphone datas.</string>
 </dict>
 </plist>

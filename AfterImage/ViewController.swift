@@ -61,7 +61,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let player = AVPlayer(url: url)
         vc.player = player
          
-        picker.present(vc, animated: true)
-    }
+         picker.present(vc, animated: true)
+     }
+    
+    
  }
 

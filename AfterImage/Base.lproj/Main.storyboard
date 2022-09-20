@@ -27,12 +27,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GO-41-sVW">
-                                <rect key="frame" x="154" y="432" width="85" height="35"/>
+                                <rect key="frame" x="157" y="432" width="81" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="manage"/>
+                                <buttonConfiguration key="configuration" style="plain" title="camera"/>
                                 <connections>
-                                    <action selector="manageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W7h-7K-oyy"/>
+                                    <segue destination="1GK-mb-VFc" kind="show" id="G2z-Ju-wmG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -42,7 +42,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="4"/>
+            <point key="canvasLocation" x="-792" y="-312"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="wYx-oi-V1H">
+            <objects>
+                <viewController id="1GK-mb-VFc" customClass="CameraViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4M8-VP-XmV">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81B-Bc-emd" customClass="AVPlayerLayerView" customModule="AfterImage" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Jlw-ki-5Z3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="81B-Bc-emd" secondAttribute="trailing" id="34z-sh-jBP"/>
+                            <constraint firstItem="81B-Bc-emd" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="Adc-3f-VDd"/>
+                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="81B-Bc-emd" secondAttribute="bottom" id="JPD-o2-tpT"/>
+                            <constraint firstItem="81B-Bc-emd" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="LHs-ru-Cvt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2gD-Gx-tAl"/>
+                    <connections>
+                        <outlet property="mainVideoView" destination="81B-Bc-emd" id="lnu-go-LTf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEg-n8-mNp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="-312"/>
         </scene>
     </scenes>
     <resources>

@@ -55,7 +55,7 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
     // 外部から初期化不可能にしておく
     private override init() {}
 
-    public func initializeCamera(_ isFront:Bool = true, frameRateInput:Int32 = 20, preset:AVCaptureSession.Preset = .low, fileOutputCapture: AVCaptureMovieFileOutput? = nil ) {
+    public func initializeCamera(_ isFront:Bool = true, frameRateInput:Int32 = 20, preset:AVCaptureSession.Preset = .low) {
 
         if captureSession != nil{
             stopCapture()
@@ -68,11 +68,6 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
         videoCaptureSettingInTransaction(captureSession, isFront:isFront, frameRateInput:frameRateInput, preset:preset)
         audioCaptureSettingInTransaction(captureSession)
-        if let fileOutputCapture = fileOutputCapture {
-            if  captureSession.canAddOutput(fileOutputCapture)  {
-                captureSession.addOutput(fileOutputCapture)
-            }
-        }
 
         captureSession.commitConfiguration()
         captureSession.startRunning()
@@ -237,8 +232,9 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
         guard let captureSession = self.captureSession else {
             return nil
         }
-
-        return [
+        
+        guard let orientation = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.windowScene?.interfaceOrientation,
+              let size =  [
             AVCaptureSession.Preset.low         : CGSize(width: 192 , height: 144),   // 3G環境でのリアルタイム配信に適したビットレート
             AVCaptureSession.Preset.medium      : CGSize(width: 480 , height: 360),   // Wifi環境でのリアルタイム配信に適したビットレート
             AVCaptureSession.Preset.high        : CGSize(width: 1920, height: 1080),  // デフォルトではこの設定
@@ -251,7 +247,13 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
             AVCaptureSession.Preset.iFrame960x540   : CGSize(width: 960,  height: 540),
             AVCaptureSession.Preset.iFrame1280x720  : CGSize(width: 1280, height: 720),
             AVCaptureSession.Preset.inputPriority   : CGSize(width: 0,      height: 0),
-        ][captureSession.sessionPreset]
+        ] [captureSession.sessionPreset] else { return nil }
+        
+        if(orientation == .landscapeLeft || orientation == .landscapeRight) {
+            return size
+        } else {
+            return CGSize(width: size.height, height: size.width)
+        }
     }
 
     public func recommendedVideoSettingsForAssetWriter(writingTo fileType:AVFileType) -> [String:Any]?  {
