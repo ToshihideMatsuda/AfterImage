@@ -84,8 +84,8 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
             // 次回のためにQueueを更新
             self.prevTime = currentTime
             if let currentImage = currentImage {
-                imageQueue.insert(currentImage, at: 0);
-                while( imageQueue.count > queueSize ) { imageQueue.removeLast() }
+                imageQueue += [currentImage]
+                while( imageQueue.count > queueSize ) { imageQueue.removeFirst() }
             }
 
         }
