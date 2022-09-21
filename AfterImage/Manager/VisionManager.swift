@@ -156,8 +156,8 @@ public class  VisionManager {
         var isFrameRotated = false
         let asset = AVURLAsset(url: videoURL)
         let err: NSError = NSError.init(domain: " VisionManager", code: 999, userInfo: [NSLocalizedDescriptionKey: "Video Processing Failed"])
-        let writingDestinationUrl: URL  = videoURL.deletingLastPathComponent().appendingPathComponent("\(Date())" + ".mp4")
-
+        let writingDestinationUrl: URL  = URL(fileURLWithPath: (NSTemporaryDirectory() + UUID().uuidString + ".mp4"))
+        
         // setup
         guard let reader: AVAssetReader = try? AVAssetReader.init(asset: asset) else {
             completion?(err, nil)
@@ -168,14 +168,18 @@ public class  VisionManager {
             completion?(err, nil)
             return
         }
-
+        
+        var onetimeCompletion = completion
         // setup finish closure
         var audioFinished: Bool = false
         var videoFinished: Bool = false
+        var completed:     Bool = false
         let writtingFinished: (() -> Void) = {
             if audioFinished == true && videoFinished == true {
                 writer.finishWriting {
-                    completion?(nil, writingDestinationUrl)
+                    onetimeCompletion?(nil, writingDestinationUrl)
+                    onetimeCompletion = nil
+                    completed = true
                 }
                 reader.cancelReading()
             }
@@ -295,7 +299,8 @@ public class  VisionManager {
         self.prevTime = CMTime.zero
         // write video
         writerVideoInput.requestMediaDataWhenReady(on: videoQueue) {
-            while writerVideoInput.isReadyForMoreMediaData {
+            while writerVideoInput.isReadyForMoreMediaData{
+                if completed { return }
                 autoreleasepool {
                     if let buffer = readerVideoOutput.copyNextSampleBuffer(),
                        let pixelBuffer = CMSampleBufferGetImageBuffer(buffer),
@@ -307,7 +312,7 @@ public class  VisionManager {
                             // nop
                         } else if CMTimeSubtract(currentTime, self.prevTime).seconds < (1.0 / self.frameRate) {
                             // framerate以下は削除
-                            return;
+                            //return;
                         }
                         
                         self.prevTime = currentTime
@@ -332,6 +337,7 @@ public class  VisionManager {
         if writerAudioInput != nil {
             writerAudioInput.requestMediaDataWhenReady(on: audioQueue) {
                 while writerAudioInput.isReadyForMoreMediaData {
+                    if completed { return }
                     autoreleasepool {
                         let buffer = readerAudioOutput.copyNextSampleBuffer()
                         if buffer != nil, !self.cancel {

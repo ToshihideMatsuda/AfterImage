@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */; };
 		D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */; };
+		D24FA70728DAD0B6002B0F42 /* IMG_6800.MOV in Resources */ = {isa = PBXBuildFile; fileRef = D24FA70628DAD0B6002B0F42 /* IMG_6800.MOV */; };
+		D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70828DAE47B002B0F42 /* AppUtil.swift */; };
 		D264547628D9341D007E38AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547528D9341D007E38AB /* AppDelegate.swift */; };
 		D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547728D9341D007E38AB /* SceneDelegate.swift */; };
 		D264547A28D9341D007E38AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547928D9341D007E38AB /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
+		D24FA70628DAD0B6002B0F42 /* IMG_6800.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = IMG_6800.MOV; path = ../../../../../Downloads/IMG_6800.MOV; sourceTree = "<group>"; };
+		D24FA70828DAE47B002B0F42 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		D264547228D9341D007E38AB /* AfterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264547528D9341D007E38AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D264547728D9341D007E38AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */,
 				D26454B228D98182007E38AB /* CameraViewController.swift */,
 				D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */,
+				D24FA70628DAD0B6002B0F42 /* IMG_6800.MOV */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
@@ -166,6 +171,7 @@
 			children = (
 				D26454A728D95875007E38AB /* CIImage+extends.swift */,
 				D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */,
+				D24FA70828DAE47B002B0F42 /* AppUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 			files = (
 				D264548228D9341D007E38AB /* LaunchScreen.storyboard in Resources */,
 				D264547F28D9341D007E38AB /* Assets.xcassets in Resources */,
+				D24FA70728DAD0B6002B0F42 /* IMG_6800.MOV in Resources */,
 				D264547D28D9341D007E38AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +321,7 @@
 				D264547A28D9341D007E38AB /* ViewController.swift in Sources */,
 				D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */,
 				D26454A628D94D8C007E38AB /* VisionManager.swift in Sources */,
+				D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */,
 				D264547628D9341D007E38AB /* AppDelegate.swift in Sources */,
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,

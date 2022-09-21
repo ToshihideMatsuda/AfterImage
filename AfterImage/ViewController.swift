@@ -64,6 +64,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
         videoVc.url = url
+        videoVc.superVc = self
         
         picker.dismiss(animated: true) {
             self.present(videoVc, animated: true)
