@@ -44,14 +44,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraVc.modalPresentationStyle = .fullScreen;
         self.present(cameraVc, animated: true)
     }
-    private func showUI() {
-        
-        let photoLibraryPicker = UIImagePickerController()
-        photoLibraryPicker.mediaTypes = [UTType.movie.identifier]
-        photoLibraryPicker.sourceType = .photoLibrary
-        photoLibraryPicker.delegate = self
-        
+    private func showUI() {        
         DispatchQueue.main.async {
+            let photoLibraryPicker = UIImagePickerController()
+            photoLibraryPicker.mediaTypes = [UTType.movie.identifier]
+            photoLibraryPicker.sourceType = .photoLibrary
+            photoLibraryPicker.delegate = self
+            
             self.present(photoLibraryPicker, animated: true)
         }
     }
@@ -64,7 +63,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else { return }
         
         guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
-        videoVc.modalPresentationStyle = .fullScreen;
         videoVc.url = url
         
         picker.dismiss(animated: true) {
