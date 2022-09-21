@@ -62,11 +62,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else { return }
-        let vc = AVPlayerViewController()
-        let player = AVPlayer(url: url)
-        vc.player = player
-         
-         picker.present(vc, animated: true)
+        
+        guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
+        videoVc.modalPresentationStyle = .fullScreen;
+        videoVc.url = url
+        
+        picker.dismiss(animated: true) {
+            self.present(videoVc, animated: true)
+        }
+        
      }
     
     

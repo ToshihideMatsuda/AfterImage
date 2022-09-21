@@ -12,7 +12,16 @@ import AVFoundation
 import CoreImage
 
 public class  VisionManager {
-    public static let shared : VisionManager = VisionManager()
+    private let frameRate:Double = 10.0
+    private var prevTime = CMTime.zero
+    public static var shared : VisionManager = VisionManager()
+    public var cancel : Bool = false {
+        didSet {
+            if cancel {
+                VisionManager.shared = VisionManager()
+            }
+        }
+    }
     private init() {}
 
     lazy var personSegmentationRequest:VNImageBasedRequest? = {
@@ -88,7 +97,13 @@ public class  VisionManager {
 
         guard let bgCIImage = CIImage(image: backgroundUIImage) else { print("background image is nil") ; return}
 
-        applyProcessingOnVideo(videoURL: videoURL, codec: codec, { ciImage in
+        applyProcessingOnVideo(videoURL: videoURL, codec: codec, { pixelBuffer, _, isFrameRotated in
+            
+            var ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+            if isFrameRotated {
+                ciImage = ciImage.oriented(CGImagePropertyOrientation.right)
+            }
+            
             let personCIImage = ciImage
             let backgroundCIImage = ciImage
             var maskCIImage:CIImage
@@ -136,8 +151,7 @@ public class  VisionManager {
         })
     }
 
-
-    private func applyProcessingOnVideo(videoURL:URL, codec: AVVideoCodecType = .h264, _ processingFunction: @escaping ((CIImage) -> CIImage?), _ completion: ((_ err: NSError?, _ processedVideoURL: URL?) -> Void)?) {
+    public func applyProcessingOnVideo(videoURL:URL, codec: AVVideoCodecType = .hevc, _ processingFunction: @escaping ((CVImageBuffer, CMTime, Bool) -> CIImage?), _ completion: ((_ err: NSError?, _ processedVideoURL: URL?) -> Void)?) {
         var frame:Int = 0
         var isFrameRotated = false
         let asset = AVURLAsset(url: videoURL)
@@ -241,7 +255,7 @@ public class  VisionManager {
             isFrameRotated = false
             writerVideoInput.transform = asset.tracks(withMediaType: AVMediaType.video)[0].preferredTransform
         }
-        let pixelBufferAdaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: writerVideoInput, sourcePixelBufferAttributes: [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)])
+        let pixelBufferAdaptor = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: writerVideoInput, sourcePixelBufferAttributes: [kCVPixelBufferPixelFormatTypeKey as String: Int(AVCaptureManager.pixcelFormat)])
         writer.add(writerVideoInput)
 
         // prepare writer input for audio
@@ -278,26 +292,33 @@ public class  VisionManager {
         reader.startReading()
         writer.startSession(atSourceTime: CMTime.zero)
         
+        self.prevTime = CMTime.zero
         // write video
         writerVideoInput.requestMediaDataWhenReady(on: videoQueue) {
             while writerVideoInput.isReadyForMoreMediaData {
                 autoreleasepool {
-                    if let buffer = readerVideoOutput.copyNextSampleBuffer(),let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-                        frame += 1
-                        var ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-                        if isFrameRotated {
-                            ciImage = ciImage.oriented(CGImagePropertyOrientation.right)
+                    if let buffer = readerVideoOutput.copyNextSampleBuffer(),
+                       let pixelBuffer = CMSampleBufferGetImageBuffer(buffer),
+                       !self.cancel {
+                        let pixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
+                        let currentTime = CMSampleBufferGetPresentationTimeStamp(buffer)
+                        
+                        if self.prevTime == CMTime.zero {
+                            // nop
+                        } else if CMTimeSubtract(currentTime, self.prevTime).seconds < (1.0 / self.frameRate) {
+                            // framerate以下は削除
+                            return;
                         }
+                        
+                        self.prevTime = currentTime
+                        
+                        frame += 1
 
-                        guard let outCIImage = processingFunction(ciImage) else { print("Video Processing Failed") ; return }
+                        guard let outCIImage = processingFunction(pixelBuffer, currentTime, isFrameRotated) else { print("Video Processing Failed") ; return }
                         let presentationTime = CMSampleBufferGetOutputPresentationTimeStamp(buffer)
-                        var pixelBufferOut: CVPixelBuffer?
-                        CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pixelBufferAdaptor.pixelBufferPool!, &pixelBufferOut)
-                        ciContext.render(outCIImage, to: pixelBufferOut!)
-                        pixelBufferAdaptor.append(pixelBufferOut!, withPresentationTime: presentationTime)
-//                        if frame % 100 == 0 {
-//                            print("\(frame) / \(totalFrame) frames were processed..")
-//                        }
+                        guard let convImageBuffer = outCIImage.pixelBuffer(cgSize: outCIImage.extent.size, pixcelFormat: pixelFormat) else { return }
+
+                        pixelBufferAdaptor.append(convImageBuffer, withPresentationTime: presentationTime)
                     } else {
                         writerVideoInput.markAsFinished()
                         DispatchQueue.main.async {
@@ -313,7 +334,7 @@ public class  VisionManager {
                 while writerAudioInput.isReadyForMoreMediaData {
                     autoreleasepool {
                         let buffer = readerAudioOutput.copyNextSampleBuffer()
-                        if buffer != nil {
+                        if buffer != nil, !self.cancel {
                             writerAudioInput.append(buffer!)
                         } else {
                             writerAudioInput.markAsFinished()

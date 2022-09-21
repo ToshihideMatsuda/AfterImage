@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */; };
+		D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */; };
 		D264547628D9341D007E38AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547528D9341D007E38AB /* AppDelegate.swift */; };
 		D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547728D9341D007E38AB /* SceneDelegate.swift */; };
 		D264547A28D9341D007E38AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264547928D9341D007E38AB /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
 		D264547228D9341D007E38AB /* AfterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264547528D9341D007E38AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D264547728D9341D007E38AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +123,9 @@
 				D26454B628D994A7007E38AB /* Util */,
 				D26454B728D994C3007E38AB /* Manager */,
 				D264547928D9341D007E38AB /* ViewController.swift */,
+				D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */,
 				D26454B228D98182007E38AB /* CameraViewController.swift */,
+				D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
@@ -313,6 +319,8 @@
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
 				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
 				D26454B328D98182007E38AB /* CameraViewController.swift in Sources */,
+				D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */,
+				D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */,
 				D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

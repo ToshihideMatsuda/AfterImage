@@ -11,7 +11,7 @@ import AVFoundation
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
-class CameraViewController:UIViewController, VideoListener, AudioListener {
+class CameraViewController:CompositImageViewController, VideoListener, AudioListener {
     
     @IBOutlet weak var mainVideoView: AVPlayerLayerView!
     private var preset     :AVCaptureSession.Preset = .high
@@ -20,9 +20,7 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
     
     private var frameNumber :Int = 0
     private var firstFrameNo:Int = 0
-    private var interval    :Double = 1.0
     private var startTime   :CMTime = CMTime.zero
-    private var prevTime    :CMTime = CMTime.zero
     private var endTime     :CMTime = CMTime.zero
     
     private var assetWriter : AVAssetWriter? = nil
@@ -30,19 +28,17 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
     private var audioAssetInput: AVAssetWriterInput? = nil
     private var videoPixcelBuffer: AVAssetWriterInputPixelBufferAdaptor? = nil
     
-    private let queueSize            = 5;
-    private var imageQueue:[CIImage] = []
-    
     private var cameraRotate = true
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
         AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
-        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 720, height: 1280))
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         AVCaptureManager.shared.removeVideoListener(listener: self)
         AVCaptureManager.shared.removeVideoListener(listener: self)
     }
@@ -62,43 +58,14 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
         let (imageBufferObj, size) = sampleBuffer.imageBuffer()
         guard let imageBuffer = imageBufferObj else { return }
         
-        let videoImage  : CIImage = CIImage(cvPixelBuffer: imageBuffer)
-        let currentImage = VisionManager.shared.personImage(ciImage: videoImage)
-        
         let currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-        let frameTime   = CMTimeSubtract(currentTime, self.prevTime)
-        
-        let currentImageQueue = imageQueue + [currentImage]
-        var compositImage = videoImage
-        
-        if(imageQueue.count >= 1) {
-            for i in 0 ..< currentImageQueue.count {
-                guard let image = currentImageQueue[i],
-                      let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
-                        kCIInputImageKey            : image,
-                        kCIInputBackgroundImageKey  : compositImage
-                      ])?.outputImage else { break; }
-                compositImage = blended
-            }
-        }
+        let compositImage = createCompositImage(imageBuffer: imageBuffer, currentTime:currentTime)
         
         DispatchQueue.main.sync {
             //CGImage
             self.mainVideoView.mainlayer?.contents = ciContext.createCGImage(compositImage,
                                                                              from: CGRect(origin: CGPoint(x: 0, y: 0),
-                                                                             size: videoImage.extent.size))
-        }
-        
-        if self.prevTime == CMTime.zero {
-            self.prevTime = currentTime
-        } else if frameTime.seconds >= interval {
-            // 次回のためにQueueを更新
-            self.prevTime = currentTime
-            if let currentImage = currentImage {
-                imageQueue += [currentImage]
-                while( imageQueue.count > queueSize ) { imageQueue.removeFirst() }
-            }
-
+                                                                             size: compositImage.extent.size))
         }
         
         if isRec {
@@ -115,7 +82,7 @@ class CameraViewController:UIViewController, VideoListener, AudioListener {
             let frameTime = CMTimeSubtract(timestamp, startTime)
             
             frameNumber += 1;
-            cameraSaveQueue.async { self.saveVideoBuffer(size, videoImage:videoImage, frameTime:frameTime) }
+            cameraSaveQueue.async { self.saveVideoBuffer(size, videoImage:compositImage, frameTime:frameTime) }
         }
     }
     
