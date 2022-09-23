@@ -16,7 +16,6 @@ class VideoViewController:CompositImageViewController {
     weak var superVc:UIViewController? = nil
     public var url:URL? = nil
     
-    private let queueSize            = 5 ;
     private var cancel               = false ;
     private var imageQueue:[CIImage] = []
     private var processedVideoURL: URL? = nil
@@ -32,17 +31,16 @@ class VideoViewController:CompositImageViewController {
         
         guard let url = url else { return }
         let asset = AVAsset(url: url)
-        
-        let videoSize = asset.tracks(withMediaType: .video).first?.naturalSize
+        let videoSize = asset.naturalSize
         self.mainVideoView?.setVideoSize(size: videoSize)
-        VisionManager.shared.initClearBackground(cameraSize: videoSize ?? CGSize(width: 1280, height: 720))
+        VisionManager.shared.initClearBackground(cameraSize: videoSize )
         
         VisionManager.shared.applyProcessingOnVideo(videoURL: url,
                                                     { imageBuffer, currentTime, isFrameRotated in
             if self.cancel { return nil }
             let compositImage = self.createCompositImage(imageBuffer: imageBuffer, currentTime:currentTime, isFrameRotated: isFrameRotated)
 
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 //CGImage
                 self.mainVideoView?.mainlayer?.contents = ciContext.createCGImage(compositImage,
                                                                                  from: CGRect(origin: CGPoint(x: 0, y: 0),

@@ -11,6 +11,9 @@ import AVKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
+    @IBOutlet weak var intervalText: UITextField!
+    @IBOutlet weak var maxClone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,8 +43,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {
-        guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController") else { return }
+        guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController")  as? CameraViewController  else { return }
         cameraVc.modalPresentationStyle = .fullScreen;
+        if let interval = self.intervalText.text {
+            cameraVc.interval = Double(interval) ?? cameraVc.interval
+        }
+        if let max = self.maxClone.text {
+            cameraVc.queueSize = Int(max) ?? cameraVc.queueSize
+        }
         self.present(cameraVc, animated: true)
     }
     private func showUI() {        
@@ -65,6 +74,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
         videoVc.url = url
         videoVc.superVc = self
+        
+        if let interval = self.intervalText.text {
+            videoVc.interval = Double(interval) ?? videoVc.interval
+        }
+        if let max = self.maxClone.text {
+            videoVc.queueSize = Int(max) ?? videoVc.queueSize
+        }
         
         picker.dismiss(animated: true) {
             self.present(videoVc, animated: true)

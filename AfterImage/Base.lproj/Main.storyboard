@@ -17,32 +17,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H02-o7-T7D">
-                                <rect key="frame" x="155" y="339" width="81" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="showUI"/>
-                                <connections>
-                                    <action selector="tapPhotoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4US-dK-iiu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GO-41-sVW">
-                                <rect key="frame" x="157" y="432" width="81" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="camera"/>
-                                <connections>
-                                    <action selector="tapCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxz-Le-lg8"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9H-5o-z9K">
+                                <rect key="frame" x="75" y="272" width="240" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H02-o7-T7D">
+                                        <rect key="frame" x="87" y="25" width="66" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="video"/>
+                                        <connections>
+                                            <action selector="tapPhotoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4US-dK-iiu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GO-41-sVW">
+                                        <rect key="frame" x="79.666666666666657" y="90" width="81" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="camera"/>
+                                        <connections>
+                                            <action selector="tapCameraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxz-Le-lg8"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-sa-hNJ">
+                                        <rect key="frame" x="126" y="155" width="100" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="bGy-wN-z8p"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="1.0">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="smallSystem"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLl-cE-fbM" userLabel="Max clone">
+                                        <rect key="frame" x="126" y="209" width="100" height="34"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="5">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="smallSystem"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="max clone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
+                                        <rect key="frame" x="40.000000000000007" y="212" width="77.666666666666686" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
+                                        <rect key="frame" x="40" y="163" width="56" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="8wA-E7-Qkj" firstAttribute="top" secondItem="SMC-hn-GzL" secondAttribute="bottom" constant="28" id="6Zw-rm-rsO"/>
+                                    <constraint firstItem="h0Z-sa-hNJ" firstAttribute="leading" secondItem="SMC-hn-GzL" secondAttribute="trailing" constant="30" id="AsO-nK-u6B"/>
+                                    <constraint firstItem="SMC-hn-GzL" firstAttribute="top" secondItem="4GO-41-sVW" secondAttribute="bottom" constant="38" id="Bhy-Lc-QwI"/>
+                                    <constraint firstItem="VLl-cE-fbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8wA-E7-Qkj" secondAttribute="trailing" constant="8" symbolic="YES" id="FK9-4l-XDK"/>
+                                    <constraint firstItem="4GO-41-sVW" firstAttribute="top" secondItem="H02-o7-T7D" secondAttribute="bottom" constant="30" id="FgG-Cp-2QQ"/>
+                                    <constraint firstItem="8wA-E7-Qkj" firstAttribute="leading" secondItem="SMC-hn-GzL" secondAttribute="leading" id="Jji-uR-6iy"/>
+                                    <constraint firstAttribute="width" constant="240" id="Kso-Ba-0Id"/>
+                                    <constraint firstItem="SMC-hn-GzL" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" constant="40" id="Ucx-6q-fdl"/>
+                                    <constraint firstAttribute="height" constant="300" id="Z89-o2-pLN"/>
+                                    <constraint firstItem="VLl-cE-fbM" firstAttribute="width" secondItem="h0Z-sa-hNJ" secondAttribute="width" id="Zq2-bX-MeB"/>
+                                    <constraint firstItem="VLl-cE-fbM" firstAttribute="top" secondItem="h0Z-sa-hNJ" secondAttribute="bottom" constant="20" id="cOX-nl-DWF"/>
+                                    <constraint firstItem="H02-o7-T7D" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="top" constant="25" id="dNM-qj-dYD"/>
+                                    <constraint firstItem="4GO-41-sVW" firstAttribute="centerX" secondItem="O9H-5o-z9K" secondAttribute="centerX" id="hnh-3P-Qga"/>
+                                    <constraint firstItem="H02-o7-T7D" firstAttribute="centerX" secondItem="O9H-5o-z9K" secondAttribute="centerX" id="kfm-rn-nWo"/>
+                                    <constraint firstItem="VLl-cE-fbM" firstAttribute="leading" secondItem="h0Z-sa-hNJ" secondAttribute="leading" id="liw-h8-UXG"/>
+                                    <constraint firstItem="h0Z-sa-hNJ" firstAttribute="top" secondItem="4GO-41-sVW" secondAttribute="bottom" constant="30" id="nWK-ER-o5J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="O9H-5o-z9K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="t73-wz-3Qh"/>
+                            <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="intervalText" destination="h0Z-sa-hNJ" id="Oz6-9t-8Ii"/>
+                        <outlet property="maxClone" destination="VLl-cE-fbM" id="nSP-ap-E4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-792" y="-312"/>
+            <point key="canvasLocation" x="-792.30769230769226" y="-312.08530805687201"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="wYx-oi-V1H">

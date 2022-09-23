@@ -12,8 +12,8 @@ import AVFoundation
 class CompositImageViewController: UIViewController{
     public var mainVideoView: AVPlayerLayerView? = nil
 
-    private let queueSize            = 5 ;
-    private var interval    :Double = 1.0
+    public  var queueSize            = 5 ;
+    public  var interval    :Double  = 1.0
     private var imageQueue:[CIImage] = []
     private var prevTime    :CMTime = CMTime.zero
     
@@ -55,8 +55,10 @@ class CompositImageViewController: UIViewController{
                         kCIInputBackgroundImageKey  : compositImage
                       ])?.outputImage else { break; }
                 compositImage = blended
+                
             }
         }
+        
         registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
         
         return compositImage

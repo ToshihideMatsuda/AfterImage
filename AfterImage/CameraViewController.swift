@@ -61,7 +61,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         let currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         let compositImage = createCompositImage(imageBuffer: imageBuffer, currentTime:currentTime)
         
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             //CGImage
             self.mainVideoView?.mainlayer?.contents = ciContext.createCGImage(compositImage,
                                                                              from: CGRect(origin: CGPoint(x: 0, y: 0),
