@@ -52,10 +52,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="81B-Bc-emd" customClass="AVPlayerLayerView" customModule="AfterImage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8X-ER-TL1">
                                 <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <subviews>
@@ -99,19 +95,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="0uf-rC-7CV"/>
-                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="81B-Bc-emd" secondAttribute="trailing" id="34z-sh-jBP"/>
-                            <constraint firstItem="81B-Bc-emd" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="Adc-3f-VDd"/>
-                            <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="81B-Bc-emd" secondAttribute="bottom" id="JPD-o2-tpT"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="J8X-ER-TL1" secondAttribute="bottom" id="L6t-bK-FFt"/>
-                            <constraint firstItem="81B-Bc-emd" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="LHs-ru-Cvt"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="J8X-ER-TL1" secondAttribute="trailing" id="R2B-QJ-OsA"/>
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="fvj-Pz-XJI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2gD-Gx-tAl"/>
-                    <connections>
-                        <outlet property="mainVideoView" destination="81B-Bc-emd" id="lnu-go-LTf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEg-n8-mNp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,11 +114,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftj-HD-9gB" userLabel="Video Layer View" customClass="AVPlayerLayerView" customModule="AfterImage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="40" width="390" height="763"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piR-0v-YNh">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
                                 <subviews>
@@ -163,9 +147,6 @@
                             <constraint firstItem="piR-0v-YNh" firstAttribute="leading" secondItem="Owk-Kb-4lr" secondAttribute="leading" id="rcc-re-EPX"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="mainVideoView" destination="Ftj-HD-9gB" id="3t4-qp-xSr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gze-SJ-4fq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

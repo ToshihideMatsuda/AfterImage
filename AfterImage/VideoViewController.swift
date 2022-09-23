@@ -13,7 +13,6 @@ import PhotosUI
 
 class VideoViewController:CompositImageViewController {
     
-    @IBOutlet weak var mainVideoView: AVPlayerLayerView!
     weak var superVc:UIViewController? = nil
     public var url:URL? = nil
     
@@ -28,18 +27,24 @@ class VideoViewController:CompositImageViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        super.viewDidAppear(animated)
+        
         
         guard let url = url else { return }
+        let asset = AVAsset(url: url)
+        
+        let videoSize = asset.tracks(withMediaType: .video).first?.naturalSize
+        self.mainVideoView?.setVideoSize(size: videoSize)
+        VisionManager.shared.initClearBackground(cameraSize: videoSize ?? CGSize(width: 1280, height: 720))
         
         VisionManager.shared.applyProcessingOnVideo(videoURL: url,
                                                     { imageBuffer, currentTime, isFrameRotated in
             if self.cancel { return nil }
             let compositImage = self.createCompositImage(imageBuffer: imageBuffer, currentTime:currentTime, isFrameRotated: isFrameRotated)
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 //CGImage
-                self.mainVideoView.mainlayer?.contents = ciContext.createCGImage(compositImage,
+                self.mainVideoView?.mainlayer?.contents = ciContext.createCGImage(compositImage,
                                                                                  from: CGRect(origin: CGPoint(x: 0, y: 0),
                                                                                  size: compositImage.extent.size))
             }
@@ -61,6 +66,7 @@ class VideoViewController:CompositImageViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         guard let url = processedVideoURL else { return }
         let vc = AVPlayerViewController()
         vc.player = AVPlayer(url: url)

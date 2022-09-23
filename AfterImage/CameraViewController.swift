@@ -13,7 +13,6 @@ public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.sav
 
 class CameraViewController:CompositImageViewController, VideoListener, AudioListener {
     
-    @IBOutlet weak var mainVideoView: AVPlayerLayerView!
     private var preset     :AVCaptureSession.Preset = .high
     
     private var isRec:Bool = false
@@ -35,6 +34,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
         AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
+        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     @IBAction func rotateCamera(_ sender: Any) {
         self.cameraRotate.toggle()
         AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
-        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 720, height: 1280))
+        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
     }
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
@@ -63,7 +63,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         
         DispatchQueue.main.sync {
             //CGImage
-            self.mainVideoView.mainlayer?.contents = ciContext.createCGImage(compositImage,
+            self.mainVideoView?.mainlayer?.contents = ciContext.createCGImage(compositImage,
                                                                              from: CGRect(origin: CGPoint(x: 0, y: 0),
                                                                              size: compositImage.extent.size))
         }
@@ -182,16 +182,4 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             self.endTime = CMTime.zero
         }
     }
-}
-
-
-
-class AVPlayerLayerView:UIView {
-    
-    public lazy var mainlayer:AVPlayerLayer? = {
-        let layer = AVPlayerLayer()
-        self.layer.addSublayer(layer)
-        layer.frame = self.bounds
-        return layer
-    }();
 }

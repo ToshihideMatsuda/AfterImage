@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 
 class CompositImageViewController: UIViewController{
+    public var mainVideoView: AVPlayerLayerView? = nil
+
     private let queueSize            = 5 ;
     private var interval    :Double = 1.0
     private var imageQueue:[CIImage] = []
@@ -17,9 +19,20 @@ class CompositImageViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 720, height: 1280))
+        mainVideoView = UINib(nibName: "AVPlayerLayerView", bundle: nil).instantiate(withOwner: self, options: nil).first as? AVPlayerLayerView
+
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let main = mainVideoView {
+            self.view.addSubview(main)
+            self.view.sendSubviewToBack(main)
+            main.frame = self.view.bounds
+            main.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin ,.flexibleLeftMargin, .flexibleRightMargin]
+            self.mainVideoView?.setVideoSize(size:AVCaptureManager.shared.getVideoSize())
+        }
+    }
     func createCompositImage(imageBuffer:CVImageBuffer, currentTime:CMTime, isFrameRotated:Bool = false) -> CIImage {
         
         var videoImage = CIImage(cvPixelBuffer: imageBuffer)
