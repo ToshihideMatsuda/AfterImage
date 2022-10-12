@@ -108,16 +108,14 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                     DispatchQueue.main.async {
                         alert.dismiss(animated: true ) {
                             let message = isCompleted ?
-                            "[Success] It have saved your video in photolibrary." :
+                            "[Success] Your video has been saved in photolibrary." :
                             "[Fail] It failed to save your video."
                             let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default))
                             self.present(alert, animated: true)
                         }
                     }
-                    
                 }
-                
             })
             
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

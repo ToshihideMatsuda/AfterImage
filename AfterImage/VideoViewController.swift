@@ -67,26 +67,7 @@ class VideoViewController:CompositImageViewController {
         guard let url = processedVideoURL else { return }
         let vc = AVPlayerViewController()
         vc.player = AVPlayer(url: url)
-        self.superVc?.present(vc, animated: true) {
-            
-            PHPhotoLibrary.shared().performChanges({
-              PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-            }) { (isCompleted, error) in
-              if isCompleted {
-                // フォトライブラリに書き出し成功
-                do {
-                  try FileManager.default.removeItem(atPath: url.path)
-                  print("フォトライブラリ書き出し・ファイル削除成功 : \(url.lastPathComponent)")
-                }
-                catch {
-                  print("フォトライブラリ書き出し後のファイル削除失敗 : \(url.lastPathComponent)")
-                }
-              }
-              else {
-                print("フォトライブラリ書き出し失敗 : \(url.lastPathComponent)")
-              }
-            }
-        }
+        self.superVc?.present(vc, animated: true)
     }
     
     
@@ -94,8 +75,50 @@ class VideoViewController:CompositImageViewController {
     @IBAction func close(_ sender: Any) {
         self.cancel = true
         VisionManager.shared.cancel = true
-        self.dismiss(animated: true) 
+        
+        guard let url = processedVideoURL else {
+            self.dismiss(animated:true)
+            return
+        }
+        
+        let alert = UIAlertController(title: "Convert Completed",
+                                      message: "Your video has been converted.\n Which action do you select ?",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Save & Show", style: .default) { _ in
+            self.saveVideo(alert: alert, url: url)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Only Save", style: .default) { _ in
+            self.processedVideoURL = nil
+            self.saveVideo(alert: alert, url: url)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Only Show", style: .default) { _ in
+            self.dismiss(animated:true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Close", style: .default))
+        
+        self.present(alert, animated: true)
+        
     }
     
+    private func saveVideo(alert: UIAlertController, url:URL) {
+        PHPhotoLibrary.shared().performChanges({
+          PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+        }) { (isCompleted, error) in
+            DispatchQueue.main.async {
+                alert.dismiss(animated: true ) {
+                    let message = isCompleted ?
+                    "[Success] Your video has been saved in photolibrary." :
+                    "[Fail] It failed to save your video."
+                    let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in self.dismiss(animated:true)})
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
 }
 
