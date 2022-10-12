@@ -38,12 +38,13 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var count:Int = 0
     
     private var cameraRotate = true
+    private let frameRate:Int32  = 20
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
-        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
+        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: frameRate, preset: preset)
         VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
         
         self.count = 0
@@ -65,7 +66,8 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     
     @IBAction func rotateCamera(_ sender: Any) {
         self.cameraRotate.toggle()
-        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
+        imageQueue = []
+        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: frameRate, preset: preset)
         VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
     }
     @IBAction func close(_ sender: Any) {
@@ -126,22 +128,25 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private func onRecButtonView(_ animation:Bool = false) {
         
         let radius:CGFloat
-        let length:CGFloat?
+        let len:CGFloat?
         if isRec {
             constraintHeight.constant = recBottonContainer.frame.height - 20
             constraintWidth.constant = recBottonContainer.frame.width - 20
-            length = nil
+            len = nil
             radius = self.recBottonContainer.frame.size.width / 6.0
         } else {
-            length = recBottonContainer.frame.height - 6
+            len = recBottonContainer.frame.height - 6
             radius = recBottonContainer.frame.size.width / 2.0
         }
         
         UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.recBottonView.layer.cornerRadius = radius
-            if let length = length {
-                self.constraintHeight.constant = length
-                self.constraintWidth.constant  = length
+        }, completion: { ret in
+            if ret {
+                if let length = len {
+                    self.constraintHeight.constant = length
+                    self.constraintWidth.constant  = length
+                }
             }
         })
     }
@@ -291,6 +296,18 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             self.frameNumber = 0;
             self.startTime = CMTime.zero
             self.endTime = CMTime.zero
+        }
+    }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.mainVideoView?.mainlayer?.contents = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if self.isRec {
+                self.stopRecording()
+            }
+            self.dismiss(animated: true) {
+                self.superVc?.tapCameraButton(nil)
+            }
         }
     }
 }

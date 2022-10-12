@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func tapPhotoButton(_ sender: Any) {
+    @IBAction func tapPhotoButton(_ sender: Any?) {
         let status = PHPhotoLibrary.authorizationStatus(for:.readWrite)
         
         switch status {
@@ -42,7 +42,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.showUI()
     }
     
-    @IBAction func tapCameraButton(_ sender: Any) {
+    @IBAction func tapCameraButton(_ sender: Any?) {
         guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController")  as? CameraViewController  else { return }
         cameraVc.modalPresentationStyle = .fullScreen;
         if let interval = self.intervalText.text {
@@ -51,6 +51,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let max = self.maxClone.text {
             cameraVc.queueSize = Int(max) ?? cameraVc.queueSize
         }
+        cameraVc.superVc = self
         self.present(cameraVc, animated: true)
     }
     private func showUI() {        

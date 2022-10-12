@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 class CompositImageViewController: UIViewController{
+    public weak var superVc:ViewController? = nil
     public var mainVideoView: AVPlayerLayerView? = nil
 
     public  var queueSize            = 5 ;

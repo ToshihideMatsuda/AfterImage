@@ -13,7 +13,6 @@ import PhotosUI
 
 class VideoViewController:CompositImageViewController {
     
-    weak var superVc:UIViewController? = nil
     public var url:URL? = nil
     
     private var cancel               = false ;
