@@ -14,7 +14,7 @@ class CompositImageViewController: UIViewController{
 
     public  var queueSize            = 5 ;
     public  var interval    :Double  = 1.0
-    private var imageQueue:[CIImage] = []
+    var imageQueue:[CIImage] = []
     private var prevTime    :CMTime = CMTime.zero
     
     override func viewWillAppear(_ animated: Bool) {

@@ -17,7 +17,6 @@ class VideoViewController:CompositImageViewController {
     public var url:URL? = nil
     
     private var cancel               = false ;
-    private var imageQueue:[CIImage] = []
     private var processedVideoURL: URL? = nil
     
     

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import PhotosUI
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
@@ -16,6 +17,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var preset     :AVCaptureSession.Preset = .high
     
     private var isRec:Bool = false
+    private var url:URL? = nil
     
     private var frameNumber :Int = 0
     private var firstFrameNo:Int = 0
@@ -27,6 +29,14 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var audioAssetInput: AVAssetWriterInput? = nil
     private var videoPixcelBuffer: AVAssetWriterInputPixelBufferAdaptor? = nil
     
+    @IBOutlet weak var recBottonContainer: UIView!
+    @IBOutlet weak var recBottonView: UIView!
+    @IBOutlet weak var constraintHeight: NSLayoutConstraint!
+    @IBOutlet weak var constraintWidth: NSLayoutConstraint!
+    @IBOutlet weak var timeLabel: UILabel!
+    private var timer:Timer? = nil
+    private var count:Int = 0
+    
     private var cameraRotate = true
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +45,16 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         AVCaptureManager.shared.addAudioListener(listener: self)
         AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: 20, preset: preset)
         VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
+        
+        self.count = 0
+        self.showTimerView();
+        
+        recBottonContainer.layer.borderWidth  = 1
+        recBottonContainer.layer.borderColor  = CGColor.init(red: 0, green: 0, blue: 0, alpha: 1)
+        recBottonContainer.layer.cornerRadius = recBottonContainer.frame.size.width / 2.0
+        constraintHeight.constant = recBottonContainer.frame.height - 6
+        constraintWidth.constant = recBottonContainer.frame.height - 6
+        recBottonView.layer.cornerRadius =  recBottonContainer.frame.size.width / 2.0
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -50,6 +70,99 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     }
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    @IBAction func onRec(_ sender: Any) {
+        isRec.toggle()
+        
+        self.onRecButtonView(true)
+        
+        if isRec {
+            imageQueue = []
+            // Rec start
+            let url  = URL(fileURLWithPath: (NSTemporaryDirectory() + UUID().uuidString + ".mp4"))
+            startRecordingToOutputFileURL(url);
+            self.url = url
+            self.count = 0;
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+                self.count += 1
+                self.showTimerView();
+            })
+        } else if let url = self.url {
+            // Rec end
+            self.timer?.invalidate()
+            self.timer = nil
+            self.count = 0
+            self.showTimerView();
+            
+            stopRecording()
+            
+            let alert = UIAlertController(title: "Notice",
+                                          message: "Do you save a current video?",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                
+                PHPhotoLibrary.shared().performChanges({
+                  PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                }) { (isCompleted, error) in
+                    DispatchQueue.main.async {
+                        alert.dismiss(animated: true ) {
+                            let message = isCompleted ?
+                            "[Success] It have saved your video in photolibrary." :
+                            "[Fail] It failed to save your video."
+                            let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                    
+                }
+                
+            })
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func onRecButtonView(_ animation:Bool = false) {
+        
+        let radius:CGFloat
+        let length:CGFloat?
+        if isRec {
+            constraintHeight.constant = recBottonContainer.frame.height - 20
+            constraintWidth.constant = recBottonContainer.frame.width - 20
+            length = nil
+            radius = self.recBottonContainer.frame.size.width / 6.0
+        } else {
+            length = recBottonContainer.frame.height - 6
+            radius = recBottonContainer.frame.size.width / 2.0
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+            self.recBottonView.layer.cornerRadius = radius
+            if let length = length {
+                self.constraintHeight.constant = length
+                self.constraintWidth.constant  = length
+            }
+        })
+    }
+    
+    private func showTimerView() {
+        let hours:Int   = self.count / ( 60 * 60 )
+        let minutes:Int = ( self.count - hours * 60 * 60) / 60
+        let seconds:Int = ( self.count - hours * 60 * 60 - minutes * 60 )
+        
+        var hoursStr   = "\(hours)"
+        var minutesStr = "\(minutes)"
+        var secondsStr = "\(seconds)"
+        
+        if hoursStr.count   == 1 { hoursStr   = "0" + hoursStr }
+        if minutesStr.count == 1 { minutesStr = "0" + minutesStr }
+        if secondsStr.count == 1 { secondsStr = "0" + secondsStr }
+        
+        self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
+        
     }
     
     public func videoCapture(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
