@@ -88,16 +88,15 @@ class VideoViewController:CompositImageViewController {
             self.saveVideo(alert: alert, url: url)
         })
         
-        alert.addAction(UIAlertAction(title: "Only Save", style: .default) { _ in
-            self.processedVideoURL = nil
-            self.saveVideo(alert: alert, url: url)
-        })
         
         alert.addAction(UIAlertAction(title: "Only Show", style: .default) { _ in
             self.dismiss(animated:true)
         })
         
-        alert.addAction(UIAlertAction(title: "Close", style: .default))
+        alert.addAction(UIAlertAction(title: "Close", style: .default) { _ in
+            self.processedVideoURL = nil
+            self.dismiss(animated:true)
+        })
         
         self.present(alert, animated: true)
         

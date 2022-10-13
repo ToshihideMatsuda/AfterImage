@@ -17,11 +17,15 @@ class CompositImageViewController: UIViewController{
     public  var interval    :Double  = 1.0
     var imageQueue:[CIImage] = []
     private var prevTime    :CMTime = CMTime.zero
+    private var icon    :CIImage? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainVideoView = UINib(nibName: "AVPlayerLayerView", bundle: nil).instantiate(withOwner: self, options: nil).first as? AVPlayerLayerView
-
+        
+        guard let uiImage = UIImage(named: "ShadowCloneIcon"),
+            let icon = CIImage(image: uiImage) else { return }
+        self.icon = icon
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +63,13 @@ class CompositImageViewController: UIViewController{
                 
             }
         }
+        
+        guard let icon = self.icon,
+              let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
+                kCIInputImageKey            : icon,
+                kCIInputBackgroundImageKey  : compositImage
+              ])?.outputImage else { return compositImage }
+        compositImage = blended
         
         registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
         

@@ -21,11 +21,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>This App saves camara datas.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This App converts photo library movie, and saves it.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This App saves microphone datas.</string>
 </dict>
 </plist>
