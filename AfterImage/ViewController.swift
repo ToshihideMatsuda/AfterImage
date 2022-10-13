@@ -10,8 +10,6 @@ import PhotosUI
 import AVKit
 import GoogleMobileAds
 
-public let debug = true
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     @IBOutlet weak var bannerView: GADBannerView!  //追加
 
@@ -27,14 +25,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         self.interValSlider.value = intervalDefault
         self.clonesSlider.value = clonesDefault
-                // GADBannerViewのプロパティを設定
-        if debug {
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        } else {
-            bannerView.adUnitID = "ca-app-pub-1643629923616505/4567849365"
-        }
+        
+        // GADBannerViewのプロパティを設定
+        bannerView.adUnitID = bannerViewId()
         bannerView.rootViewController = self
-        bannerView.adSize = .init(size: CGSize(width: 320, height: 100), flags: 3)
+        bannerView.adSize = .init(size: CGSize(width: 320, height: 100), flags: 2)
 
         // 広告読み込み
         bannerView.load(GADRequest())

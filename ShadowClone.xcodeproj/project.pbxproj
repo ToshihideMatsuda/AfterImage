@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		890DAA7B28DE0521001AAB35 /* AVPlayerLayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */; };
 		890DAA7D28DE0577001AAB35 /* AVPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */; };
 		890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */; };
+		897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DC09C28F7E9AF006D2113 /* AdsConst.swift */; };
 		D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */; };
 		D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */; };
 		D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70828DAE47B002B0F42 /* AppUtil.swift */; };
@@ -55,6 +56,7 @@
 		890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVPlayerLayerView.xib; sourceTree = "<group>"; };
 		890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerLayerView.swift; sourceTree = "<group>"; };
 		890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+extension.swift"; sourceTree = "<group>"; };
+		897DC09C28F7E9AF006D2113 /* AdsConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConst.swift; sourceTree = "<group>"; };
 		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
 		D24FA70828DAE47B002B0F42 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -113,7 +115,6 @@
 				005A50277B4A682549B2915A /* Pods-ShadowClone.debug.xcconfig */,
 				71022A71066762A488EBAB24 /* Pods-ShadowClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -157,6 +158,7 @@
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
 				D264548328D9341D007E38AB /* Info.plist */,
+				897DC09C28F7E9AF006D2113 /* AdsConst.swift */,
 			);
 			path = AfterImage;
 			sourceTree = "<group>";
@@ -393,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */,
 				D264547A28D9341D007E38AB /* ViewController.swift in Sources */,
 				D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */,
 				890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */,

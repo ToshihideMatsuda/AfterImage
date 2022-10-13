@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 import AVFoundation
 import PhotosUI
+import GoogleMobileAds
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
 class CameraViewController:CompositImageViewController, VideoListener, AudioListener {
     
+    @IBOutlet weak var bannerView: GADBannerView!
     private var preset     :AVCaptureSession.Preset = .high
     
     private var isRec:Bool = false
@@ -44,8 +46,12 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         super.viewWillAppear(animated)
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
-        AVCaptureManager.shared.initializeCamera(cameraRotate, frameRateInput: frameRate, preset: preset)
-        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
+        DispatchQueue.global().async {
+            AVCaptureManager.shared.initializeCamera(self.cameraRotate, frameRateInput: self.frameRate, preset: self.preset)
+            DispatchQueue.main.async {
+                VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
+            }
+        }
         
         self.count = 0
         self.showTimerView();
@@ -56,6 +62,17 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         constraintHeight.constant = recBottonContainer.frame.height - 6
         constraintWidth.constant = recBottonContainer.frame.height - 6
         recBottonView.layer.cornerRadius =  recBottonContainer.frame.size.width / 2.0
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        // GADBannerViewのプロパティを設定
+        bannerView.adUnitID = bannerViewId()
+        bannerView.rootViewController = self
+        bannerView.adSize = .init(size: CGSize(width: 320, height: 50), flags: 1)
+
+        // 広告読み込み
+        bannerView.load(GADRequest())
     }
     
     override func viewDidDisappear(_ animated: Bool) {

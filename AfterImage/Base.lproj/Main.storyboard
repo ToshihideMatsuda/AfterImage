@@ -218,7 +218,7 @@ With Shadow Clone Effect</string>
                                     <constraint firstAttribute="trailing" secondItem="XgO-WC-G8T" secondAttribute="trailing" constant="20" id="xBS-A4-4hA"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kc-SU-l5V" customClass="GADBannerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kc-SU-l5V" userLabel="Banner Large View" customClass="GADBannerView">
                                 <rect key="frame" x="27.5" y="550" width="320" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -232,7 +232,7 @@ With Shadow Clone Effect</string>
                         <constraints>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="d0x-fD-DSh"/>
                             <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
-                            <constraint firstItem="2kc-SU-l5V" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="bottom" constant="20" id="qu3-Qc-0mf"/>
+                            <constraint firstItem="2kc-SU-l5V" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="bottom" constant="20" id="llq-gl-Okq"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
                         </constraints>
                     </view>
@@ -290,7 +290,7 @@ With Shadow Clone Effect</string>
                                         </connections>
                                     </button>
                                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-MW-msu">
-                                        <rect key="frame" x="142.5" y="10" width="90" height="29"/>
+                                        <rect key="frame" x="142.5" y="568" width="90" height="29"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-VU-Qnh">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="29"/>
@@ -310,7 +310,7 @@ With Shadow Clone Effect</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrW-FV-ntB">
-                                        <rect key="frame" x="162.5" y="602" width="50" height="50"/>
+                                        <rect key="frame" x="162.5" y="607" width="50" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-JN-ZR9">
                                                 <rect key="frame" x="3" y="3" width="44" height="44"/>
@@ -350,12 +350,20 @@ With Shadow Clone Effect</string>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Adp-Nk-Txe" secondAttribute="bottom" constant="10" id="6Vx-Jm-9L6"/>
                                     <constraint firstItem="wrW-FV-ntB" firstAttribute="centerX" secondItem="J8X-ER-TL1" secondAttribute="centerX" id="JO0-8X-AtX"/>
-                                    <constraint firstAttribute="bottom" secondItem="wrW-FV-ntB" secondAttribute="bottom" constant="15" id="Jyw-wd-c8q"/>
-                                    <constraint firstItem="pdy-MW-msu" firstAttribute="top" secondItem="J8X-ER-TL1" secondAttribute="top" constant="10" id="NNP-7O-RPk"/>
+                                    <constraint firstAttribute="bottom" secondItem="wrW-FV-ntB" secondAttribute="bottom" constant="10" id="Jyw-wd-c8q"/>
+                                    <constraint firstItem="wrW-FV-ntB" firstAttribute="top" secondItem="pdy-MW-msu" secondAttribute="bottom" constant="10" id="bB0-nD-9uL"/>
                                     <constraint firstItem="WoO-L7-FNh" firstAttribute="leading" secondItem="J8X-ER-TL1" secondAttribute="leading" constant="10" id="e2n-2p-VFx"/>
                                     <constraint firstAttribute="bottom" secondItem="WoO-L7-FNh" secondAttribute="bottom" constant="10" id="na9-Xl-WUg"/>
                                     <constraint firstItem="pdy-MW-msu" firstAttribute="centerX" secondItem="J8X-ER-TL1" secondAttribute="centerX" id="ngr-Nm-QVd"/>
                                     <constraint firstItem="Adp-Nk-Txe" firstAttribute="leading" secondItem="WoO-L7-FNh" secondAttribute="trailing" constant="10" id="vvs-Al-nBS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUu-TX-GZx" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="0.0" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xHl-zj-QO0"/>
+                                    <constraint firstAttribute="width" constant="320" id="z7H-GB-DVC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -365,11 +373,14 @@ With Shadow Clone Effect</string>
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="0uf-rC-7CV"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="J8X-ER-TL1" secondAttribute="bottom" id="L6t-bK-FFt"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="J8X-ER-TL1" secondAttribute="trailing" id="R2B-QJ-OsA"/>
+                            <constraint firstItem="mUu-TX-GZx" firstAttribute="centerX" secondItem="4M8-VP-XmV" secondAttribute="centerX" id="S2l-YY-LE7"/>
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="fvj-Pz-XJI"/>
+                            <constraint firstItem="mUu-TX-GZx" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="qhm-73-9J6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2gD-Gx-tAl"/>
                     <connections>
+                        <outlet property="bannerView" destination="mUu-TX-GZx" id="Cfy-K4-qnw"/>
                         <outlet property="constraintHeight" destination="IyN-To-f7S" id="Wre-Pp-rGY"/>
                         <outlet property="constraintWidth" destination="vpx-8r-UvL" id="4eC-iV-8lQ"/>
                         <outlet property="recBottonContainer" destination="wrW-FV-ntB" id="ydv-ao-aEq"/>
@@ -389,6 +400,14 @@ With Shadow Clone Effect</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dr2-qD-4sR" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="0.0" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6tH-76-zed"/>
+                                    <constraint firstAttribute="width" constant="320" id="hh9-aj-y66"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piR-0v-YNh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -420,10 +439,15 @@ With Shadow Clone Effect</string>
                         <constraints>
                             <constraint firstItem="Owk-Kb-4lr" firstAttribute="bottom" secondItem="piR-0v-YNh" secondAttribute="bottom" id="2rq-Pt-jNg"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="top" secondItem="Znr-PG-Sp4" secondAttribute="top" id="5IY-79-1A8"/>
+                            <constraint firstItem="Dr2-qD-4sR" firstAttribute="top" secondItem="Owk-Kb-4lr" secondAttribute="top" id="U39-cc-iLo"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="trailing" secondItem="Owk-Kb-4lr" secondAttribute="trailing" id="fb2-0V-vow"/>
+                            <constraint firstItem="Dr2-qD-4sR" firstAttribute="centerX" secondItem="Znr-PG-Sp4" secondAttribute="centerX" id="gGg-uY-dR8"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="leading" secondItem="Owk-Kb-4lr" secondAttribute="leading" id="rcc-re-EPX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bannerView" destination="Dr2-qD-4sR" id="hsd-xy-rFY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gze-SJ-4fq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

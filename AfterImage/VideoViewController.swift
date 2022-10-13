@@ -10,9 +10,11 @@ import UIKit
 import AVFoundation
 import AVKit
 import PhotosUI
+import GoogleMobileAds
 
 class VideoViewController:CompositImageViewController {
     
+    @IBOutlet weak var bannerView: GADBannerView!
     public var url:URL? = nil
     
     private var cancel               = false ;
@@ -25,6 +27,14 @@ class VideoViewController:CompositImageViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // GADBannerViewのプロパティを設定
+        bannerView.adUnitID = bannerViewId()
+        bannerView.rootViewController = self
+        bannerView.adSize = .init(size: CGSize(width: 320, height: 50), flags: 1)
+
+        // 広告読み込み
+        bannerView.load(GADRequest())
         
         
         guard let url = url else { return }
