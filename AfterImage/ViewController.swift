@@ -11,11 +11,17 @@ import AVKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
-    @IBOutlet weak var intervalText: UITextField!
-    @IBOutlet weak var maxClone: UITextField!
+    @IBOutlet weak var interValSlider: UISlider!
+    @IBOutlet weak var intervalText: UILabel!
+    @IBOutlet weak var clonesSlider: UISlider!
+    @IBOutlet weak var clonesText: UILabel!
+    let intervalDefault:Float = 1.0
+    let clonesDefault:Float = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.interValSlider.value = intervalDefault
+        self.clonesSlider.value = clonesDefault
         // Do any additional setup after loading the view.
     }
 
@@ -44,13 +50,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func tapCameraButton(_ sender: Any?) {
         guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController")  as? CameraViewController  else { return }
-        cameraVc.modalPresentationStyle = .fullScreen;
-        if let interval = self.intervalText.text {
-            cameraVc.interval = Double(interval) ?? cameraVc.interval
-        }
-        if let max = self.maxClone.text {
-            cameraVc.queueSize = Int(max) ?? cameraVc.queueSize
-        }
+        cameraVc.modalPresentationStyle = .fullScreen
+        cameraVc.interval  = floor(Double(self.interValSlider.value) * 10.0) / 10.0
+        cameraVc.queueSize = Int(self.clonesSlider.value)
+        
         cameraVc.superVc = self
         self.present(cameraVc, animated: true)
     }
@@ -75,20 +78,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
         videoVc.url = url
         videoVc.superVc = self
-        
-        if let interval = self.intervalText.text {
-            videoVc.interval = Double(interval) ?? videoVc.interval
-        }
-        if let max = self.maxClone.text {
-            videoVc.queueSize = Int(max) ?? videoVc.queueSize
-        }
+        videoVc.interval  = floor(Double(self.interValSlider.value) * 10.0) / 10.0
+        videoVc.queueSize = Int(self.clonesSlider.value)
         
         picker.dismiss(animated: true) {
             self.present(videoVc, animated: true)
         }
         
      }
+    @IBAction func chngIntervalSecond(_ sender: Any?) {
+        let val = floor(Double(self.interValSlider.value) * 10.0) / 10.0
+        self.intervalText.text = "\(val)s"
+    }
+    @IBAction func chngClones(_ sender: Any?) {
+        self.clonesText.text = "\(Int(self.clonesSlider.value))"
+    }
     
+    @IBAction func onReset(_ sender: Any) {
+        self.interValSlider.value = intervalDefault
+        self.clonesSlider.value = clonesDefault
+        self.chngIntervalSecond(nil)
+        self.chngClones(nil)
+    }
     
  }
 
