@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import GoogleMobileAds // 追加
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Google Mobile Ads SDKの初期化
+        GADMobileAds.sharedInstance().start(completionHandler: nil) // 追加
+        
         return true
     }
 

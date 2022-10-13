@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -14,25 +14,24 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9H-5o-z9K">
-                                <rect key="frame" x="45" y="172" width="300" height="500"/>
+                                <rect key="frame" x="12.5" y="30" width="350" height="500"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="598-2D-6wZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="PW7-e3-54b"/>
-                                            <constraint firstAttribute="width" constant="300" id="nAe-cQ-DcD"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-JA-Uj4" userLabel="Video">
-                                        <rect key="frame" x="20" y="240" width="260" height="60"/>
+                                        <rect key="frame" x="20" y="240" width="310" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7g-rJ-RDd">
-                                                <rect key="frame" x="61.666666666666671" y="0.0" width="198.33333333333331" height="60"/>
+                                                <rect key="frame" x="111.5" y="0.0" width="198.5" height="60"/>
                                                 <string key="text">Convert Your Video
 With Shadow Clone Effect</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -40,11 +39,11 @@ With Shadow Clone Effect</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VZx-kw-Hyh">
-                                                <rect key="frame" x="2.3333333333333339" y="16.333333333333314" width="26.000000000000004" height="30"/>
+                                                <rect key="frame" x="2.5" y="16.5" width="26" height="29"/>
                                                 <imageReference key="image" image="doc.fill.badge.plus" catalog="system" symbolScale="large"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H02-o7-T7D">
-                                                <rect key="frame" x="0.0" y="0.0" width="260" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -68,10 +67,10 @@ With Shadow Clone Effect</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-WC-G8T" userLabel="Camera">
-                                        <rect key="frame" x="20" y="300" width="260" height="60"/>
+                                        <rect key="frame" x="20" y="300" width="310" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Rr-w7D">
-                                                <rect key="frame" x="61.666666666666671" y="0.0" width="198.33333333333331" height="60"/>
+                                                <rect key="frame" x="111.5" y="0.0" width="198.5" height="60"/>
                                                 <string key="text">Record a Video
 With Shadow Clone Effect</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -79,11 +78,11 @@ With Shadow Clone Effect</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP8-bH-RGC">
-                                                <rect key="frame" x="2.6666666666666683" y="19.333333333333329" width="33.333333333333336" height="24.666666666666671"/>
+                                                <rect key="frame" x="3" y="19.5" width="33.5" height="24.5"/>
                                                 <imageReference key="image" image="video.fill.badge.plus" catalog="system" symbolScale="large"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-fs-SEJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="260" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -107,7 +106,7 @@ With Shadow Clone Effect</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQq-q3-168" userLabel="Setting">
-                                        <rect key="frame" x="20" y="380" width="260" height="110"/>
+                                        <rect key="frame" x="20" y="380" width="310" height="110"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r70-2B-erO" userLabel="settings">
                                                 <rect key="frame" x="5" y="10" width="61" height="21"/>
@@ -116,19 +115,19 @@ With Shadow Clone Effect</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
-                                                <rect key="frame" x="10" y="46" width="65" height="21"/>
+                                                <rect key="frame" x="10" y="46" width="115" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h7-O5-NNM">
-                                                <rect key="frame" x="80" y="46" width="40" height="21"/>
+                                                <rect key="frame" x="130" y="46" width="40" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000000000001" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="apW-8Z-5ZR">
-                                                <rect key="frame" x="128" y="41.666666666666629" width="124" height="31"/>
+                                                <rect key="frame" x="178" y="41.5" width="124" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="cTJ-as-iDe"/>
                                                     <constraint firstAttribute="height" constant="30" id="o1u-g0-Ufp"/>
@@ -138,13 +137,13 @@ With Shadow Clone Effect</string>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
-                                                <rect key="frame" x="10" y="82" width="110" height="21"/>
+                                                <rect key="frame" x="10" y="82" width="160" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-MM-ZY9">
-                                                <rect key="frame" x="80" y="82" width="40" height="21"/>
+                                                <rect key="frame" x="130" y="82" width="40" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="qKg-Zj-ZJM"/>
                                                 </constraints>
@@ -153,7 +152,7 @@ With Shadow Clone Effect</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="2" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="1FC-WM-Snl">
-                                                <rect key="frame" x="128" y="77.666666666666629" width="124" height="31"/>
+                                                <rect key="frame" x="178" y="77.5" width="124" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="DPn-pB-5ga"/>
                                                     <constraint firstAttribute="width" constant="120" id="fEh-Rq-3Oa"/>
@@ -163,7 +162,7 @@ With Shadow Clone Effect</string>
                                                 </connections>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-fu-8Vq">
-                                                <rect key="frame" x="192.66666666666669" y="10" width="67.333333333333314" height="21"/>
+                                                <rect key="frame" x="242.5" y="10" width="67.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="BBR-BM-d69"/>
                                                 </constraints>
@@ -208,7 +207,7 @@ With Shadow Clone Effect</string>
                                     <constraint firstItem="yrt-JA-Uj4" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="top" constant="240" id="7Qp-4V-IEY"/>
                                     <constraint firstAttribute="trailing" secondItem="yrt-JA-Uj4" secondAttribute="trailing" constant="20" id="893-Xn-5LN"/>
                                     <constraint firstAttribute="bottom" secondItem="VQq-q3-168" secondAttribute="bottom" constant="10" id="FP5-VA-41k"/>
-                                    <constraint firstAttribute="width" constant="300" id="Kso-Ba-0Id"/>
+                                    <constraint firstAttribute="width" constant="350" id="Kso-Ba-0Id"/>
                                     <constraint firstItem="XgO-WC-G8T" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" constant="20" id="LZ1-fi-GXm"/>
                                     <constraint firstItem="yrt-JA-Uj4" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" constant="20" id="My9-Lv-XA5"/>
                                     <constraint firstAttribute="trailing" secondItem="VQq-q3-168" secondAttribute="trailing" constant="20" id="Rhp-wh-Ab8"/>
@@ -219,15 +218,26 @@ With Shadow Clone Effect</string>
                                     <constraint firstAttribute="trailing" secondItem="XgO-WC-G8T" secondAttribute="trailing" constant="20" id="xBS-A4-4hA"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kc-SU-l5V" customClass="GADBannerView">
+                                <rect key="frame" x="27.5" y="550" width="320" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="GCA-fx-Be7"/>
+                                    <constraint firstAttribute="width" constant="320" id="Gm2-Lb-cAY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O9H-5o-z9K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="t73-wz-3Qh"/>
+                            <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="d0x-fD-DSh"/>
+                            <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
+                            <constraint firstItem="2kc-SU-l5V" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="bottom" constant="20" id="qu3-Qc-0mf"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="2kc-SU-l5V" id="U4S-Hx-D47"/>
                         <outlet property="clonesSlider" destination="1FC-WM-Snl" id="mjo-I9-n1C"/>
                         <outlet property="clonesText" destination="3Z3-MM-ZY9" id="mZs-8a-9fJ"/>
                         <outlet property="interValSlider" destination="apW-8Z-5ZR" id="8aN-ce-sUV"/>
@@ -236,21 +246,21 @@ With Shadow Clone Effect</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-792.30769230769226" y="-312.08530805687201"/>
+            <point key="canvasLocation" x="-792.79999999999995" y="-312.59370314842579"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="wYx-oi-V1H">
             <objects>
                 <viewController storyboardIdentifier="CameraViewController" id="1GK-mb-VFc" customClass="CameraViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4M8-VP-XmV">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8X-ER-TL1">
-                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoO-L7-FNh">
-                                        <rect key="frame" x="10.000000000000002" y="723" width="25.666666666666671" height="30"/>
+                                        <rect key="frame" x="10" y="627" width="26" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="hD2-Gu-haz"/>
@@ -265,7 +275,7 @@ With Shadow Clone Effect</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-Nk-Txe">
-                                        <rect key="frame" x="45.666666666666664" y="723" width="31.666666666666664" height="30"/>
+                                        <rect key="frame" x="46" y="627" width="31.5" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="vwZ-Og-zjN"/>
@@ -280,7 +290,7 @@ With Shadow Clone Effect</string>
                                         </connections>
                                     </button>
                                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-MW-msu">
-                                        <rect key="frame" x="150" y="10" width="90" height="29"/>
+                                        <rect key="frame" x="142.5" y="10" width="90" height="29"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycL-VU-Qnh">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="29"/>
@@ -300,7 +310,7 @@ With Shadow Clone Effect</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrW-FV-ntB">
-                                        <rect key="frame" x="170" y="698" width="50" height="50"/>
+                                        <rect key="frame" x="162.5" y="602" width="50" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-JN-ZR9">
                                                 <rect key="frame" x="3" y="3" width="44" height="44"/>
@@ -376,14 +386,14 @@ With Shadow Clone Effect</string>
             <objects>
                 <viewController storyboardIdentifier="VideoViewController" id="egi-Wl-Zx7" customClass="VideoViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Znr-PG-Sp4">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piR-0v-YNh">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyG-Hv-hnc">
-                                        <rect key="frame" x="10.000000000000002" y="770" width="25.666666666666671" height="30"/>
+                                        <rect key="frame" x="10" y="627" width="26" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="QRD-6U-4Bb"/>
