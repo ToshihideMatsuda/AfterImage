@@ -24,19 +24,20 @@ public class  VisionManager {
     }
     private init() {}
 
-    lazy var personSegmentationRequest:VNImageBasedRequest? = {
+    lazy var personSegmentationRequest:VNGeneratePersonSegmentationRequest? = {
         let request = VNGeneratePersonSegmentationRequest()
         request.qualityLevel = .balanced
         return request
     }()
+    
 
     public func setQualityLevel(_ level:VNGeneratePersonSegmentationRequest.QualityLevel) {
-        guard let personSegmentationRequest = self.personSegmentationRequest as? VNGeneratePersonSegmentationRequest else { return }
+        guard let personSegmentationRequest = self.personSegmentationRequest else { return }
         personSegmentationRequest.qualityLevel = level
     }
 
     public func setOutputPicelFormt(_ format:OSType) {
-        guard let personSegmentationRequest = self.personSegmentationRequest as? VNGeneratePersonSegmentationRequest else { return }
+        guard let personSegmentationRequest = self.personSegmentationRequest  else { return }
         personSegmentationRequest.outputPixelFormat = format
     }
 
@@ -95,7 +96,7 @@ public class  VisionManager {
     // MARK: Rectangle
     public func swapBackgroundOfPersonVideo(videoURL:URL, backgroundUIImage: UIImage, codec: AVVideoCodecType, _ completion: ((_ err: NSError?, _ filteredVideoURL: URL?) -> Void)?) {
 
-        guard let bgCIImage = CIImage(image: backgroundUIImage) else { print("background image is nil") ; return}
+        guard let _ = CIImage(image: backgroundUIImage) else { print("background image is nil") ; return}
 
         applyProcessingOnVideo(videoURL: videoURL, codec: codec, { pixelBuffer, _, isFrameRotated in
             
@@ -109,7 +110,7 @@ public class  VisionManager {
             var maskCIImage:CIImage
             let handler = VNImageRequestHandler(ciImage: personCIImage, options: [:])
             do {
-                guard let personSegmentationRequest = self.personSegmentationRequest as? VNGeneratePersonSegmentationRequest else { return ciImage }
+                guard let personSegmentationRequest = self.personSegmentationRequest  else { return ciImage }
                 try handler.perform([personSegmentationRequest])
                 guard let result = personSegmentationRequest.results?.first
                         else { print("Image processing failed.Please try with another image.") ; return ciImage }

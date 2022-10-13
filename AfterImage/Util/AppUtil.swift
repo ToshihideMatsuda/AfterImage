@@ -7,6 +7,16 @@
 
 import Foundation
 
+public var isPhone:Bool = {
+    let machine = ObjcUtil.hardwareName()
+    
+    let value = machine.components(separatedBy: ",")
+    if value.count == 0 { return false }
+    
+    let model = value[0]
+    if model.contains("iPhone") { return true }
+    else { return false }
+}()
 
 public var isNeuralEngine:Bool = {
     let machine = ObjcUtil.hardwareName()

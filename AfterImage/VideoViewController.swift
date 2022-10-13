@@ -14,6 +14,7 @@ import GoogleMobileAds
 
 class VideoViewController:CompositImageViewController {
     
+    
     @IBOutlet weak var bannerView: GADBannerView!
     public var url:URL? = nil
     
@@ -128,5 +129,7 @@ class VideoViewController:CompositImageViewController {
             }
         }
     }
+    
+    //func picker
 }
 

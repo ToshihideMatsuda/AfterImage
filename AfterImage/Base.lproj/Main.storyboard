@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9H-5o-z9K">
-                                <rect key="frame" x="12.5" y="30" width="350" height="500"/>
+                                <rect key="frame" x="12.5" y="10" width="350" height="560"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="598-2D-6wZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="250"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="230"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="PW7-e3-54b"/>
+                                            <constraint firstAttribute="height" constant="230" id="PW7-e3-54b"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-JA-Uj4" userLabel="Video">
@@ -106,7 +106,7 @@ With Shadow Clone Effect</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQq-q3-168" userLabel="Setting">
-                                        <rect key="frame" x="20" y="380" width="310" height="110"/>
+                                        <rect key="frame" x="20" y="380" width="310" height="170"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r70-2B-erO" userLabel="settings">
                                                 <rect key="frame" x="5" y="10" width="61" height="21"/>
@@ -142,6 +142,15 @@ With Shadow Clone Effect</string>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qualityLevel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-Ob-zWK" userLabel="qualityLevel">
+                                                <rect key="frame" x="10" y="118" width="100" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="IMg-7G-Vg4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-MM-ZY9">
                                                 <rect key="frame" x="130" y="82" width="40" height="21"/>
                                                 <constraints>
@@ -172,9 +181,20 @@ With Shadow Clone Effect</string>
                                                     <action selector="onReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aou-UK-w3d"/>
                                                 </connections>
                                             </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRo-ak-olg">
+                                                <rect key="frame" x="145" y="118" width="160" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="KfF-HI-d7f"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="2Mf-10-ZTR"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MbG-WL-QKs"/>
+                                                </connections>
+                                            </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="iRo-ak-olg" firstAttribute="top" secondItem="1FC-WM-Snl" secondAttribute="bottom" constant="10" id="1Nk-s9-blI"/>
                                             <constraint firstItem="3Z3-MM-ZY9" firstAttribute="leading" secondItem="6h7-O5-NNM" secondAttribute="leading" id="520-PO-la7"/>
                                             <constraint firstItem="1FC-WM-Snl" firstAttribute="centerY" secondItem="8wA-E7-Qkj" secondAttribute="centerY" id="7ky-jU-T2b"/>
                                             <constraint firstItem="Yd3-fu-8Vq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r70-2B-erO" secondAttribute="trailing" constant="8" symbolic="YES" id="947-bI-Cao"/>
@@ -182,18 +202,22 @@ With Shadow Clone Effect</string>
                                             <constraint firstItem="3Z3-MM-ZY9" firstAttribute="trailing" secondItem="8wA-E7-Qkj" secondAttribute="trailing" id="KME-Qg-0jN"/>
                                             <constraint firstItem="6h7-O5-NNM" firstAttribute="trailing" secondItem="8wA-E7-Qkj" secondAttribute="trailing" id="LQ6-Up-b3x"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="leading" secondItem="SMC-hn-GzL" secondAttribute="leading" id="Oaa-0m-R3Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="iRo-ak-olg" secondAttribute="trailing" constant="5" id="RuF-Gh-mV2"/>
                                             <constraint firstItem="3Z3-MM-ZY9" firstAttribute="trailing" secondItem="6h7-O5-NNM" secondAttribute="trailing" id="Sex-p2-527"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="top" secondItem="SMC-hn-GzL" secondAttribute="bottom" constant="15" id="WDA-St-w7F"/>
                                             <constraint firstItem="r70-2B-erO" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" constant="5" id="b77-fA-Q35"/>
                                             <constraint firstItem="r70-2B-erO" firstAttribute="top" secondItem="VQq-q3-168" secondAttribute="top" constant="10" id="ebd-Wt-fWA"/>
+                                            <constraint firstItem="iRo-ak-olg" firstAttribute="leading" secondItem="zh1-Ob-zWK" secondAttribute="trailing" constant="35" id="ed6-KB-Vam"/>
                                             <constraint firstItem="apW-8Z-5ZR" firstAttribute="centerY" secondItem="SMC-hn-GzL" secondAttribute="centerY" id="ehB-sk-52l"/>
                                             <constraint firstItem="SMC-hn-GzL" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" constant="10" id="fAJ-Uf-wzw"/>
                                             <constraint firstItem="Yd3-fu-8Vq" firstAttribute="top" secondItem="VQq-q3-168" secondAttribute="top" constant="10" id="fD8-CU-dTN"/>
                                             <constraint firstAttribute="trailing" secondItem="1FC-WM-Snl" secondAttribute="trailing" constant="10" id="gpN-Ie-RHz"/>
                                             <constraint firstItem="6h7-O5-NNM" firstAttribute="centerY" secondItem="SMC-hn-GzL" secondAttribute="centerY" id="iu6-zJ-24k"/>
+                                            <constraint firstItem="zh1-Ob-zWK" firstAttribute="leading" secondItem="8wA-E7-Qkj" secondAttribute="leading" id="j3N-nq-zsZ"/>
                                             <constraint firstItem="apW-8Z-5ZR" firstAttribute="leading" secondItem="6h7-O5-NNM" secondAttribute="trailing" constant="10" id="joQ-A6-DW3"/>
                                             <constraint firstAttribute="trailing" secondItem="apW-8Z-5ZR" secondAttribute="trailing" constant="10" id="lR9-HH-epp"/>
                                             <constraint firstAttribute="trailing" secondItem="Yd3-fu-8Vq" secondAttribute="trailing" id="qc3-0G-0v9"/>
+                                            <constraint firstItem="zh1-Ob-zWK" firstAttribute="top" secondItem="8wA-E7-Qkj" secondAttribute="bottom" constant="15" id="vM9-Vv-cwG"/>
                                             <constraint firstItem="SMC-hn-GzL" firstAttribute="top" secondItem="r70-2B-erO" secondAttribute="bottom" constant="15" id="x8l-WV-0gT"/>
                                             <constraint firstItem="3Z3-MM-ZY9" firstAttribute="centerY" secondItem="8wA-E7-Qkj" secondAttribute="centerY" id="z99-xF-Vkl"/>
                                         </constraints>
@@ -212,17 +236,17 @@ With Shadow Clone Effect</string>
                                     <constraint firstItem="yrt-JA-Uj4" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" constant="20" id="My9-Lv-XA5"/>
                                     <constraint firstAttribute="trailing" secondItem="VQq-q3-168" secondAttribute="trailing" constant="20" id="Rhp-wh-Ab8"/>
                                     <constraint firstItem="598-2D-6wZ" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" id="Yio-ma-cML"/>
-                                    <constraint firstAttribute="height" constant="500" id="Z89-o2-pLN"/>
+                                    <constraint firstAttribute="height" constant="560" id="Z89-o2-pLN"/>
                                     <constraint firstItem="VQq-q3-168" firstAttribute="leading" secondItem="O9H-5o-z9K" secondAttribute="leading" constant="20" id="siK-9q-Fs0"/>
                                     <constraint firstItem="XgO-WC-G8T" firstAttribute="top" secondItem="yrt-JA-Uj4" secondAttribute="bottom" id="vfj-pP-u6E"/>
                                     <constraint firstAttribute="trailing" secondItem="XgO-WC-G8T" secondAttribute="trailing" constant="20" id="xBS-A4-4hA"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kc-SU-l5V" userLabel="Banner Large View" customClass="GADBannerView">
-                                <rect key="frame" x="27.5" y="550" width="320" height="100"/>
+                                <rect key="frame" x="27.5" y="617" width="320" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="GCA-fx-Be7"/>
+                                    <constraint firstAttribute="height" constant="50" id="GCA-fx-Be7"/>
                                     <constraint firstAttribute="width" constant="320" id="Gm2-Lb-cAY"/>
                                 </constraints>
                             </view>
@@ -230,9 +254,9 @@ With Shadow Clone Effect</string>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="d0x-fD-DSh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2kc-SU-l5V" secondAttribute="bottom" id="GlO-I7-8oc"/>
+                            <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="d0x-fD-DSh"/>
                             <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
-                            <constraint firstItem="2kc-SU-l5V" firstAttribute="top" secondItem="O9H-5o-z9K" secondAttribute="bottom" constant="20" id="llq-gl-Okq"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
                         </constraints>
                     </view>
@@ -242,6 +266,7 @@ With Shadow Clone Effect</string>
                         <outlet property="clonesText" destination="3Z3-MM-ZY9" id="mZs-8a-9fJ"/>
                         <outlet property="interValSlider" destination="apW-8Z-5ZR" id="8aN-ce-sUV"/>
                         <outlet property="intervalText" destination="6h7-O5-NNM" id="ciI-tw-9AQ"/>
+                        <outlet property="qualityPicker" destination="iRo-ak-olg" id="bL3-3A-tm1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

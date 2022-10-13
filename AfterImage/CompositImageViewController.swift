@@ -90,4 +90,15 @@ class CompositImageViewController: UIViewController{
             }
         }
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if( isPhone ) {
+            return UIInterfaceOrientationMask.init(rawValue:
+                                                    UIInterfaceOrientationMask.portrait.rawValue +
+                                                    UIInterfaceOrientationMask.portraitUpsideDown.rawValue)
+        }
+        else {
+            return .all
+        }
+    }
 }
