@@ -46,12 +46,8 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         super.viewWillAppear(animated)
         AVCaptureManager.shared.addVideoListener(listener: self)
         AVCaptureManager.shared.addAudioListener(listener: self)
-        DispatchQueue.global().async {
-            AVCaptureManager.shared.initializeCamera(self.cameraRotate, frameRateInput: self.frameRate, preset: self.preset)
-            DispatchQueue.main.async {
-                VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
-            }
-        }
+        AVCaptureManager.shared.initializeCamera(self.cameraRotate, frameRateInput: self.frameRate, preset: self.preset)
+        VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
         
         self.count = 0
         self.showTimerView();
