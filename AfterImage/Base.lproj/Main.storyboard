@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,7 +241,7 @@ With Shadow Clone Effect</string>
         <!--Camera View Controller-->
         <scene sceneID="wYx-oi-V1H">
             <objects>
-                <viewController storyboardIdentifier="CameraViewController" id="1GK-mb-VFc" customClass="CameraViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" id="1GK-mb-VFc" customClass="CameraViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4M8-VP-XmV">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,7 +374,7 @@ With Shadow Clone Effect</string>
         <!--Video View Controller-->
         <scene sceneID="o2i-f4-JK6">
             <objects>
-                <viewController storyboardIdentifier="VideoViewController" id="egi-Wl-Zx7" customClass="VideoViewController" customModule="AfterImage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoViewController" id="egi-Wl-Zx7" customClass="VideoViewController" customModule="ShadowClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Znr-PG-Sp4">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

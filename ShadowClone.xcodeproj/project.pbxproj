@@ -54,7 +54,7 @@
 		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
 		D24FA70828DAE47B002B0F42 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
-		D264547228D9341D007E38AB /* AfterImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AfterImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D264547228D9341D007E38AB /* ShadowClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShadowClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264547528D9341D007E38AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D264547728D9341D007E38AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D264547928D9341D007E38AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,9 +62,9 @@
 		D264547E28D9341D007E38AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D264548128D9341D007E38AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D264548328D9341D007E38AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D264548828D9341D007E38AB /* AfterImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AfterImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D264548828D9341D007E38AB /* ShadowCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShadowCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264548C28D9341D007E38AB /* AfterImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterImageTests.swift; sourceTree = "<group>"; };
-		D264549228D9341E007E38AB /* AfterImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AfterImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D264549228D9341E007E38AB /* ShadowCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShadowCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264549628D9341E007E38AB /* AfterImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterImageUITests.swift; sourceTree = "<group>"; };
 		D264549828D9341E007E38AB /* AfterImageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterImageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D26454A528D94D8C007E38AB /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 		D264547328D9341D007E38AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D264547228D9341D007E38AB /* AfterImage.app */,
-				D264548828D9341D007E38AB /* AfterImageTests.xctest */,
-				D264549228D9341E007E38AB /* AfterImageUITests.xctest */,
+				D264547228D9341D007E38AB /* ShadowClone.app */,
+				D264548828D9341D007E38AB /* ShadowCloneTests.xctest */,
+				D264549228D9341E007E38AB /* ShadowCloneUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D264547128D9341D007E38AB /* AfterImage */ = {
+		D264547128D9341D007E38AB /* ShadowClone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D264549C28D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImage" */;
+			buildConfigurationList = D264549C28D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowClone" */;
 			buildPhases = (
 				D264546E28D9341D007E38AB /* Sources */,
 				D264546F28D9341D007E38AB /* Frameworks */,
@@ -206,14 +206,14 @@
 			);
 			dependencies = (
 			);
-			name = AfterImage;
+			name = ShadowClone;
 			productName = AfterImage;
-			productReference = D264547228D9341D007E38AB /* AfterImage.app */;
+			productReference = D264547228D9341D007E38AB /* ShadowClone.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D264548728D9341D007E38AB /* AfterImageTests */ = {
+		D264548728D9341D007E38AB /* ShadowCloneTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D264549F28D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImageTests" */;
+			buildConfigurationList = D264549F28D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowCloneTests" */;
 			buildPhases = (
 				D264548428D9341D007E38AB /* Sources */,
 				D264548528D9341D007E38AB /* Frameworks */,
@@ -224,14 +224,14 @@
 			dependencies = (
 				D264548A28D9341D007E38AB /* PBXTargetDependency */,
 			);
-			name = AfterImageTests;
+			name = ShadowCloneTests;
 			productName = AfterImageTests;
-			productReference = D264548828D9341D007E38AB /* AfterImageTests.xctest */;
+			productReference = D264548828D9341D007E38AB /* ShadowCloneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D264549128D9341E007E38AB /* AfterImageUITests */ = {
+		D264549128D9341E007E38AB /* ShadowCloneUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D26454A228D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImageUITests" */;
+			buildConfigurationList = D26454A228D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowCloneUITests" */;
 			buildPhases = (
 				D264548E28D9341E007E38AB /* Sources */,
 				D264548F28D9341E007E38AB /* Frameworks */,
@@ -242,9 +242,9 @@
 			dependencies = (
 				D264549428D9341E007E38AB /* PBXTargetDependency */,
 			);
-			name = AfterImageUITests;
+			name = ShadowCloneUITests;
 			productName = AfterImageUITests;
-			productReference = D264549228D9341E007E38AB /* AfterImageUITests.xctest */;
+			productReference = D264549228D9341E007E38AB /* ShadowCloneUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -271,7 +271,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D264546D28D9341D007E38AB /* Build configuration list for PBXProject "AfterImage" */;
+			buildConfigurationList = D264546D28D9341D007E38AB /* Build configuration list for PBXProject "ShadowClone" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -284,9 +284,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D264547128D9341D007E38AB /* AfterImage */,
-				D264548728D9341D007E38AB /* AfterImageTests */,
-				D264549128D9341E007E38AB /* AfterImageUITests */,
+				D264547128D9341D007E38AB /* ShadowClone */,
+				D264548728D9341D007E38AB /* ShadowCloneTests */,
+				D264549128D9341E007E38AB /* ShadowCloneUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -363,12 +363,12 @@
 /* Begin PBXTargetDependency section */
 		D264548A28D9341D007E38AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D264547128D9341D007E38AB /* AfterImage */;
+			target = D264547128D9341D007E38AB /* ShadowClone */;
 			targetProxy = D264548928D9341D007E38AB /* PBXContainerItemProxy */;
 		};
 		D264549428D9341E007E38AB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D264547128D9341D007E38AB /* AfterImage */;
+			target = D264547128D9341D007E38AB /* ShadowClone */;
 			targetProxy = D264549328D9341E007E38AB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -533,7 +533,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.AfterImage;
+				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
@@ -569,7 +569,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.AfterImage;
+				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
@@ -594,7 +594,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AfterImage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AfterImage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShadowClone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShadowClone";
 			};
 			name = Debug;
 		};
@@ -614,7 +614,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AfterImage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AfterImage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShadowClone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ShadowClone";
 			};
 			name = Release;
 		};
@@ -657,7 +657,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D264546D28D9341D007E38AB /* Build configuration list for PBXProject "AfterImage" */ = {
+		D264546D28D9341D007E38AB /* Build configuration list for PBXProject "ShadowClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D264549A28D9341E007E38AB /* Debug */,
@@ -666,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D264549C28D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImage" */ = {
+		D264549C28D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D264549D28D9341E007E38AB /* Debug */,
@@ -675,7 +675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D264549F28D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImageTests" */ = {
+		D264549F28D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowCloneTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D26454A028D9341E007E38AB /* Debug */,
@@ -684,7 +684,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D26454A228D9341E007E38AB /* Build configuration list for PBXNativeTarget "AfterImageUITests" */ = {
+		D26454A228D9341E007E38AB /* Build configuration list for PBXNativeTarget "ShadowCloneUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D26454A328D9341E007E38AB /* Debug */,
