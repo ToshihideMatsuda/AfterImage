@@ -44,6 +44,12 @@ public class  VisionManager {
     
     // MARK: Segmentation
     private var clearBackground:CIImage? = nil
+    private func getClearBackground(cameraSize:CGSize) -> CIImage? {
+        if clearBackground == nil || clearBackground?.extent.size != cameraSize {
+            self.initClearBackground(cameraSize: cameraSize)
+        }
+        return clearBackground
+    }
     public func initClearBackground(cameraSize:CGSize) {
         clearBackground = nil
         UIGraphicsBeginImageContext(cameraSize)
@@ -59,7 +65,7 @@ public class  VisionManager {
     public func personImage(ciImage:CIImage) -> CIImage? {
         guard let maskImage = personMaskImage(ciImage:ciImage) else { return ciImage }
 
-        if let background = clearBackground {
+        if let background = getClearBackground(cameraSize:ciImage.extent.size) {
             guard let blended = CIFilter(name: "CIBlendWithMask", parameters: [
                 kCIInputImageKey: ciImage,
                 kCIInputBackgroundImageKey:background,

@@ -20,14 +20,18 @@ public protocol AudioListener  {
 public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
     public static let shared : AVCaptureManager = AVCaptureManager()
     public static var pixcelFormat: OSType  = {
+        let osTypes = AVCaptureVideoDataOutput().availableVideoPixelFormatTypes
         if ObjcUtil.enableAction ({
             AVCaptureVideoDataOutput().videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : kCVPixelFormatType_OneComponent32Float]
-        }) {
+        }), osTypes.contains(kCVPixelFormatType_OneComponent32Float) {
+            
             //kCVPixelFormatType_OneComponent32Floatが指定可能
             return kCVPixelFormatType_OneComponent32Float
-        } else {
+        } else if osTypes.contains(kCVPixelFormatType_32BGRA) {
             //kCVPixelFormatType_OneComponent32Floatが指定不可
             return kCVPixelFormatType_32BGRA
+        } else {
+            return osTypes.first ?? kCVPixelFormatType_32BGRA
         }
     }()
 
