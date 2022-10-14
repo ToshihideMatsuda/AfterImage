@@ -12,7 +12,7 @@ import AVKit
 import PhotosUI
 import GoogleMobileAds
 
-class VideoViewController:CompositImageViewController {
+class VideoViewController:CompositImageViewController, GADFullScreenContentDelegate  {
     
     
     @IBOutlet weak var bannerView: GADBannerView!
@@ -21,6 +21,10 @@ class VideoViewController:CompositImageViewController {
     private var cancel               = false ;
     private var processedVideoURL: URL? = nil
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createInterstitial(delegate:self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,10 +79,11 @@ class VideoViewController:CompositImageViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         guard let url = processedVideoURL else { return }
-        let vc = AdAVPlayerViewController()
+        let vc = AVPlayerViewController()
         vc.player = AVPlayer(url: url)
         
         self.superVc?.present(vc, animated: true)
+        
     }
     
     
@@ -102,12 +107,12 @@ class VideoViewController:CompositImageViewController {
         
         
         alert.addAction(UIAlertAction(title: "Only Show", style: .default) { _ in
-            self.dismiss(animated:true)
+            self.interstitial?.present(fromRootViewController: self)
         })
         
         alert.addAction(UIAlertAction(title: "Close", style: .default) { _ in
             self.processedVideoURL = nil
-            self.dismiss(animated:true)
+            self.interstitial?.present(fromRootViewController: self)
         })
         
         self.present(alert, animated: true)
@@ -124,13 +129,32 @@ class VideoViewController:CompositImageViewController {
                     "[Success] Your video has been saved in photolibrary." :
                     "[Fail] It failed to save your video."
                     let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in self.dismiss(animated:true)})
+                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                        self.interstitial?.present(fromRootViewController: self)
+                    })
                     self.present(alert, animated: true)
                 }
             }
         }
     }
     
-    //func picker
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+        ad.fullScreenContentDelegate = nil
+    }
+
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        ad.fullScreenContentDelegate = nil
+        self.dismiss(animated: true)
+    }
 }
 

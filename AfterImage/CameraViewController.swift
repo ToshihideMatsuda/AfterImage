@@ -13,7 +13,7 @@ import GoogleMobileAds
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
-class CameraViewController:CompositImageViewController, VideoListener, AudioListener {
+class CameraViewController:CompositImageViewController, VideoListener, AudioListener, GADFullScreenContentDelegate  {
     
     @IBOutlet weak var bannerView: GADBannerView!
     private var preset     :AVCaptureSession.Preset = .high
@@ -40,7 +40,38 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var count:Int = 0
     
     private var cameraRotate = true
+    private var initialized = true
     private let frameRate:Int32  = 20
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createInterstitial(delegate:self)
+        bannerView.isHidden = true
+    }
+    
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+        ad.fullScreenContentDelegate = nil
+    }
+
+    /// Tells the delegate that the ad will present full screen content.
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        ad.fullScreenContentDelegate = nil
+        self.dismiss(animated: true){
+            guard let url = URL(string: "photos-redirect://") else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -126,7 +157,9 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                             "[Success] Your video has been saved in photolibrary." :
                             "[Fail] It failed to save your video."
                             let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default))
+                            alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                                self.interstitial?.present(fromRootViewController: self)
+                            })
                             self.present(alert, animated: true)
                         }
                     }

@@ -8,10 +8,12 @@
 import Foundation
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 class CompositImageViewController: UIViewController{
     public weak var superVc:ViewController? = nil
     public var mainVideoView: AVPlayerLayerView? = nil
+    var interstitial: GADInterstitialAd?
 
     public  var queueSize            = 5 ;
     public  var interval    :Double  = 1.0
@@ -38,6 +40,22 @@ class CompositImageViewController: UIViewController{
             self.mainVideoView?.setVideoSize(size:AVCaptureManager.shared.getVideoSize())
         }
     }
+    
+    func createInterstitial(delegate:GADFullScreenContentDelegate?) {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID: interstitialId(),
+                                    request: request,
+                          completionHandler: { [self] ad, error in
+                            if let error = error {
+                              print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                              return
+                            }
+                            interstitial = ad
+                            interstitial?.fullScreenContentDelegate = delegate
+                          }
+        )
+    }
+    
     func createCompositImage(imageBuffer:CVImageBuffer, currentTime:CMTime, isFrameRotated:Bool = false) -> CIImage {
         
         var videoImage = CIImage(cvPixelBuffer: imageBuffer)
