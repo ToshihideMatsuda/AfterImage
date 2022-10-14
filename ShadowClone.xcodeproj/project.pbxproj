@@ -11,6 +11,7 @@
 		890DAA7D28DE0577001AAB35 /* AVPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */; };
 		890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */; };
 		897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DC09C28F7E9AF006D2113 /* AdsConst.swift */; };
+		D24F2A6C28F8F0F5005C3C32 /* AdAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */; };
 		D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */; };
 		D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */; };
 		D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70828DAE47B002B0F42 /* AppUtil.swift */; };
@@ -57,6 +58,7 @@
 		890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerLayerView.swift; sourceTree = "<group>"; };
 		890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+extension.swift"; sourceTree = "<group>"; };
 		897DC09C28F7E9AF006D2113 /* AdsConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConst.swift; sourceTree = "<group>"; };
+		D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdAVPlayerViewController.swift; sourceTree = "<group>"; };
 		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
 		D24FA70828DAE47B002B0F42 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */,
 				D26454B228D98182007E38AB /* CameraViewController.swift */,
 				D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */,
+				D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */,
 				890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */,
+				D24F2A6C28F8F0F5005C3C32 /* AdAVPlayerViewController.swift in Sources */,
 				D264547A28D9341D007E38AB /* ViewController.swift in Sources */,
 				D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */,
 				890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */,

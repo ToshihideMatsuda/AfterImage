@@ -12,3 +12,4 @@ fileprivate let debug = true;
 public func bannerViewId() -> String{
     return debug ? "ca-app-pub-3940256099942544/2934735716" : "ca-app-pub-1643629923616505/4567849365";
 }
+public let bannerSize:CGSize = CGSize(width: 320, height: 50)

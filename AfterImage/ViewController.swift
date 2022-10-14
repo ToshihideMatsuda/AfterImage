@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // GADBannerViewのプロパティを設定
         bannerView.adUnitID = bannerViewId()
         bannerView.rootViewController = self
-        bannerView.adSize = .init(size: CGSize(width: 320, height: 100), flags: 2)
+        bannerView.adSize = .init(size: bannerSize, flags: 2)
 
         // 広告読み込み
         bannerView.load(GADRequest())

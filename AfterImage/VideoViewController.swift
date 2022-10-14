@@ -32,7 +32,7 @@ class VideoViewController:CompositImageViewController {
         // GADBannerViewのプロパティを設定
         bannerView.adUnitID = bannerViewId()
         bannerView.rootViewController = self
-        bannerView.adSize = .init(size: CGSize(width: 320, height: 50), flags: 1)
+        bannerView.adSize = .init(size: bannerSize, flags: 1)
 
         // 広告読み込み
         bannerView.load(GADRequest())
@@ -75,8 +75,9 @@ class VideoViewController:CompositImageViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         guard let url = processedVideoURL else { return }
-        let vc = AVPlayerViewController()
+        let vc = AdAVPlayerViewController()
         vc.player = AVPlayer(url: url)
+        
         self.superVc?.present(vc, animated: true)
     }
     
