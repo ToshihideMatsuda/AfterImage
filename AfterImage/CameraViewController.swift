@@ -39,7 +39,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var timer:Timer? = nil
     private var count:Int = 0
     
-    private var cameraRotate = true
+    private var cameraRotate = false
     private var initialized = true
     private let frameRate:Int32  = 20
     

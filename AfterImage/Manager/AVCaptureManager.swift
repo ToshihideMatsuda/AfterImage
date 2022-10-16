@@ -59,7 +59,7 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
     // 外部から初期化不可能にしておく
     private override init() {}
 
-    public func initializeCamera(_ isFront:Bool = false, frameRateInput:Int32 = 20, preset:AVCaptureSession.Preset = .low) {
+    public func initializeCamera(_ isFront:Bool = true, frameRateInput:Int32 = 20, preset:AVCaptureSession.Preset = .low) {
 
         if captureSession != nil{
             stopCapture()
