@@ -14,18 +14,32 @@ import Vision
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate  {
     @IBOutlet weak var bannerView: GADBannerView!  //追加
 
+    @IBOutlet weak var intervalTitleLabel: UILabel!
     @IBOutlet weak var interValSlider: UISlider!
     @IBOutlet weak var intervalText: UILabel!
+    @IBOutlet weak var clonesTitleLabel: UILabel!
     @IBOutlet weak var clonesSlider: UISlider!
     @IBOutlet weak var clonesText: UILabel!
+    @IBOutlet weak var aiQualityLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var qualityPicker: UIPickerView!
+    @IBOutlet weak var settingButton: UIButton!
     let intervalDefault:Float = 1.0
     let clonesDefault:Float = 5
     
-    @IBOutlet weak var qualityPicker: UIPickerView!
+    var settingCollection: [UIView] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.interValSlider.value = intervalDefault
         self.clonesSlider.value = clonesDefault
+        settingCollection = [
+            resetButton,
+            intervalTitleLabel, interValSlider, intervalText,
+            clonesTitleLabel,   clonesSlider,   clonesText,
+            aiQualityLabel, qualityPicker
+        ]
+        settingCollection.forEach{ $0.isHidden = true }
         
         // GADBannerViewのプロパティを設定
         bannerView.adUnitID = bannerViewId()
@@ -111,6 +125,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     @IBAction func chngClones(_ sender: Any?) {
         self.clonesText.text = "\(Int(self.clonesSlider.value))"
+    }
+    
+    private var hidden = true
+    @IBAction func onSettingTap(_ sender: Any) {
+        hidden.toggle()
+        self.settingButton.isSelected = !hidden
+        settingCollection.forEach{ $0.isHidden = hidden }
     }
     
     @IBAction func onReset(_ sender: Any) {
