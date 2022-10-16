@@ -105,7 +105,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         AVCaptureManager.shared.removeVideoListener(listener: self)
-        AVCaptureManager.shared.removeVideoListener(listener: self)
+        AVCaptureManager.shared.removeAudioListener(listener: self)
     }
     
     @IBAction func rotateCamera(_ sender: Any) {
