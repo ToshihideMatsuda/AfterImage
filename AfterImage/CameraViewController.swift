@@ -263,8 +263,8 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     public func saveVideoBuffer (_ size:CGSize, videoImage:CIImage, frameTime:CMTime) {
         
         guard let input = assetWriter?.inputs.filter ({ $0.mediaType == .video }).first else { return }
-
-        if input.isReadyForMoreMediaData {
+        
+        if input.isReadyForMoreMediaData, assetWriter?.status == .writing {
             if let pixcelBuffer = videoImage.pixelBuffer(cgSize: size),
                let videoPixcelBuffer = videoPixcelBuffer {
                 let ok = videoPixcelBuffer.append(pixcelBuffer, withPresentationTime: frameTime);
@@ -281,7 +281,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
 
     public func saveAudioBuffer (_ sampleBuffer:CMSampleBuffer) {
         guard let input = assetWriter?.inputs.filter ({ $0.mediaType == .audio }).first else { return }
-        if input.isReadyForMoreMediaData {
+        if input.isReadyForMoreMediaData, assetWriter?.status == .writing {
             do {
                 let copyBuffer = try sampleBuffer.offsettingTiming(by: self.startTime)
                 let ok = input.append(copyBuffer)
