@@ -42,6 +42,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var cameraRotate = false
     private var initialized = true
     private let frameRate:Int32  = 20
+    private var additionalMessage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +119,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         self.dismiss(animated: true)
     }
     
-    @IBAction func onRec(_ sender: Any) {
+    @IBAction func onRec(_ sender: Any?) {
         isRec.toggle()
         
         self.onRecButtonView(true)
@@ -143,9 +144,11 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             
             stopRecording()
             
-            let alert = UIAlertController(title: "Notice",
-                                          message: "Do you save a current video?",
+            
+            let alert = UIAlertController(title: "Info",
+                                          message: self.additionalMessage + "Do you save a current video?",
                                           preferredStyle: .alert)
+            self.additionalMessage = ""
             alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
                 
                 PHPhotoLibrary.shared().performChanges({
@@ -156,7 +159,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                             let message = isCompleted ?
                             "[Success] Your video has been saved in photolibrary." :
                             "[Fail] It failed to save your video."
-                            let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
                                 self.interstitial?.present(fromRootViewController: self)
                             })
@@ -212,6 +215,10 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         
         self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
         
+        if minutes >= 1 {
+            self.additionalMessage = "You can only save a video within 60 seconds\n"
+            self.onRec(nil)
+        }
     }
     
     public func videoCapture(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

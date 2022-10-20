@@ -97,8 +97,8 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
             return
         }
         
-        let alert = UIAlertController(title: "Convert Completed",
-                                      message: "Your video has been converted.\n Which action do you select ?",
+        let alert = UIAlertController(title: "Info",
+                                      message: "Your video has been converted.\n Which action do you select?",
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Save & Show", style: .default) { _ in
@@ -128,7 +128,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
                     let message = isCompleted ?
                     "[Success] Your video has been saved in photolibrary." :
                     "[Fail] It failed to save your video."
-                    let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
                         self.interstitial?.present(fromRootViewController: self)
                     })

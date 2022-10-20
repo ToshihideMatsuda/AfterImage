@@ -108,6 +108,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else { return }
         
+        let asset = AVAsset(url: url)
+        if asset.duration.seconds > 60.0 {
+            let alert = UIAlertController(title: "Info",
+                                          message: "You can only select a video shorter than 60 seconds",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default) )
+            picker.present(alert, animated: true)
+            return;
+        }
+        
+        
         guard let videoVc = storyboard?.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController else { return }
         videoVc.url = url
         videoVc.superVc = self
