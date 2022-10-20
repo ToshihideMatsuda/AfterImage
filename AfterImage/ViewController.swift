@@ -11,6 +11,13 @@ import AVKit
 import GoogleMobileAds
 import Vision
 
+public enum Plan {
+    case basic
+    case premium
+}
+
+public var plan:Plan = .basic
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate  {
     @IBOutlet weak var bannerView: GADBannerView!  //追加
 
@@ -109,9 +116,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL else { return }
         
         let asset = AVAsset(url: url)
-        if asset.duration.seconds > 60.0 {
+        if asset.duration.seconds > 60.0, plan == .basic {
             let alert = UIAlertController(title: "Info",
-                                          message: "You can only select a video shorter than 60 seconds",
+                                          message: "In the basic plan, you can only select a video shorter than 60 seconds",
                                           preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default) )

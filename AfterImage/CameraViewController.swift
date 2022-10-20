@@ -215,8 +215,8 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         
         self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
         
-        if minutes >= 1 {
-            self.additionalMessage = "You can only save a video within 60 seconds\n"
+        if minutes >= 1, plan == .basic {
+            self.additionalMessage = "In the basic plan, it can only save a video within 60 seconds\n"
             self.onRec(nil)
         }
     }
