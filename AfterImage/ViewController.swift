@@ -24,8 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var qualityPicker: UIPickerView!
     @IBOutlet weak var settingButton: UIButton!
-    let intervalDefault:Float = 1.0
-    let clonesDefault:Float = 5
+    let intervalDefault:Float = 0.1
+    let clonesDefault:Float = 10
     
     var settingCollection: [UIView] = []
     
