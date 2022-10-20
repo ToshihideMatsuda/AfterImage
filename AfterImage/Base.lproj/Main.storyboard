@@ -31,10 +31,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-JA-Uj4" userLabel="Video">
                                         <rect key="frame" x="20" y="240" width="310" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convert Video" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7g-rJ-RDd">
-                                                <rect key="frame" x="48.5" y="0.0" width="150" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオから変換" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7g-rJ-RDd">
+                                                <rect key="frame" x="48.5" y="0.0" width="250" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="xQh-DA-XDE"/>
+                                                    <constraint firstAttribute="width" constant="250" id="xQh-DA-XDE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" systemColor="tintColor"/>
@@ -70,10 +70,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-WC-G8T" userLabel="Camera">
                                         <rect key="frame" x="20" y="300" width="310" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Rr-w7D">
-                                                <rect key="frame" x="50.5" y="0.0" width="100" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="リアルタイムで撮影" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Rr-w7D">
+                                                <rect key="frame" x="50.5" y="0.0" width="250" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="UBr-mC-sR1"/>
+                                                    <constraint firstAttribute="width" constant="250" id="UBr-mC-sR1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" systemColor="tintColor"/>
@@ -110,24 +110,24 @@
                                         <rect key="frame" x="20" y="380" width="310" height="150"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l41-nM-SD1" userLabel="settings">
-                                                <rect key="frame" x="5" y="5" width="85" height="21"/>
+                                                <rect key="frame" x="0.0" y="5" width="85" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="85" id="KMV-FT-Dfn"/>
                                                     <constraint firstAttribute="height" constant="21" id="dmm-aS-OY2"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="▶︎ settings">
+                                                <state key="normal" title="▶︎ 設定">
                                                     <color key="titleColor" name="AccentColor"/>
                                                 </state>
-                                                <state key="selected" title="▼ settings">
+                                                <state key="selected" title="▼ 設定">
                                                     <color key="titleColor" name="AccentColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onSettingTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbg-I0-o0B"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
-                                                <rect key="frame" x="10" y="41" width="56" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="間隔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
+                                                <rect key="frame" x="10" y="41" width="35" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -151,13 +151,13 @@
                                                     <action selector="chngIntervalSecond:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wsr-L2-S49"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
-                                                <rect key="frame" x="10" y="77" width="50" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残像数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
+                                                <rect key="frame" x="10" y="77" width="52" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-Ob-zWK" userLabel="qualityLevel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-Ob-zWK" userLabel="qualityLevel">
                                                 <rect key="frame" x="10" y="113" width="100" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="IMg-7G-Vg4"/>
@@ -186,13 +186,13 @@
                                                 </connections>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-fu-8Vq">
-                                                <rect key="frame" x="242.5" y="5" width="67.5" height="21"/>
+                                                <rect key="frame" x="210" y="5" width="100" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="BBR-BM-d69"/>
-                                                    <constraint firstAttribute="width" constant="67.5" id="SZ2-OY-WKo"/>
+                                                    <constraint firstAttribute="width" constant="100" id="SZ2-OY-WKo"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="リセット"/>
                                                 <connections>
                                                     <action selector="onReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aou-UK-w3d"/>
                                                 </connections>
@@ -215,7 +215,7 @@
                                             <constraint firstItem="SMC-hn-GzL" firstAttribute="top" secondItem="l41-nM-SD1" secondAttribute="bottom" constant="15" id="Ccn-Ez-1Ia"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="leading" secondItem="SMC-hn-GzL" secondAttribute="leading" id="Oaa-0m-R3Q"/>
                                             <constraint firstAttribute="trailing" secondItem="iRo-ak-olg" secondAttribute="trailing" constant="5" id="RuF-Gh-mV2"/>
-                                            <constraint firstItem="l41-nM-SD1" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" constant="5" id="VoS-wo-VFq"/>
+                                            <constraint firstItem="l41-nM-SD1" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" id="VoS-wo-VFq"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="top" secondItem="SMC-hn-GzL" secondAttribute="bottom" constant="15" id="WDA-St-w7F"/>
                                             <constraint firstItem="apW-8Z-5ZR" firstAttribute="leading" secondItem="6h7-O5-NNM" secondAttribute="trailing" constant="5" id="bH3-4O-N3o"/>
                                             <constraint firstItem="iRo-ak-olg" firstAttribute="leading" secondItem="zh1-Ob-zWK" secondAttribute="trailing" constant="35" id="ed6-KB-Vam"/>

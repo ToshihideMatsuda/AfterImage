@@ -596,9 +596,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This App saves camara datas.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This App saves microphone datas.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This App converts photo library movie, and saves it.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリはビデオの録画のためにカメラにアクセスします";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "このアプリはビデオの録画のためにマイクにアクセスします";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このアプリはビデオを変換・保存するために、フォトライブラリにアクセスします";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -634,9 +634,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
-				INFOPLIST_KEY_NSCameraUsageDescription = "This App saves camara datas.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This App saves microphone datas.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This App converts photo library movie, and saves it.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリはビデオの録画のためにカメラにアクセスします";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "このアプリはビデオの録画のためにマイクにアクセスします";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "このアプリはビデオを変換・保存するために、フォトライブラリにアクセスします";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

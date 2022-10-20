@@ -97,22 +97,30 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
             return
         }
         
-        let alert = UIAlertController(title: "Info",
-                                      message: "Your video has been converted.\n Which action do you select?",
+        let alert = UIAlertController(title: "お知らせ",
+                                      message: "ビデオの変換が完了しました\nこのビデオを保存しますか？",
                                       preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Save & Show", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "保存＆表示", style: .default) { _ in
             self.saveVideo(alert: alert, url: url)
         })
         
         
-        alert.addAction(UIAlertAction(title: "Only Show", style: .default) { _ in
-            self.interstitial?.present(fromRootViewController: self)
+        alert.addAction(UIAlertAction(title: "表示のみ", style: .default) { _ in
+            if let interstitial = self.interstitial {
+                interstitial.present(fromRootViewController: self)
+            } else {
+                self.dismiss(animated: true)
+            }
         })
         
-        alert.addAction(UIAlertAction(title: "Close", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .default) { _ in
             self.processedVideoURL = nil
-            self.interstitial?.present(fromRootViewController: self)
+            if let interstitial = self.interstitial {
+                interstitial.present(fromRootViewController: self)
+            } else {
+                self.dismiss(animated: true)
+            }
         })
         
         self.present(alert, animated: true)
@@ -126,11 +134,15 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
             DispatchQueue.main.async {
                 alert.dismiss(animated: true ) {
                     let message = isCompleted ?
-                    "[Success] Your video has been saved in photolibrary." :
-                    "[Fail] It failed to save your video."
-                    let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
+                    "[成功] フォトライブラリに撮影したビデオを保存しました" :
+                    "[失敗] ビデオの保存に失敗しました"
+                    let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                        self.interstitial?.present(fromRootViewController: self)
+                        if let interstitial = self.interstitial {
+                            interstitial.present(fromRootViewController: self)
+                        } else {
+                            self.dismiss(animated: true)
+                        }
                     })
                     self.present(alert, animated: true)
                 }

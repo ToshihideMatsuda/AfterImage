@@ -145,11 +145,11 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             stopRecording()
             
             
-            let alert = UIAlertController(title: "Info",
-                                          message: self.additionalMessage + "Do you save a current video?",
+            let alert = UIAlertController(title: "お知らせ",
+                                          message: self.additionalMessage + "撮影したビデオを保存しますか？",
                                           preferredStyle: .alert)
             self.additionalMessage = ""
-            alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: "保存", style: .default) { _ in
                 
                 PHPhotoLibrary.shared().performChanges({
                   PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
@@ -157,9 +157,9 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                     DispatchQueue.main.async {
                         alert.dismiss(animated: true ) {
                             let message = isCompleted ?
-                            "[Success] Your video has been saved in photolibrary." :
-                            "[Fail] It failed to save your video."
-                            let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
+                            "[成功] フォトライブラリに撮影したビデオを保存しました" :
+                            "[失敗] ビデオの保存に失敗しました"
+                            let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
                                 self.interstitial?.present(fromRootViewController: self)
                             })
@@ -169,7 +169,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                 }
             })
             
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
             self.present(alert, animated: true)
         }
     }
@@ -216,7 +216,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
         
         if minutes >= 1, plan == .basic {
-            self.additionalMessage = "In the basic plan, it can only save a video within 60 seconds\n"
+            self.additionalMessage = "ベーシックプランでは60秒までしか撮影できません\n"
             self.onRec(nil)
         }
     }

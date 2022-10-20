@@ -117,8 +117,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let asset = AVAsset(url: url)
         if asset.duration.seconds > 60.0, plan == .basic {
-            let alert = UIAlertController(title: "Info",
-                                          message: "In the basic plan, you can only select a video shorter than 60 seconds",
+            let alert = UIAlertController(title: "お知らせ",
+                                          message: "ベーシックプランでは60秒以内の動画しか選択できません",
                                           preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default) )
@@ -171,7 +171,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    private let dataList                                                     = [ "accurate", "balanced", "fast" ]
+    private let dataList                                                     = [ "品質優先", "バランス", "速度優先" ]
     private let qualityList:[VNGeneratePersonSegmentationRequest.QualityLevel] = [ .accurate, .balanced, .fast ]
     private var selectedQuality:VNGeneratePersonSegmentationRequest.QualityLevel = .balanced
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
