@@ -89,7 +89,7 @@
 		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		D2D87014290667AF00C2D67B /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		D2D870162906811900C2D67B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		D2D87018290681F500C2D67B /* syncedProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = syncedProduct.storekit; path = AfterImage/syncedProduct.storekit; sourceTree = SOURCE_ROOT; };
+		D2D87018290681F500C2D67B /* syncedProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = syncedProduct.storekit; path = AfterImage/syncedProduct.storekit; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,9 +604,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.2;
-				DEVELOPMENT_TEAM = LDC6VVX2PY;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
@@ -627,6 +629,8 @@
 				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = shadowcloneprofile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -642,9 +646,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.1.2;
-				DEVELOPMENT_TEAM = LDC6VVX2PY;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
@@ -665,6 +671,8 @@
 				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = shadowcloneprofile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcClass/AfterImage-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
