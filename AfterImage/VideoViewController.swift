@@ -124,7 +124,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
         })
         
         self.present(alert, animated: true){
-            UserDefaults.standard.set(true, forKey: videoDoneFlg)
+            incCntDone()
         }
         
     }

@@ -31,6 +31,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var qualityPicker: UIPickerView!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var appReviewButton: UIButton!
     let intervalDefault:Float = 0.1
     let clonesDefault:Float = 10
     
@@ -58,17 +59,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         self.qualityPicker.selectRow(1, inComponent: 0, animated: false)
         VisionManager.shared.personSegmentationRequest?.qualityLevel = qualityList[1]
-        
+        appReviewButton.isHidden = true
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        requestAppStoreReview()
+        appReviewButton.isHidden = !appReviewShow()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         requestAppStoreReview()
+        appReviewButton.isHidden = !appReviewShow()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        requestAppStoreReview()
+        appReviewButton.isHidden = !appReviewShow()
+    }
     @IBAction func tapPhotoButton(_ sender: Any?) {
         let status = PHPhotoLibrary.authorizationStatus(for:.readWrite)
         
@@ -210,6 +219,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VisionManager.shared.personSegmentationRequest?.qualityLevel = qualityList[row]
     }
     
+    @IBAction func tapAppReview(_ sender: Any) {
+        reviewRequest()
+    }
     
  }
 

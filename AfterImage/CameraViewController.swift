@@ -174,7 +174,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             
             alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
             self.present(alert, animated: true){
-                UserDefaults.standard.set(true, forKey: cameraDoneFlg)
+                incCntDone()
             }
         }
     }

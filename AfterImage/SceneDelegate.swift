@@ -55,17 +55,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 public let reviewRequestFlg = "DidAppStoreReviewRequested"
-public let cameraDoneFlg    = "DidCameraDoneFlg"
-public let videoDoneFlg     = "DidVideoDoneFlg"
+public let cntDoneFlg       = "CntDoneFlg"
 
 public func requestAppStoreReview() {
-    if UserDefaults.standard.bool(forKey: cameraDoneFlg) == true,
-       UserDefaults.standard.bool(forKey: videoDoneFlg) == true { // camera
+    if UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3 { // camera
         if UserDefaults.standard.bool(forKey: reviewRequestFlg) == true { return } // request
-        
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
+        reviewRequest()
         UserDefaults.standard.set(true, forKey: reviewRequestFlg)
     }
+}
+
+public func reviewRequest() {
+    if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+        SKStoreReviewController.requestReview(in: scene)
+    }
+}
+
+public func incCntDone() {
+    let cnt = UserDefaults.standard.integer(forKey: cntDoneFlg)
+    UserDefaults.standard.set(cnt+1, forKey: cntDoneFlg)
+}
+public func appReviewShow() -> Bool {
+    return UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3
 }

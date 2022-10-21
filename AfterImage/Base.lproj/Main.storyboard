@@ -267,20 +267,34 @@
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJz-ym-DjQ">
+                                <rect key="frame" x="295" y="5" width="75" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Xfl-mQ-HxY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="★★★"/>
+                                <connections>
+                                    <action selector="tapAppReview:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O3W-Ai-Eyb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I1v-kW-3VW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OVA-3g-n12"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DJz-ym-DjQ" secondAttribute="trailing" constant="5" id="Qx8-a8-58k"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="d0x-fD-DSh"/>
                             <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
                             <constraint firstItem="I1v-kW-3VW" firstAttribute="top" secondItem="2kc-SU-l5V" secondAttribute="bottom" constant="2" id="hl4-eH-1Fy"/>
+                            <constraint firstItem="DJz-ym-DjQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="iej-n7-Um5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I1v-kW-3VW" secondAttribute="bottom" constant="2" id="z9k-ti-T9x"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aiQualityLabel" destination="zh1-Ob-zWK" id="HmK-Uk-eGG"/>
+                        <outlet property="appReviewButton" destination="DJz-ym-DjQ" id="B9c-wF-PTj"/>
                         <outlet property="bannerView" destination="2kc-SU-l5V" id="U4S-Hx-D47"/>
                         <outlet property="clonesSlider" destination="1FC-WM-Snl" id="mjo-I9-n1C"/>
                         <outlet property="clonesText" destination="3Z3-MM-ZY9" id="mZs-8a-9fJ"/>
