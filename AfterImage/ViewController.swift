@@ -63,6 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        requestAppStoreReview()
     }
 
     @IBAction func tapPhotoButton(_ sender: Any?) {

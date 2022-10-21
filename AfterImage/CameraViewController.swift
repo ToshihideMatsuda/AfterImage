@@ -161,8 +161,11 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                             "[失敗] ビデオの保存に失敗しました"
                             let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                                self.interstitial?.present(fromRootViewController: self)
-                            })
+                                if let interstitial = self.interstitial {
+                                    interstitial.present(fromRootViewController: self)
+                                } else {
+                                    self.dismiss(animated: true)
+                                }                            })
                             self.present(alert, animated: true)
                         }
                     }
@@ -170,7 +173,9 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             })
             
             alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
-            self.present(alert, animated: true)
+            self.present(alert, animated: true){
+                UserDefaults.standard.set(true, forKey: cameraDoneFlg)
+            }
         }
     }
     

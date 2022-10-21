@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 public let ciContext = CIContext()
 
@@ -52,3 +53,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+public let reviewRequestFlg = "DidAppStoreReviewRequested"
+public let cameraDoneFlg    = "DidCameraDoneFlg"
+public let videoDoneFlg     = "DidVideoDoneFlg"
+
+public func requestAppStoreReview() {
+    if UserDefaults.standard.bool(forKey: cameraDoneFlg) == true,
+       UserDefaults.standard.bool(forKey: videoDoneFlg) == true { // camera
+        if UserDefaults.standard.bool(forKey: reviewRequestFlg) == true { return } // request
+        
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+        UserDefaults.standard.set(true, forKey: reviewRequestFlg)
+    }
+}
