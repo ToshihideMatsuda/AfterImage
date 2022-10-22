@@ -19,6 +19,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
     public var url:URL? = nil
     
     private var cancel               = false ;
+    private var saveaction           = false ;
     private var processedVideoURL: URL? = nil
     
     override func viewDidLoad() {
@@ -81,8 +82,31 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
         guard let url = processedVideoURL else { return }
         let vc = AVPlayerViewController()
         vc.player = AVPlayer(url: url)
+        let saveaction = self.saveaction
         
-        self.superVc?.present(vc, animated: true)
+        self.superVc?.present(vc, animated: true, completion:  {
+            if saveaction {
+                
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                }) { (isCompleted, error) in
+                    let message = isCompleted ?
+                        "[成功] フォトライブラリに撮影したビデオを保存しました" :
+                        "[失敗] ビデオの保存に失敗しました"
+                    let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                        if let interstitial = self.interstitial {
+                            interstitial.present(fromRootViewController: self)
+                        } else {
+                            self.dismiss(animated: true)
+                        }
+                    })
+                    DispatchQueue.main.async {
+                        vc.present(alert, animated: true)
+                    }
+                }
+            }
+        })
         
     }
     
@@ -92,17 +116,17 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
         self.cancel = true
         VisionManager.shared.cancel = true
         
-        guard let url = processedVideoURL else {
-            self.dismiss(animated:true)
-            return
-        }
-        
         let alert = UIAlertController(title: "お知らせ",
                                       message: "ビデオの変換が完了しました\nこのビデオを保存しますか？",
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "保存＆表示", style: .default) { _ in
-            self.saveVideo(alert: alert, url: url)
+            self.saveaction = true;
+            if let interstitial = self.interstitial {
+                interstitial.present(fromRootViewController: self)
+            } else {
+                self.dismiss(animated: true)
+            }
         })
         
         
@@ -127,29 +151,6 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
             incCntDone()
         }
         
-    }
-    
-    private func saveVideo(alert: UIAlertController, url:URL) {
-        PHPhotoLibrary.shared().performChanges({
-          PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-        }) { (isCompleted, error) in
-            DispatchQueue.main.async {
-                alert.dismiss(animated: true ) {
-                    let message = isCompleted ?
-                    "[成功] フォトライブラリに撮影したビデオを保存しました" :
-                    "[失敗] ビデオの保存に失敗しました"
-                    let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                        if let interstitial = self.interstitial {
-                            interstitial.present(fromRootViewController: self)
-                        } else {
-                            self.dismiss(animated: true)
-                        }
-                    })
-                    self.present(alert, animated: true)
-                }
-            }
-        }
     }
     
     
