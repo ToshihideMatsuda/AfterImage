@@ -119,7 +119,6 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
         let alert = UIAlertController(title: "お知らせ",
                                       message: "ビデオの変換が完了しました\nこのビデオを保存しますか？",
                                       preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "保存＆表示", style: .default) { _ in
             self.saveaction = true;
             if let interstitial = self.interstitial {

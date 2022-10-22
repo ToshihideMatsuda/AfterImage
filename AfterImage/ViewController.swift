@@ -85,16 +85,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case .authorized:   break
         case .limited:      break
         case .restricted:   break
-        case .denied:       print("denied")
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { status in
-                switch status {
-                case .authorized:   self.tapPhotoButton(self)
-                case .limited:      self.tapPhotoButton(self)
-                case .restricted:   self.tapPhotoButton(self)
-                default: break
-                }
-            }
+        case .denied, .notDetermined:
+            let alert = UIAlertController(title: "お知らせ",
+                                          message: "写真へのアクセスが許可されていません\nアクセスを許可してください",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                guard let url = URL(string:UIApplication.openSettingsURLString) else { return }
+                UIApplication.shared.open(url, options:[:],completionHandler: nil)
+            } )
+            self.present(alert, animated: true)
+            
+            return
         @unknown default:   return
         }
         
@@ -116,6 +118,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             photoLibraryPicker.mediaTypes = [UTType.movie.identifier]
             photoLibraryPicker.sourceType = .photoLibrary
             photoLibraryPicker.delegate = self
+            photoLibraryPicker
             
             self.present(photoLibraryPicker, animated: true)
         }
