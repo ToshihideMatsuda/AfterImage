@@ -79,28 +79,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appReviewButton.isHidden = !appReviewShow()
     }
     @IBAction func tapPhotoButton(_ sender: Any?) {
-        let status = PHPhotoLibrary.authorizationStatus(for:.readWrite)
-        
-        switch status {
-        case .authorized:   break
-        case .limited:      break
-        case .restricted:   break
-        case .denied, .notDetermined:
-            let alert = UIAlertController(title: "お知らせ",
-                                          message: "写真へのアクセスが許可されていません\nアクセスを許可してください",
-                                          preferredStyle: .alert)
+        PHPhotoLibrary.requestAuthorization(for:.readWrite) { status in
             
-            alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                guard let url = URL(string:UIApplication.openSettingsURLString) else { return }
-                UIApplication.shared.open(url, options:[:],completionHandler: nil)
-            } )
-            self.present(alert, animated: true)
+            switch status {
+            case .authorized:   break
+            case .limited:      break
+            case .restricted:   break
+            case .denied, .notDetermined:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "お知らせ",
+                                                  message: "写真へのアクセスが許可されていません\nアクセスを許可してください",
+                                                  preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                        guard let url = URL(string:UIApplication.openSettingsURLString) else { return }
+                        UIApplication.shared.open(url, options:[:],completionHandler: nil)
+                    } )
+                    self.present(alert, animated: true)
+                }
+                
+                return
+            @unknown default:   return
+            }
             
-            return
-        @unknown default:   return
+            self.showUI()
         }
-        
-        self.showUI()
     }
     
     @IBAction func tapCameraButton(_ sender: Any?) {
