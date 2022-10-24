@@ -13,7 +13,16 @@ import GoogleMobileAds
 class CompositImageViewController: UIViewController{
     public weak var superVc:ViewController? = nil
     public var mainVideoView: AVPlayerLayerView? = nil
-    var interstitial: GADInterstitialAd?
+    var _interstitial: GADInterstitialAd?
+    var interstitial: GADInterstitialAd? {
+        set (v) {
+            if getPlan() == .basic { _interstitial = v }
+        }
+        get {
+            if getPlan() == .basic { return _interstitial }
+            return nil
+        }
+    }
 
     public  var queueSize            = 5 ;
     public  var interval    :Double  = 1.0
@@ -82,12 +91,14 @@ class CompositImageViewController: UIViewController{
             }
         }
         
-        guard let icon = self.icon,
-              let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
-                kCIInputImageKey            : icon,
-                kCIInputBackgroundImageKey  : compositImage
-              ])?.outputImage else { return compositImage }
-        compositImage = blended
+        if showLogo() {
+            guard let icon = self.icon,
+                  let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
+                    kCIInputImageKey            : icon,
+                    kCIInputBackgroundImageKey  : compositImage
+                  ])?.outputImage else { return compositImage }
+            compositImage = blended
+        }
         
         registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
         

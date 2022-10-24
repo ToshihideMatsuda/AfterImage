@@ -34,13 +34,15 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // GADBannerViewのプロパティを設定
-        bannerView.adUnitID = bannerViewId()
-        bannerView.rootViewController = self
-        bannerView.adSize = .init(size: bannerSize, flags: 1)
-
-        // 広告読み込み
-        bannerView.load(GADRequest())
+        if getPlan() == .basic {
+            // GADBannerViewのプロパティを設定
+            bannerView.adUnitID = bannerViewId()
+            bannerView.rootViewController = self
+            bannerView.adSize = .init(size: bannerSize, flags: 1)
+            
+            // 広告読み込み
+            bannerView.load(GADRequest())
+        }
         
         
         guard let url = url else { return }
