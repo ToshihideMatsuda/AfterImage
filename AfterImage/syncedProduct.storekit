@@ -1,0 +1,35 @@
+{
+  "identifier" : "BF9DADC1",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "1651172020",
+      "localizations" : [
+        {
+          "description" : "購入していただければ、プレミアム版特典機能が使用可能になります",
+          "displayName" : "プレミアム版購入",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "7fDew35yuwqDhtr563dvbgyjJrtgEf34vdq44ghr4tyTNYT645rgsfbUJYKYUthbrmutrterygedbrfgRETGER6r4Gny63fw2edg",
+      "referenceName" : "premiumMode",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6443941131",
+    "_developerTeamID" : "LDC6VVX2PY",
+    "_lastSynchronizedDate" : 688292346.88342297
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

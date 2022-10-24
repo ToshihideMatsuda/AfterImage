@@ -32,6 +32,7 @@
 		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
 		D2D870112906279500C2D67B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D870102906279500C2D67B /* StoreManager.swift */; };
 		D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D87014290667AF00C2D67B /* PurchaseView.swift */; };
+		D2D870172906811900C2D67B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D870162906811900C2D67B /* StoreKit.framework */; };
 		E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 		D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CVImageBuffer.swift"; sourceTree = "<group>"; };
 		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		D2D87014290667AF00C2D67B /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		D2D870162906811900C2D67B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D2D87018290681F500C2D67B /* syncedProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = syncedProduct.storekit; path = AfterImage/syncedProduct.storekit; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */,
+				D2D870172906811900C2D67B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +154,7 @@
 		D264547428D9341D007E38AB /* AfterImage */ = {
 			isa = PBXGroup;
 			children = (
+				D2D87018290681F500C2D67B /* syncedProduct.storekit */,
 				D264547528D9341D007E38AB /* AppDelegate.swift */,
 				D264547728D9341D007E38AB /* SceneDelegate.swift */,
 				D26454B628D994A7007E38AB /* Util */,
@@ -222,6 +227,7 @@
 		E2B83E737D9BDC59B8956C6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2D870162906811900C2D67B /* StoreKit.framework */,
 				34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */,
 			);
 			name = Frameworks;
@@ -599,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
@@ -618,7 +624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -637,7 +643,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
@@ -656,7 +662,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
