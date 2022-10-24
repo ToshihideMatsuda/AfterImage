@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else if getPlan() == .premium {
             premiumBotton.isHidden = true
         }
-        
+        logoSwitch.isOn = showLogo()
         self.qualityPicker.selectRow(1, inComponent: 0, animated: false)
         VisionManager.shared.personSegmentationRequest?.qualityLevel = qualityList[1]
         appReviewButton.isHidden = true
