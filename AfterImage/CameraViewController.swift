@@ -47,7 +47,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     override func viewDidLoad() {
         super.viewDidLoad()
         createInterstitial(delegate:self)
-        bannerView.isHidden = true
+        //bannerView.isHidden = true
     }
     
     
@@ -94,13 +94,15 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        // GADBannerViewのプロパティを設定
-        bannerView.adUnitID = bannerViewId()
-        bannerView.rootViewController = self
-        bannerView.adSize = .init(size: bannerSize, flags: 1)
-
-        // 広告読み込み
-        bannerView.load(GADRequest())
+        if getPlan() == .basic {
+            // GADBannerViewのプロパティを設定
+            bannerView.adUnitID = bannerViewId()
+            bannerView.rootViewController = self
+            bannerView.adSize = .init(size: bannerSize, flags: 1)
+            
+            // 広告読み込み
+            bannerView.load(GADRequest())
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -220,7 +222,7 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         
         self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
         
-        if minutes >= 1, plan == .basic {
+        if minutes >= 1, getPlan() == .basic {
             self.additionalMessage = "ベーシックプランでは60秒までしか撮影できません\n"
             self.onRec(nil)
         }

@@ -30,6 +30,7 @@
 		D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D26454B028D973C9007E38AB /* ObjcUtil.m */; };
 		D26454B328D98182007E38AB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B228D98182007E38AB /* CameraViewController.swift */; };
 		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
+		D2D870112906279500C2D67B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D870102906279500C2D67B /* StoreManager.swift */; };
 		E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		D26454B028D973C9007E38AB /* ObjcUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcUtil.m; sourceTree = "<group>"; };
 		D26454B228D98182007E38AB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CVImageBuffer.swift"; sourceTree = "<group>"; };
+		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			children = (
 				D26454A928D97305007E38AB /* AVCaptureManager.swift */,
 				D26454A528D94D8C007E38AB /* VisionManager.swift */,
+				D2D870102906279500C2D67B /* StoreManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				D264547628D9341D007E38AB /* AppDelegate.swift in Sources */,
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
+				D2D870112906279500C2D67B /* StoreManager.swift in Sources */,
 				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
 				D26454B328D98182007E38AB /* CameraViewController.swift in Sources */,
 				D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */,

@@ -53,9 +53,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+public enum Plan {
+    case basic
+    case premium
+}
+
+
 
 public let reviewRequestFlg = "DidAppStoreReviewRequested"
 public let cntDoneFlg       = "CntDoneFlg"
+public let logoFlg          = "logoFlg"
+public let logoFlg_on       = 0
+public let logoFlg_off      = 1
+public let planFlg          = "planFlag"
 
 public func requestAppStoreReview() {
     if UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3 { // camera
@@ -76,5 +86,33 @@ public func incCntDone() {
     UserDefaults.standard.set(cnt+1, forKey: cntDoneFlg)
 }
 public func appReviewShow() -> Bool {
-    return UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3
+    if getPlan() == .basic {
+        return UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3
+    } else {
+        return false
+    }
+}
+
+
+public func showLogo() -> Bool {
+    return UserDefaults.standard.integer(forKey: logoFlg) == logoFlg_on
+}
+
+public func setShowLogo(val:Bool)  {
+    if val == true {  UserDefaults.standard.set(logoFlg_on, forKey: logoFlg) }
+    else { UserDefaults.standard.set(logoFlg_off, forKey: logoFlg)  }
+}
+
+public func getPlan() -> Plan {
+    let hashVal = UserDefaults.standard.integer(forKey: planFlg)
+    
+    if hashVal == Plan.basic.hashValue { return .basic }
+    else if hashVal == Plan.premium.hashValue { return .premium }
+    
+    return .basic
+}
+
+public func setPlan(plan:Plan)  {
+    if plan == .basic    {  UserDefaults.standard.set(plan.hashValue, forKey: planFlg) }
+    else if plan == .premium { UserDefaults.standard.set(plan.hashValue, forKey: planFlg)  }
 }
