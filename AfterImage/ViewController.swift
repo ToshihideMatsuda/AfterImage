@@ -107,6 +107,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func tapCameraButton(_ sender: Any?) {
+        var accessOK = true
+        AVCaptureDevice.requestAccess(for: .video){ accessOK = accessOK && $0 }
+        AVCaptureDevice.requestAccess(for: .audio){ accessOK = accessOK && $0 }
+        PHPhotoLibrary.requestAuthorization(for:.readWrite) {
+            if $0 == .denied { accessOK = accessOK && false }
+        }
+        
+        if(accessOK == false) {
+            let alert = UIAlertController(title: "お知らせ",
+                                          message: "写真/カメラ/マイクへのアクセスが許可されていません\nアクセスを許可してください",
+                                          preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                guard let url = URL(string:UIApplication.openSettingsURLString) else { return }
+                UIApplication.shared.open(url, options:[:],completionHandler: nil)
+            } )
+            self.present(alert, animated: true)
+            return
+        }
+        
+        
         guard let cameraVc = storyboard?.instantiateViewController(withIdentifier: "CameraViewController")  as? CameraViewController  else { return }
         cameraVc.modalPresentationStyle = .fullScreen
         cameraVc.interval  = floor(Double(self.interValSlider.value) * 10.0) / 10.0
@@ -121,7 +142,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             photoLibraryPicker.mediaTypes = [UTType.movie.identifier]
             photoLibraryPicker.sourceType = .photoLibrary
             photoLibraryPicker.delegate = self
-            photoLibraryPicker
             
             self.present(photoLibraryPicker, animated: true)
         }
