@@ -40,7 +40,7 @@ struct PurchaseView: View {
                 
                 ProConListView(pros: pros, cons: cons)
                     .padding()
-                Button("プレミアム　購入", action: {
+                Button("プレミアム　購入(¥160)", action: {
                     StoreManager.shared.purchaseProduct(premiumId)
                 }).font(Font.system(size: 20))
                 Spacer()
