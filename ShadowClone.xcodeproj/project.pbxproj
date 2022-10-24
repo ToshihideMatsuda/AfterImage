@@ -31,6 +31,7 @@
 		D26454B328D98182007E38AB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B228D98182007E38AB /* CameraViewController.swift */; };
 		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
 		D2D870112906279500C2D67B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D870102906279500C2D67B /* StoreManager.swift */; };
+		D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D87014290667AF00C2D67B /* PurchaseView.swift */; };
 		E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		D26454B228D98182007E38AB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CVImageBuffer.swift"; sourceTree = "<group>"; };
 		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		D2D87014290667AF00C2D67B /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				D26454B628D994A7007E38AB /* Util */,
 				D26454B728D994C3007E38AB /* Manager */,
 				D264547928D9341D007E38AB /* ViewController.swift */,
+				D2D87014290667AF00C2D67B /* PurchaseView.swift */,
 				890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */,
 				D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */,
 				D26454B228D98182007E38AB /* CameraViewController.swift */,
@@ -410,6 +413,7 @@
 				D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */,
 				D264547628D9341D007E38AB /* AppDelegate.swift in Sources */,
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
+				D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */,
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
 				D2D870112906279500C2D67B /* StoreManager.swift in Sources */,
 				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
@@ -595,7 +599,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
@@ -614,7 +618,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -633,7 +637,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AfterImage/Info.plist;
@@ -652,7 +656,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = toshihide.matsuda.ShadowClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -293,12 +293,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1A-Ak-gnh">
-                                <rect key="frame" x="0.0" y="5" width="145.5" height="20"/>
+                                <rect key="frame" x="0.0" y="5" width="111" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="cRq-WQ-Oa4"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="プレミアム購入"/>
+                                <buttonConfiguration key="configuration" style="plain" title="プレミアム"/>
+                                <connections>
+                                    <action selector="buyTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Myg-v6-Bbc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

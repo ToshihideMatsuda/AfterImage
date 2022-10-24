@@ -9,6 +9,7 @@ import UIKit
 import PhotosUI
 import AVKit
 import GoogleMobileAds
+import SwiftUI
 import Vision
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate  {
@@ -36,6 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StoreManager.setup()
         self.interValSlider.value = intervalDefault
         self.clonesSlider.value = clonesDefault
         settingCollection = [
@@ -269,5 +271,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func logoValueChange(_ sender: Any) {
         setShowLogo(val: self.logoSwitch.isOn)
     }
+    
+    @IBAction func buyTap(_ sender: Any) {
+        let controller = UIHostingController(rootView: PurchaseView.default)
+        controller.modalPresentationStyle = .pageSheet
+        present(controller, animated: true)
+    }
+    
 }
 
