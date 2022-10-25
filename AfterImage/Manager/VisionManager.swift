@@ -82,7 +82,6 @@ public class  VisionManager {
             // request
             guard let personSegmentationRequest = personSegmentationRequest else { return nil }
             let request: [VNRequest] = [personSegmentationRequest]
-
             // perform
             try handler.perform(request)
             // result

@@ -16,6 +16,7 @@ struct PurchaseView: View {
     let pageName:String
     let pros: [String]
     let cons: [String]
+    public static var hostingViewController : UIHostingController<PurchaseView>? = nil
     
     var body: some View {
         GeometryReader { geomReader in

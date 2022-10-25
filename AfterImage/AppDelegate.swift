@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMobileAds // 追加
+import StoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Google Mobile Ads SDKの初期化
         GADMobileAds.sharedInstance().start(completionHandler: nil) // 追加
+        SKPaymentQueue.default().add(StoreManager.shared)
         
         return true
     }

@@ -55,11 +55,17 @@ class StoreManager: NSObject, SKPaymentTransactionObserver {
             case .purchased:  // 購入が完了
                 if transaction.payment.productIdentifier == premiumId {
                     setPlan(plan: .premium)
+                    PurchaseView.hostingViewController?.dismiss(animated: true)
+                    PurchaseView.hostingViewController = nil
+                    ViewController.shared?.premiumChng()
                 }
                 break
             case .restored: // 購入履歴から復元が完了
                 if transaction.payment.productIdentifier == premiumId {
                     setPlan(plan: .premium)
+                    PurchaseView.hostingViewController?.dismiss(animated: true)
+                    PurchaseView.hostingViewController = nil
+                    ViewController.shared?.premiumChng()
                 }
             case .deferred: // 購入処理は保留されており、承認まち
                 break

@@ -53,9 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
-public enum Plan {
-    case basic
-    case premium
+public enum Plan : String {
+    case basic = "basic"
+    case premium = "premium"
 }
 
 
@@ -104,15 +104,14 @@ public func setShowLogo(val:Bool)  {
 }
 
 public func getPlan() -> Plan {
-    let hashVal = UserDefaults.standard.integer(forKey: planFlg)
+    let planStr = UserDefaults.standard.string(forKey: planFlg)
     
-    if hashVal == Plan.basic.hashValue { return .basic }
-    else if hashVal == Plan.premium.hashValue { return .premium }
+    if planStr == Plan.basic.rawValue { return .basic }
+    else if planStr == Plan.premium.rawValue { return .premium }
     
     return .basic
 }
 
 public func setPlan(plan:Plan)  {
-    if plan == .basic    {  UserDefaults.standard.set(plan.hashValue, forKey: planFlg) }
-    else if plan == .premium { UserDefaults.standard.set(plan.hashValue, forKey: planFlg)  }
+    UserDefaults.standard.set(plan.rawValue, forKey: planFlg)
 }

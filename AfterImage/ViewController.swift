@@ -13,6 +13,7 @@ import SwiftUI
 import Vision
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate  {
+    public static var shared: ViewController? = nil
     @IBOutlet weak var bannerView: GADBannerView!  //追加
 
     @IBOutlet weak var intervalTitleLabel: UILabel!
@@ -37,6 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewController.shared = self
         StoreManager.setup()
         self.interValSlider.value = intervalDefault
         self.clonesSlider.value = clonesDefault
@@ -69,6 +71,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // Do any additional setup after loading the view.
     }
+    
+    public func premiumChng() {
+        premiumBotton.isHidden = true
+        appReviewButton.isHidden = true
+        bannerView.isHidden = true
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestAppStoreReview()
@@ -274,6 +284,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func buyTap(_ sender: Any) {
         let controller = UIHostingController(rootView: PurchaseView.default)
+        PurchaseView.hostingViewController = controller
         controller.modalPresentationStyle = .pageSheet
         present(controller, animated: true)
     }
