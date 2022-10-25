@@ -41,9 +41,17 @@ struct PurchaseView: View {
                 
                 ProConListView(pros: pros, cons: cons)
                     .padding()
-                Button("プレミアム　購入(¥160)", action: {
+                    
+                Button(action: {
                     StoreManager.shared.purchaseProduct(premiumId)
-                }).font(Font.system(size: 20))
+                }) {
+                    Text("プレミアム　購入(¥160)")
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 250,height:50)
+                        .background(.green)
+                        .cornerRadius(8)
+                }.padding()
                 Spacer()
             }
             .frame(width: geomReader.size.width, height: geomReader.size.height)
