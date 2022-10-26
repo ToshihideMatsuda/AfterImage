@@ -12,7 +12,7 @@ import AVKit
 import PhotosUI
 import GoogleMobileAds
 
-class VideoViewController:CompositImageViewController, GADFullScreenContentDelegate  {
+class VideoViewController:CompositImageViewController  {
     
     
     @IBOutlet weak var bannerView: GADBannerView!
@@ -24,7 +24,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createInterstitial(delegate:self)
+        //createInterstitial(delegate:self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +34,13 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if getPlan() == .basic {
-            // GADBannerViewのプロパティを設定
-            bannerView.adUnitID = bannerViewId()
-            bannerView.rootViewController = self
-            bannerView.adSize = .init(size: bannerSize, flags: 1)
+        // GADBannerViewのプロパティを設定
+        bannerView.adUnitID = bannerViewId()
+        bannerView.rootViewController = self
+        bannerView.adSize = .init(size: bannerSize, flags: 1)
             
-            // 広告読み込み
-            bannerView.load(GADRequest())
-        }
+        // 広告読み込み
+        bannerView.load(GADRequest())
         
         
         guard let url = url else { return }
@@ -82,7 +80,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         guard let url = processedVideoURL else { return }
-        let vc = AVPlayerViewController()
+        let vc = AdAVPlayerViewController()
         vc.player = AVPlayer(url: url)
         let saveaction = self.saveaction
         
@@ -97,11 +95,7 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
                         "[失敗] ビデオの保存に失敗しました"
                     let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                        if let interstitial = self.interstitial {
-                            interstitial.present(fromRootViewController: self)
-                        } else {
-                            self.dismiss(animated: true)
-                        }
+                        self.dismiss(animated: true)
                     })
                     DispatchQueue.main.async {
                         vc.present(alert, animated: true)
@@ -123,29 +117,17 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "保存＆表示", style: .default) { _ in
             self.saveaction = true;
-            if let interstitial = self.interstitial {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                self.dismiss(animated: true)
-            }
+            self.dismiss(animated: true)
         })
         
         
         alert.addAction(UIAlertAction(title: "表示のみ", style: .default) { _ in
-            if let interstitial = self.interstitial {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                self.dismiss(animated: true)
-            }
+            self.dismiss(animated: true)
         })
         
         alert.addAction(UIAlertAction(title: "キャンセル", style: .default) { _ in
             self.processedVideoURL = nil
-            if let interstitial = self.interstitial {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                self.dismiss(animated: true)
-            }
+            self.dismiss(animated: true)
         })
         
         self.present(alert, animated: true){
@@ -154,23 +136,5 @@ class VideoViewController:CompositImageViewController, GADFullScreenContentDeleg
         
     }
     
-    
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-        ad.fullScreenContentDelegate = nil
-    }
-
-    /// Tells the delegate that the ad will present full screen content.
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        ad.fullScreenContentDelegate = nil
-        self.dismiss(animated: true)
-    }
 }
 

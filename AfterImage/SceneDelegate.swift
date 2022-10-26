@@ -86,30 +86,21 @@ public func incCntDone() {
     UserDefaults.standard.set(cnt+1, forKey: cntDoneFlg)
 }
 public func appReviewShow() -> Bool {
-    if getPlan() == .basic {
-        return UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3
-    } else {
-        return false
-    }
+    return UserDefaults.standard.integer(forKey: cntDoneFlg) >= 3
 }
 
 
-public func showLogo() -> Bool {
-    return UserDefaults.standard.integer(forKey: logoFlg) == logoFlg_on
-}
-
-public func setShowLogo(val:Bool)  {
-    if val == true {  UserDefaults.standard.set(logoFlg_on, forKey: logoFlg) }
-    else { UserDefaults.standard.set(logoFlg_off, forKey: logoFlg)  }
-}
 
 public func getPlan() -> Plan {
+    return .basic
+    /*
     let planStr = UserDefaults.standard.string(forKey: planFlg)
     
     if planStr == Plan.basic.rawValue { return .basic }
     else if planStr == Plan.premium.rawValue { return .premium }
     
     return .basic
+     */
 }
 
 public func setPlan(plan:Plan)  {

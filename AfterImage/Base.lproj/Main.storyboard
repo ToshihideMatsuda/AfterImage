@@ -166,15 +166,6 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ロゴ表示" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UuH-4Q-ecH" userLabel="qualityLevel">
-                                                <rect key="frame" x="10" y="161" width="100" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="vqv-mM-m65"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z3-MM-ZY9">
                                                 <rect key="frame" x="130" y="76.5" width="45" height="21"/>
                                                 <constraints>
@@ -216,34 +207,23 @@
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="MbG-WL-QKs"/>
                                                 </connections>
                                             </pickerView>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JnV-8O-cs3">
-                                                <rect key="frame" x="215.5" y="156" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="logoValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="7JJ-zJ-Fqv"/>
-                                                </connections>
-                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="iRo-ak-olg" firstAttribute="top" secondItem="1FC-WM-Snl" secondAttribute="bottom" constant="10" id="1Nk-s9-blI"/>
-                                            <constraint firstAttribute="bottom" secondItem="UuH-4Q-ecH" secondAttribute="bottom" constant="8" id="2W0-pp-q2h"/>
                                             <constraint firstItem="1FC-WM-Snl" firstAttribute="centerY" secondItem="8wA-E7-Qkj" secondAttribute="centerY" id="7ky-jU-T2b"/>
                                             <constraint firstItem="SMC-hn-GzL" firstAttribute="top" secondItem="l41-nM-SD1" secondAttribute="bottom" constant="15" id="Ccn-Ez-1Ia"/>
-                                            <constraint firstItem="JnV-8O-cs3" firstAttribute="top" secondItem="iRo-ak-olg" secondAttribute="bottom" constant="6" id="GWn-Du-uHL"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="leading" secondItem="SMC-hn-GzL" secondAttribute="leading" id="Oaa-0m-R3Q"/>
                                             <constraint firstAttribute="trailing" secondItem="iRo-ak-olg" secondAttribute="trailing" constant="5" id="RuF-Gh-mV2"/>
                                             <constraint firstItem="l41-nM-SD1" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" id="VoS-wo-VFq"/>
                                             <constraint firstItem="8wA-E7-Qkj" firstAttribute="top" secondItem="SMC-hn-GzL" secondAttribute="bottom" constant="15" id="WDA-St-w7F"/>
-                                            <constraint firstItem="JnV-8O-cs3" firstAttribute="centerY" secondItem="UuH-4Q-ecH" secondAttribute="centerY" id="azu-Vb-npa"/>
                                             <constraint firstItem="apW-8Z-5ZR" firstAttribute="leading" secondItem="6h7-O5-NNM" secondAttribute="trailing" constant="5" id="bH3-4O-N3o"/>
                                             <constraint firstItem="iRo-ak-olg" firstAttribute="leading" secondItem="zh1-Ob-zWK" secondAttribute="trailing" constant="35" id="ed6-KB-Vam"/>
                                             <constraint firstItem="apW-8Z-5ZR" firstAttribute="centerY" secondItem="SMC-hn-GzL" secondAttribute="centerY" id="ehB-sk-52l"/>
                                             <constraint firstItem="SMC-hn-GzL" firstAttribute="leading" secondItem="VQq-q3-168" secondAttribute="leading" constant="10" id="fAJ-Uf-wzw"/>
                                             <constraint firstItem="Yd3-fu-8Vq" firstAttribute="top" secondItem="VQq-q3-168" secondAttribute="top" constant="5" id="fD8-CU-dTN"/>
-                                            <constraint firstItem="UuH-4Q-ecH" firstAttribute="leading" secondItem="zh1-Ob-zWK" secondAttribute="leading" id="g4x-06-LPp"/>
                                             <constraint firstAttribute="trailing" secondItem="1FC-WM-Snl" secondAttribute="trailing" constant="10" id="gpN-Ie-RHz"/>
                                             <constraint firstItem="l41-nM-SD1" firstAttribute="top" secondItem="VQq-q3-168" secondAttribute="top" constant="5" id="iil-ar-HDK"/>
-                                            <constraint firstItem="JnV-8O-cs3" firstAttribute="centerX" secondItem="1FC-WM-Snl" secondAttribute="centerX" id="io9-rM-Rn6"/>
                                             <constraint firstItem="6h7-O5-NNM" firstAttribute="centerY" secondItem="SMC-hn-GzL" secondAttribute="centerY" id="iu6-zJ-24k"/>
                                             <constraint firstItem="zh1-Ob-zWK" firstAttribute="leading" secondItem="8wA-E7-Qkj" secondAttribute="leading" id="j3N-nq-zsZ"/>
                                             <constraint firstAttribute="trailing" secondItem="apW-8Z-5ZR" secondAttribute="trailing" constant="10" id="lR9-HH-epp"/>
@@ -292,23 +272,10 @@
                                     <action selector="tapAppReview:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O3W-Ai-Eyb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1A-Ak-gnh">
-                                <rect key="frame" x="0.0" y="5" width="111" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="cRq-WQ-Oa4"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="プレミアム"/>
-                                <connections>
-                                    <action selector="buyTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Myg-v6-Bbc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q1A-Ak-gnh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="4D5-4g-nXY"/>
-                            <constraint firstItem="q1A-Ak-gnh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OyC-04-esb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DJz-ym-DjQ" secondAttribute="trailing" constant="5" id="Qx8-a8-58k"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="d0x-fD-DSh"/>
                             <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
@@ -327,9 +294,6 @@
                         <outlet property="interValSlider" destination="apW-8Z-5ZR" id="8aN-ce-sUV"/>
                         <outlet property="intervalText" destination="6h7-O5-NNM" id="ciI-tw-9AQ"/>
                         <outlet property="intervalTitleLabel" destination="SMC-hn-GzL" id="fGo-Rl-4Wc"/>
-                        <outlet property="logoSwitch" destination="JnV-8O-cs3" id="tIV-N5-bbo"/>
-                        <outlet property="logoText" destination="UuH-4Q-ecH" id="aEB-Ph-4qh"/>
-                        <outlet property="premiumBotton" destination="q1A-Ak-gnh" id="txO-Ds-7kb"/>
                         <outlet property="qualityPicker" destination="iRo-ak-olg" id="bL3-3A-tm1"/>
                         <outlet property="resetButton" destination="Yd3-fu-8Vq" id="loV-Kt-tjt"/>
                         <outlet property="settingButton" destination="l41-nM-SD1" id="ZBw-Lk-OZ8"/>

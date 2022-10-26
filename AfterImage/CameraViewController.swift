@@ -13,7 +13,7 @@ import GoogleMobileAds
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
-class CameraViewController:CompositImageViewController, VideoListener, AudioListener, GADFullScreenContentDelegate  {
+class CameraViewController:CompositImageViewController, VideoListener, AudioListener  {
     
     @IBOutlet weak var bannerView: GADBannerView!
     private var preset     :AVCaptureSession.Preset = .high
@@ -43,35 +43,10 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private var initialized = true
     private let frameRate:Int32  = 20
     private var additionalMessage = ""
+    private var processedVideoURL: URL? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createInterstitial(delegate:self)
-        //bannerView.isHidden = true
-    }
-    
-    
-    /// Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-        ad.fullScreenContentDelegate = nil
-    }
-
-    /// Tells the delegate that the ad will present full screen content.
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-
-    /// Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        ad.fullScreenContentDelegate = nil
-        self.dismiss(animated: true){
-            guard let url = URL(string: "photos-redirect://") else { return }
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,21 +69,41 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if getPlan() == .basic {
-            // GADBannerViewのプロパティを設定
-            bannerView.adUnitID = bannerViewId()
-            bannerView.rootViewController = self
-            bannerView.adSize = .init(size: bannerSize, flags: 1)
-            
-            // 広告読み込み
-            bannerView.load(GADRequest())
-        }
+        // GADBannerViewのプロパティを設定
+        bannerView.adUnitID = bannerViewId()
+        bannerView.rootViewController = self
+        bannerView.adSize = .init(size: bannerSize, flags: 1)
+        
+        // 広告読み込み
+        bannerView.load(GADRequest())
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         AVCaptureManager.shared.removeVideoListener(listener: self)
         AVCaptureManager.shared.removeAudioListener(listener: self)
+        
+        guard let url = processedVideoURL else { return }
+        let vc = AdAVPlayerViewController()
+        vc.player = AVPlayer(url: url)
+        
+        self.superVc?.present(vc, animated: true, completion:  {
+                
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+            }) { (isCompleted, error) in
+                let message = isCompleted ?
+                    "[成功] フォトライブラリに撮影したビデオを保存しました" :
+                    "[失敗] ビデオの保存に失敗しました"
+                let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+                    self.dismiss(animated: true)
+                })
+                DispatchQueue.main.async {
+                    vc.present(alert, animated: true)
+                }
+            }
+        })
     }
     
     @IBAction func rotateCamera(_ sender: Any) {
@@ -152,26 +147,8 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                                           preferredStyle: .alert)
             self.additionalMessage = ""
             alert.addAction(UIAlertAction(title: "保存", style: .default) { _ in
-                
-                PHPhotoLibrary.shared().performChanges({
-                  PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                }) { (isCompleted, error) in
-                    DispatchQueue.main.async {
-                        alert.dismiss(animated: true ) {
-                            let message = isCompleted ?
-                            "[成功] フォトライブラリに撮影したビデオを保存しました" :
-                            "[失敗] ビデオの保存に失敗しました"
-                            let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
-                                if let interstitial = self.interstitial {
-                                    interstitial.present(fromRootViewController: self)
-                                } else {
-                                    self.dismiss(animated: true)
-                                }                            })
-                            self.present(alert, animated: true)
-                        }
-                    }
-                }
+                self.processedVideoURL = url
+                self.dismiss(animated: true)
             })
             
             alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
@@ -222,10 +199,12 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         
         self.timeLabel.text = "\(hoursStr):\(minutesStr):\(secondsStr)"
         
-        if minutes >= 1, getPlan() == .basic {
+        /*
+         if minutes >= 1, getPlan() == .basic {
             self.additionalMessage = "ベーシックプランでは60秒までしか撮影できません\n"
             self.onRec(nil)
         }
+         */
     }
     
     public func videoCapture(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
