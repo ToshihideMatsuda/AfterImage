@@ -1,0 +1,22 @@
+/*
+  Localizable.strings
+  
+
+  Created by tmatsuda on 2022/10/28.
+  
+*/
+
+"お知らせ" = "Avis";
+"写真へのアクセスが許可されていません\nアクセスを許可してください" = "Accès aux photos non autorisé\nAutoriser l'accès.";
+"写真/カメラ/マイクへのアクセスが許可されていません\nアクセスを許可してください" = "Accès à la photo/appareil photo/microphone non autorisé\nAutoriser l'accès.";
+"品質優先" = "qualité";
+"バランス" = "équilibre";
+"速度優先" = "vélocité";
+"[成功] フォトライブラリに撮影したビデオを保存しました" = "[Succès] La vidéo prise a été enregistrée dans la photothèque.";
+"[失敗] ビデオの保存に失敗しました" = "[Échec] Impossible d'enregistrer la vidéo.";
+"ビデオを保存しますか？" = "Voulez-vous enregistrer la vidéo ?";
+"保存" = "Sauvegarde";
+"保存＆表示" = "Sauvegarde et visualisation";
+"表示のみ" = "Affichage uniquement";
+"キャンセル" = "annuler";
+"ビデオの変換が完了しました\nこのビデオを保存しますか？"="Conversion vidéo terminée\nVoulez-vous sauvegarder cette vidéo ?";

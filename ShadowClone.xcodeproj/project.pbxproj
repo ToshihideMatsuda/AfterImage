@@ -104,6 +104,10 @@
 		D2D8703F290BB28F00C2D67B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D2D87040290BB29000C2D67B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2D87041290BB29000C2D67B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2D8704A290BB7D400C2D67B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		D2D8704B290BB7D400C2D67B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D2D8704C290BB7D400C2D67B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D2D8704D290BB7D400C2D67B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +359,7 @@
 				ja,
 				"zh-Hans",
 				es,
+				fr,
 			);
 			mainGroup = D264546928D9341D007E38AB;
 			productRefGroup = D264547328D9341D007E38AB /* Products */;
@@ -506,6 +511,7 @@
 				D2D87024290B906E00C2D67B /* ja */,
 				D2D8703A290BAED400C2D67B /* zh-Hans */,
 				D2D8703E290BB28F00C2D67B /* es */,
+				D2D8704A290BB7D400C2D67B /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				D2D87025290B906E00C2D67B /* ja */,
 				D2D8703B290BAED400C2D67B /* zh-Hans */,
 				D2D8703F290BB28F00C2D67B /* es */,
+				D2D8704B290BB7D400C2D67B /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -528,6 +535,7 @@
 				D2D87033290B933E00C2D67B /* en */,
 				D2D8703D290BAED500C2D67B /* zh-Hans */,
 				D2D87041290BB29000C2D67B /* es */,
+				D2D8704D290BB7D400C2D67B /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -539,6 +547,7 @@
 				D2D87039290BAAE300C2D67B /* en */,
 				D2D8703C290BAED500C2D67B /* zh-Hans */,
 				D2D87040290BB29000C2D67B /* es */,
+				D2D8704C290BB7D400C2D67B /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
