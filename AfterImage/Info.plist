@@ -64,5 +64,11 @@
 	<true/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1643629923616505~9932690831</string>
+    <key>NSCameraUsageDescription</key>
+    <string>このアプリはビデオの録画のためにカメラにアクセスします</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>このアプリはビデオの録画のためにマイクにアクセスします</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>このアプリはビデオを変換・保存するために、フォトライブラリにアクセスします</string>
 </dict>
 </plist>
