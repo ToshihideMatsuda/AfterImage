@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "10"; ObjectID = "3Z3-MM-ZY9"; */
+"3Z3-MM-ZY9.text" = "10";
+
+/* Class = "UILabel"; text = "0.1s"; ObjectID = "6h7-O5-NNM"; */
+"6h7-O5-NNM.text" = "0.1s";
+
+/* Class = "UILabel"; text = "Clone Count"; ObjectID = "8wA-E7-Qkj"; */
+"8wA-E7-Qkj.text" = "Clone Count";
+
+/* Class = "UIButton"; configuration.title = "★★★"; ObjectID = "DJz-ym-DjQ"; */
+"DJz-ym-DjQ.configuration.title" = "★★★";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DJz-ym-DjQ"; */
+"DJz-ym-DjQ.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "H02-o7-T7D"; */
+"H02-o7-T7D.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Convert Video"; ObjectID = "P7g-rJ-RDd"; */
+"P7g-rJ-RDd.text" = "Convert Video";
+
+/* Class = "UILabel"; text = "Interval"; ObjectID = "SMC-hn-GzL"; */
+"SMC-hn-GzL.text" = "Interval";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "XN2-fs-SEJ"; */
+"XN2-fs-SEJ.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Reset"; ObjectID = "Yd3-fu-8Vq"; */
+"Yd3-fu-8Vq.configuration.title" = "Reset";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Yd3-fu-8Vq"; */
+"Yd3-fu-8Vq.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "▶︎ Setting"; ObjectID = "l41-nM-SD1"; */
+"l41-nM-SD1.normalTitle" = "▶︎ Setting";
+
+/* Class = "UIButton"; selectedTitle = "▼ Setting"; ObjectID = "l41-nM-SD1"; */
+"l41-nM-SD1.selectedTitle" = "▼ Setting";
+
+/* Class = "UILabel"; text = "Realtime Movie"; ObjectID = "re2-Rr-w7D"; */
+"re2-Rr-w7D.text" = "Realtime Movie";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "ycL-VU-Qnh"; */
+"ycL-VU-Qnh.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "AI"; ObjectID = "zh1-Ob-zWK"; */
+"zh1-Ob-zWK.text" = "AI";
