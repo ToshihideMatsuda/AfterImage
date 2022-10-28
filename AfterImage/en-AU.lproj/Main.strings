@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "10"; ObjectID = "3Z3-MM-ZY9"; */
+"3Z3-MM-ZY9.text" = "10";
+
+/* Class = "UILabel"; text = "0.1s"; ObjectID = "6h7-O5-NNM"; */
+"6h7-O5-NNM.text" = "0.1s";
+
+/* Class = "UILabel"; text = "残像数"; ObjectID = "8wA-E7-Qkj"; */
+"8wA-E7-Qkj.text" = "残像数";
+
+/* Class = "UIButton"; configuration.title = "★★★"; ObjectID = "DJz-ym-DjQ"; */
+"DJz-ym-DjQ.configuration.title" = "★★★";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DJz-ym-DjQ"; */
+"DJz-ym-DjQ.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "H02-o7-T7D"; */
+"H02-o7-T7D.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "ビデオから変換"; ObjectID = "P7g-rJ-RDd"; */
+"P7g-rJ-RDd.text" = "ビデオから変換";
+
+/* Class = "UILabel"; text = "間隔"; ObjectID = "SMC-hn-GzL"; */
+"SMC-hn-GzL.text" = "間隔";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "XN2-fs-SEJ"; */
+"XN2-fs-SEJ.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "リセット"; ObjectID = "Yd3-fu-8Vq"; */
+"Yd3-fu-8Vq.configuration.title" = "リセット";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Yd3-fu-8Vq"; */
+"Yd3-fu-8Vq.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "▶︎ 設定"; ObjectID = "l41-nM-SD1"; */
+"l41-nM-SD1.normalTitle" = "▶︎ 設定";
+
+/* Class = "UIButton"; selectedTitle = "▼ 設定"; ObjectID = "l41-nM-SD1"; */
+"l41-nM-SD1.selectedTitle" = "▼ 設定";
+
+/* Class = "UILabel"; text = "リアルタイムで撮影"; ObjectID = "re2-Rr-w7D"; */
+"re2-Rr-w7D.text" = "リアルタイムで撮影";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "ycL-VU-Qnh"; */
+"ycL-VU-Qnh.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "AI"; ObjectID = "zh1-Ob-zWK"; */
+"zh1-Ob-zWK.text" = "AI";

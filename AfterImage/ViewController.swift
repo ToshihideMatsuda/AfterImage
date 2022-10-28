@@ -92,8 +92,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             case .restricted:   break
             case .denied, .notDetermined:
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "お知らせ",
-                                                  message: "写真へのアクセスが許可されていません\nアクセスを許可してください",
+                    let alert = UIAlertController(title: NSLocalizedString("お知らせ", comment: ""),
+                                                  message: NSLocalizedString("写真へのアクセスが許可されていません\nアクセスを許可してください", comment: ""),
                                                   preferredStyle: .alert)
                     
                     alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
@@ -120,8 +120,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         if(accessOK == false) {
-            let alert = UIAlertController(title: "お知らせ",
-                                          message: "写真/カメラ/マイクへのアクセスが許可されていません\nアクセスを許可してください",
+            let alert = UIAlertController(title: NSLocalizedString("お知らせ", comment: ""),
+                                          message: NSLocalizedString("写真/カメラ/マイクへのアクセスが許可されていません\nアクセスを許可してください", comment:""),
                                           preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
@@ -203,7 +203,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    private let dataList                                                     = [ "品質優先", "バランス", "速度優先" ]
+    private let dataList                                                     = [  NSLocalizedString("品質優先", comment: ""),
+                                                                                  NSLocalizedString("バランス", comment: ""),
+                                                                                  NSLocalizedString("速度優先", comment: "") ]
     private let qualityList:[VNGeneratePersonSegmentationRequest.QualityLevel] = [ .accurate, .balanced, .fast ]
     private var selectedQuality:VNGeneratePersonSegmentationRequest.QualityLevel = .balanced
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

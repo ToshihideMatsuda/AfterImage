@@ -31,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-JA-Uj4" userLabel="Video">
                                         <rect key="frame" x="20" y="220" width="310" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオから変換" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7g-rJ-RDd">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convert Video" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7g-rJ-RDd" userLabel="Convert Video">
                                                 <rect key="frame" x="48.5" y="0.0" width="250" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="xQh-DA-XDE"/>
@@ -70,7 +70,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-WC-G8T" userLabel="Camera">
                                         <rect key="frame" x="20" y="280" width="310" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="リアルタイムで撮影" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Rr-w7D">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Realtime Movie" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Rr-w7D">
                                                 <rect key="frame" x="50.5" y="0.0" width="250" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="UBr-mC-sR1"/>
@@ -116,18 +116,18 @@
                                                     <constraint firstAttribute="height" constant="21" id="dmm-aS-OY2"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="▶︎ 設定">
+                                                <state key="normal" title="▶︎ Setting">
                                                     <color key="titleColor" name="AccentColor"/>
                                                 </state>
-                                                <state key="selected" title="▼ 設定">
+                                                <state key="selected" title="▼ Setting">
                                                     <color key="titleColor" name="AccentColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onSettingTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zbg-I0-o0B"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="間隔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
-                                                <rect key="frame" x="10" y="41" width="35" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMC-hn-GzL">
+                                                <rect key="frame" x="10" y="41" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -151,8 +151,8 @@
                                                     <action selector="chngIntervalSecond:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wsr-L2-S49"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残像数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
-                                                <rect key="frame" x="10" y="76.5" width="52" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clone Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wA-E7-Qkj">
+                                                <rect key="frame" x="10" y="76.5" width="94.5" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -192,7 +192,7 @@
                                                     <constraint firstAttribute="width" constant="100" id="SZ2-OY-WKo"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="リセット"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Reset"/>
                                                 <connections>
                                                     <action selector="onReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aou-UK-w3d"/>
                                                 </connections>

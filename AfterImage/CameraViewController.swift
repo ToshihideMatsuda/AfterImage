@@ -93,9 +93,9 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
             }) { (isCompleted, error) in
                 let message = isCompleted ?
-                    "[成功] フォトライブラリに撮影したビデオを保存しました" :
-                    "[失敗] ビデオの保存に失敗しました"
-                let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
+                    NSLocalizedString("[成功] フォトライブラリに撮影したビデオを保存しました", comment: "") :
+                    NSLocalizedString("[失敗] ビデオの保存に失敗しました", comment:"")
+                let alert = UIAlertController(title: NSLocalizedString("お知らせ", comment: ""), message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
                     self.dismiss(animated: true)
                 })
@@ -142,16 +142,16 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
             stopRecording()
             
             
-            let alert = UIAlertController(title: "お知らせ",
-                                          message: self.additionalMessage + "撮影したビデオを保存しますか？",
+            let alert = UIAlertController(title:  NSLocalizedString("お知らせ", comment: ""),
+                                          message: self.additionalMessage + NSLocalizedString("ビデオを保存しますか？", comment: ""),
                                           preferredStyle: .alert)
             self.additionalMessage = ""
-            alert.addAction(UIAlertAction(title: "保存", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("保存", comment: ""), style: .default) { _ in
                 self.processedVideoURL = url
                 self.dismiss(animated: true)
             })
             
-            alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("キャンセル", comment: ""), style: .cancel))
             self.present(alert, animated: true){
                 incCntDone()
             }
@@ -324,8 +324,10 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         // バッファでの出力（ニューラルエンジン搭載）
         guard let videoAssetInput = videoAssetInput, let audioAssetInput = audioAssetInput, let assetWriter = assetWriter else { return }
         
-        videoAssetInput.markAsFinished()
-        audioAssetInput.markAsFinished()
+        if self.frameNumber > 0 {
+            videoAssetInput.markAsFinished()
+            audioAssetInput.markAsFinished()
+        }
         assetWriter.endSession(atSourceTime: endTime)
 
         assetWriter.finishWriting {

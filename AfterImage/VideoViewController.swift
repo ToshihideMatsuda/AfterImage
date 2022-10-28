@@ -91,9 +91,9 @@ class VideoViewController:CompositImageViewController  {
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
                 }) { (isCompleted, error) in
                     let message = isCompleted ?
-                        "[成功] フォトライブラリに撮影したビデオを保存しました" :
-                        "[失敗] ビデオの保存に失敗しました"
-                    let alert = UIAlertController(title: "お知らせ", message: message, preferredStyle: .alert)
+                    NSLocalizedString("[成功] フォトライブラリに撮影したビデオを保存しました", comment: "") :
+                    NSLocalizedString("[失敗] ビデオの保存に失敗しました", comment:"")
+                    let alert = UIAlertController(title: NSLocalizedString("お知らせ", comment: ""), message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
                         self.dismiss(animated: true)
                     })
@@ -112,20 +112,18 @@ class VideoViewController:CompositImageViewController  {
         self.cancel = true
         VisionManager.shared.cancel = true
         
-        let alert = UIAlertController(title: "お知らせ",
-                                      message: "ビデオの変換が完了しました\nこのビデオを保存しますか？",
+        let alert = UIAlertController(title:NSLocalizedString("お知らせ", comment: ""),
+                                      message: NSLocalizedString("ビデオの変換が完了しました\nこのビデオを保存しますか？",comment:""),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "保存＆表示", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("保存＆表示",comment: ""), style: .default) { _ in
             self.saveaction = true;
             self.dismiss(animated: true)
         })
-        
-        
-        alert.addAction(UIAlertAction(title: "表示のみ", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("表示のみ",comment: ""), style: .default) { _ in
             self.dismiss(animated: true)
         })
         
-        alert.addAction(UIAlertAction(title: "キャンセル", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("キャンセル",comment:""), style: .default) { _ in
             self.processedVideoURL = nil
             self.dismiss(animated: true)
         })

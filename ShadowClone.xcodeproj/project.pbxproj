@@ -32,6 +32,8 @@
 		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
 		D2D870112906279500C2D67B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D870102906279500C2D67B /* StoreManager.swift */; };
 		D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D87014290667AF00C2D67B /* PurchaseView.swift */; };
+		D2D87030290B933100C2D67B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D87032290B933100C2D67B /* Localizable.strings */; };
+		D2D87036290BAAE100C2D67B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D87038290BAAE100C2D67B /* InfoPlist.strings */; };
 		E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,12 @@
 		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		D2D87014290667AF00C2D67B /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		D2D87018290681F500C2D67B /* syncedProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = syncedProduct.storekit; path = AfterImage/syncedProduct.storekit; sourceTree = SOURCE_ROOT; };
+		D2D87024290B906E00C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		D2D87025290B906E00C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D2D87031290B933100C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2D87033290B933E00C2D67B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2D87037290BAAE100C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D2D87039290BAAE300C2D67B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,7 @@
 				D264548B28D9341D007E38AB /* AfterImageTests */,
 				D264549528D9341E007E38AB /* AfterImageUITests */,
 				D264547328D9341D007E38AB /* Products */,
+				D2D8702D290B930000C2D67B /* Resources */,
 				18285958A50F35EE8B92818B /* Pods */,
 				E2B83E737D9BDC59B8956C6C /* Frameworks */,
 			);
@@ -221,9 +230,26 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		D2D8702A290B92C800C2D67B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D2D8702D290B930000C2D67B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D2D87038290BAAE100C2D67B /* InfoPlist.strings */,
+				D2D87032290B933100C2D67B /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E2B83E737D9BDC59B8956C6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8702A290B92C800C2D67B /* Resources */,
 				34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */,
 			);
 			name = Frameworks;
@@ -318,6 +344,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D264546928D9341D007E38AB;
 			productRefGroup = D264547328D9341D007E38AB /* Products */;
@@ -336,6 +363,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D87030290B933100C2D67B /* Localizable.strings in Resources */,
+				D2D87036290BAAE100C2D67B /* InfoPlist.strings in Resources */,
 				D264548228D9341D007E38AB /* LaunchScreen.storyboard in Resources */,
 				D264547F28D9341D007E38AB /* Assets.xcassets in Resources */,
 				890DAA7B28DE0521001AAB35 /* AVPlayerLayerView.xib in Resources */,
@@ -464,6 +493,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D264547C28D9341D007E38AB /* Base */,
+				D2D87024290B906E00C2D67B /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -472,8 +502,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				D264548128D9341D007E38AB /* Base */,
+				D2D87025290B906E00C2D67B /* ja */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D2D87032290B933100C2D67B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2D87031290B933100C2D67B /* ja */,
+				D2D87033290B933E00C2D67B /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D2D87038290BAAE100C2D67B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2D87037290BAAE100C2D67B /* ja */,
+				D2D87039290BAAE300C2D67B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -483,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -543,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -603,7 +654,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
 				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリはビデオの録画のためにカメラにアクセスします";
@@ -641,7 +692,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.1;
 				DEVELOPMENT_TEAM = LDC6VVX2PY;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AfterImage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ShadowClone;
 				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリはビデオの録画のためにカメラにアクセスします";

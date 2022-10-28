@@ -152,9 +152,9 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
     }
 
     fileprivate func audioCaptureSettingInTransaction(_ captureSession:AVCaptureSession) {
-        let audioDevice = AVCaptureDevice.default(for: .audio)
+        guard let audioDevice = AVCaptureDevice.default(for: .audio) else { return }
         let audioInput:AVCaptureDeviceInput;
-        do { try audioInput = AVCaptureDeviceInput(device: audioDevice! ) } catch { return; }
+        do { try audioInput = AVCaptureDeviceInput(device: audioDevice ) } catch { return; }
 
         captureSession.addInput(audioInput)
         if captureSession.canAddOutput(self.audioOutput)  {
