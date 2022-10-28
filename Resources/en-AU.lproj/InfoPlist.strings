@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  
+
+  Created by tmatsuda on 2022/10/28.
+  
+*/
+NSCameraUsageDescription = "This app accesses the camera for video recording.";
+NSMicrophoneUsageDescription = "This app accesses the microphone for video recording.";
+NSPhotoLibraryUsageDescription = "The app accesses your photo library to convert and save videos.";
