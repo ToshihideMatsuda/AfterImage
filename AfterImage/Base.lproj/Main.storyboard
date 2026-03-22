@@ -253,14 +253,6 @@
                                     <constraint firstAttribute="trailing" secondItem="XgO-WC-G8T" secondAttribute="trailing" constant="20" id="xBS-A4-4hA"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kc-SU-l5V" userLabel="Banner Large View" customClass="GADBannerView">
-                                <rect key="frame" x="27.5" y="612" width="320" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="GCA-fx-Be7"/>
-                                    <constraint firstAttribute="width" constant="320" id="Gm2-Lb-cAY"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJz-ym-DjQ">
                                 <rect key="frame" x="295" y="5" width="75" height="20"/>
                                 <constraints>
@@ -278,9 +270,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DJz-ym-DjQ" secondAttribute="trailing" constant="5" id="Qx8-a8-58k"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="d0x-fD-DSh"/>
-                            <constraint firstItem="2kc-SU-l5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gv8-kt-FfD"/>
                             <constraint firstItem="DJz-ym-DjQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="iej-n7-Um5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2kc-SU-l5V" secondAttribute="bottom" constant="5" id="nFx-8p-oPc"/>
                             <constraint firstItem="O9H-5o-z9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zgK-QW-qNs"/>
                         </constraints>
                     </view>
@@ -291,8 +281,7 @@
                         <outlet property="settingContainerView" destination="VQq-q3-168" id="set-cv-001"/>
                         <outlet property="aiQualityLabel" destination="zh1-Ob-zWK" id="HmK-Uk-eGG"/>
                         <outlet property="appReviewButton" destination="DJz-ym-DjQ" id="B9c-wF-PTj"/>
-                        <outlet property="bannerView" destination="2kc-SU-l5V" id="U4S-Hx-D47"/>
-                        <outlet property="clonesSlider" destination="1FC-WM-Snl" id="mjo-I9-n1C"/>
+<outlet property="clonesSlider" destination="1FC-WM-Snl" id="mjo-I9-n1C"/>
                         <outlet property="clonesText" destination="3Z3-MM-ZY9" id="mZs-8a-9fJ"/>
                         <outlet property="clonesTitleLabel" destination="8wA-E7-Qkj" id="zAR-hE-r81"/>
                         <outlet property="interValSlider" destination="apW-8Z-5ZR" id="8aN-ce-sUV"/>
@@ -417,14 +406,6 @@
                                     <constraint firstItem="Adp-Nk-Txe" firstAttribute="leading" secondItem="WoO-L7-FNh" secondAttribute="trailing" constant="10" id="vvs-Al-nBS"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUu-TX-GZx" customClass="GADBannerView">
-                                <rect key="frame" x="27.5" y="0.0" width="320" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xHl-zj-QO0"/>
-                                    <constraint firstAttribute="width" constant="320" id="z7H-GB-DVC"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jlw-ki-5Z3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -432,14 +413,11 @@
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="leading" secondItem="Jlw-ki-5Z3" secondAttribute="leading" id="0uf-rC-7CV"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="bottom" secondItem="J8X-ER-TL1" secondAttribute="bottom" id="L6t-bK-FFt"/>
                             <constraint firstItem="Jlw-ki-5Z3" firstAttribute="trailing" secondItem="J8X-ER-TL1" secondAttribute="trailing" id="R2B-QJ-OsA"/>
-                            <constraint firstItem="mUu-TX-GZx" firstAttribute="centerX" secondItem="4M8-VP-XmV" secondAttribute="centerX" id="S2l-YY-LE7"/>
                             <constraint firstItem="J8X-ER-TL1" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="fvj-Pz-XJI"/>
-                            <constraint firstItem="mUu-TX-GZx" firstAttribute="top" secondItem="Jlw-ki-5Z3" secondAttribute="top" id="qhm-73-9J6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2gD-Gx-tAl"/>
                     <connections>
-                        <outlet property="bannerView" destination="mUu-TX-GZx" id="Cfy-K4-qnw"/>
                         <outlet property="constraintHeight" destination="IyN-To-f7S" id="Wre-Pp-rGY"/>
                         <outlet property="constraintWidth" destination="vpx-8r-UvL" id="4eC-iV-8lQ"/>
                         <outlet property="recBottonContainer" destination="wrW-FV-ntB" id="ydv-ao-aEq"/>
@@ -459,14 +437,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dr2-qD-4sR" customClass="GADBannerView">
-                                <rect key="frame" x="27.5" y="0.0" width="320" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6tH-76-zed"/>
-                                    <constraint firstAttribute="width" constant="320" id="hh9-aj-y66"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piR-0v-YNh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -498,14 +468,11 @@
                         <constraints>
                             <constraint firstItem="Owk-Kb-4lr" firstAttribute="bottom" secondItem="piR-0v-YNh" secondAttribute="bottom" id="2rq-Pt-jNg"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="top" secondItem="Znr-PG-Sp4" secondAttribute="top" id="5IY-79-1A8"/>
-                            <constraint firstItem="Dr2-qD-4sR" firstAttribute="top" secondItem="Owk-Kb-4lr" secondAttribute="top" id="U39-cc-iLo"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="trailing" secondItem="Owk-Kb-4lr" secondAttribute="trailing" id="fb2-0V-vow"/>
-                            <constraint firstItem="Dr2-qD-4sR" firstAttribute="centerX" secondItem="Znr-PG-Sp4" secondAttribute="centerX" id="gGg-uY-dR8"/>
                             <constraint firstItem="piR-0v-YNh" firstAttribute="leading" secondItem="Owk-Kb-4lr" secondAttribute="leading" id="rcc-re-EPX"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="Dr2-qD-4sR" id="hsd-xy-rFY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gze-SJ-4fq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

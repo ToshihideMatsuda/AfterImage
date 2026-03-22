@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import AVFoundation
-import GoogleMobileAds
 
 class CompositImageViewController: UIViewController{
     public weak var superVc:ViewController? = nil

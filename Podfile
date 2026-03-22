@@ -5,7 +5,5 @@ target 'ShadowClone' do
   use_frameworks!
 
   pod 'Toast-Swift', '~> 5.0.0'
-  pod 'Google-Mobile-Ads-SDK'
-
 
 end

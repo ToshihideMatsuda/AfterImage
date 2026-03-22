@@ -55,8 +55,7 @@ AfterImage/
 ├── CompositImageViewController.swift # 画像合成ベースクラス / Image composition base
 ├── Manager/
 │   ├── AVCaptureManager.swift        # カメラ・オーディオ管理 / Camera & audio I/O
-│   ├── VisionManager.swift           # 人物セグメンテーション / Person segmentation
-│   └── StoreManager.swift            # アプリ内課金 / In-app purchases
+│   └── VisionManager.swift           # 人物セグメンテーション / Person segmentation
 ├── Util/                             # ユーティリティ拡張 / Utility extensions
 └── Resources/                        # ローカライゼーション / Localization strings
 ```
@@ -75,13 +74,15 @@ AfterImage/
 
 ## Tech Stack
 
-- **UIKit** + **SwiftUI** (hybrid)
+- **UIKit** - Primary UI framework with Storyboard + programmatic styling
 - **AVFoundation** - Camera capture & video processing
 - **Vision** - `VNGeneratePersonSegmentationRequest` for person segmentation
 - **CoreImage** - `CIFilter` pipeline for image composition
-- **StoreKit** - In-app purchases
-- **Google Mobile Ads SDK** - AdMob integration
 - **CocoaPods** - Dependency management
+
+## Privacy Policy
+
+[Privacy Policy / プライバシーポリシー](docs/privacy-policy.html)
 
 ## License
 
