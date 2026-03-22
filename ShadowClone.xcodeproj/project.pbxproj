@@ -10,8 +10,6 @@
 		890DAA7B28DE0521001AAB35 /* AVPlayerLayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */; };
 		890DAA7D28DE0577001AAB35 /* AVPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */; };
 		890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */; };
-		897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DC09C28F7E9AF006D2113 /* AdsConst.swift */; };
-		D24F2A6C28F8F0F5005C3C32 /* AdAVPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */; };
 		D24FA70328DA9AB7002B0F42 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */; };
 		D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */; };
 		D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FA70828DAE47B002B0F42 /* AppUtil.swift */; };
@@ -30,8 +28,6 @@
 		D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D26454B028D973C9007E38AB /* ObjcUtil.m */; };
 		D26454B328D98182007E38AB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B228D98182007E38AB /* CameraViewController.swift */; };
 		D26454B528D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */; };
-		D2D870112906279500C2D67B /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D870102906279500C2D67B /* StoreManager.swift */; };
-		D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D87014290667AF00C2D67B /* PurchaseView.swift */; };
 		D2D87030290B933100C2D67B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D87032290B933100C2D67B /* Localizable.strings */; };
 		D2D87036290BAAE100C2D67B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2D87038290BAAE100C2D67B /* InfoPlist.strings */; };
 		E8AE558841D8CE7F27014BE4 /* Pods_ShadowClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34581A6826B3C347CF8667A1 /* Pods_ShadowClone.framework */; };
@@ -61,7 +57,6 @@
 		890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVPlayerLayerView.xib; sourceTree = "<group>"; };
 		890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerLayerView.swift; sourceTree = "<group>"; };
 		890DAA7E28DE211E001AAB35 /* AVAsset+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+extension.swift"; sourceTree = "<group>"; };
-		897DC09C28F7E9AF006D2113 /* AdsConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsConst.swift; sourceTree = "<group>"; };
 		8999063D290C0B28008F8DE4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Main.strings"; sourceTree = "<group>"; };
 		8999063E290C0B28008F8DE4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8999063F290C0B28008F8DE4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -84,7 +79,6 @@
 		89990650290C0F43008F8DE4 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		89990652290C15E6008F8DE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		89990654290C15EA008F8DE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdAVPlayerViewController.swift; sourceTree = "<group>"; };
 		D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositImageViewController.swift; sourceTree = "<group>"; };
 		D24FA70828DAE47B002B0F42 /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -109,8 +103,6 @@
 		D26454B028D973C9007E38AB /* ObjcUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcUtil.m; sourceTree = "<group>"; };
 		D26454B228D98182007E38AB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		D26454B428D98A3C007E38AB /* CMSampleBuffer+CVImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CVImageBuffer.swift"; sourceTree = "<group>"; };
-		D2D870102906279500C2D67B /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
-		D2D87014290667AF00C2D67B /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		D2D87018290681F500C2D67B /* syncedProduct.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = syncedProduct.storekit; path = AfterImage/syncedProduct.storekit; sourceTree = SOURCE_ROOT; };
 		D2D87024290B906E00C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		D2D87025290B906E00C2D67B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -200,18 +192,15 @@
 				D26454B628D994A7007E38AB /* Util */,
 				D26454B728D994C3007E38AB /* Manager */,
 				D264547928D9341D007E38AB /* ViewController.swift */,
-				D2D87014290667AF00C2D67B /* PurchaseView.swift */,
 				890DAA7C28DE0577001AAB35 /* AVPlayerLayerView.swift */,
 				D24FA70428DA9D95002B0F42 /* CompositImageViewController.swift */,
 				D26454B228D98182007E38AB /* CameraViewController.swift */,
 				D24FA70228DA9AB7002B0F42 /* VideoViewController.swift */,
-				D24F2A6B28F8F0F5005C3C32 /* AdAVPlayerViewController.swift */,
 				890DAA7A28DE0521001AAB35 /* AVPlayerLayerView.xib */,
 				D264547B28D9341D007E38AB /* Main.storyboard */,
 				D264547E28D9341D007E38AB /* Assets.xcassets */,
 				D264548028D9341D007E38AB /* LaunchScreen.storyboard */,
 				D264548328D9341D007E38AB /* Info.plist */,
-				897DC09C28F7E9AF006D2113 /* AdsConst.swift */,
 			);
 			path = AfterImage;
 			sourceTree = "<group>";
@@ -259,7 +248,6 @@
 			children = (
 				D26454A928D97305007E38AB /* AVCaptureManager.swift */,
 				D26454A528D94D8C007E38AB /* VisionManager.swift */,
-				D2D870102906279500C2D67B /* StoreManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -461,9 +449,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ShadowClone/Pods-ShadowClone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ShadowClone/Pods-ShadowClone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -477,8 +469,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				897DC09D28F7E9AF006D2113 /* AdsConst.swift in Sources */,
-				D24F2A6C28F8F0F5005C3C32 /* AdAVPlayerViewController.swift in Sources */,
 				D264547A28D9341D007E38AB /* ViewController.swift in Sources */,
 				D26454A828D95875007E38AB /* CIImage+extends.swift in Sources */,
 				890DAA7F28DE211E001AAB35 /* AVAsset+extension.swift in Sources */,
@@ -486,9 +476,7 @@
 				D24FA70928DAE47B002B0F42 /* AppUtil.swift in Sources */,
 				D264547628D9341D007E38AB /* AppDelegate.swift in Sources */,
 				D264547828D9341D007E38AB /* SceneDelegate.swift in Sources */,
-				D2D87015290667AF00C2D67B /* PurchaseView.swift in Sources */,
 				D26454AA28D97305007E38AB /* AVCaptureManager.swift in Sources */,
-				D2D870112906279500C2D67B /* StoreManager.swift in Sources */,
 				D26454B128D973C9007E38AB /* ObjcUtil.m in Sources */,
 				D26454B328D98182007E38AB /* CameraViewController.swift in Sources */,
 				D24FA70528DA9D95002B0F42 /* CompositImageViewController.swift in Sources */,

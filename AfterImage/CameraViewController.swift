@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import PhotosUI
+import AVKit
 
 public let cameraSaveQueue = DispatchQueue.init(label: "CameraViewController.saveQueue")
 
