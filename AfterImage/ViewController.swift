@@ -14,7 +14,7 @@ import Vision
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate  {
     public static var shared: ViewController? = nil
-    @IBOutlet weak var bannerView: GADBannerView!  //追加
+    @IBOutlet weak var bannerView: GADBannerView!
 
     @IBOutlet weak var intervalTitleLabel: UILabel!
     @IBOutlet weak var interValSlider: UISlider!
@@ -27,11 +27,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var qualityPicker: UIPickerView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var appReviewButton: UIButton!
+    @IBOutlet weak var contentContainerView: UIView!
+    @IBOutlet weak var videoButtonView: UIView!
+    @IBOutlet weak var cameraButtonView: UIView!
+    @IBOutlet weak var settingContainerView: UIView!
     let intervalDefault:Float = 0.1
     let clonesDefault:Float = 10
-    
+
     var settingCollection: [UIView] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ViewController.shared = self
@@ -45,28 +49,66 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             aiQualityLabel, qualityPicker,
         ]
         settingCollection.forEach{ $0.isHidden = true }
-        
+
         // GADBannerViewのプロパティを設定
         bannerView.adUnitID = bannerViewId()
         bannerView.rootViewController = self
         bannerView.adSize = .init(size: bannerSize, flags: 2)
-        
+
         // 広告読み込み
         bannerView.load(GADRequest())
-            
+
         self.qualityPicker.selectRow(1, inComponent: 0, animated: false)
         VisionManager.shared.personSegmentationRequest?.qualityLevel = qualityList[1]
         appReviewButton.isHidden = true
 
-        // Do any additional setup after loading the view.
+        applyModernStyling()
     }
-    
+
+    private func applyModernStyling() {
+        view.backgroundColor = UIColor.systemGroupedBackground
+
+        // コンテナにカード風スタイルを適用
+        contentContainerView.backgroundColor = .systemBackground
+        contentContainerView.layer.cornerRadius = 16
+        contentContainerView.layer.shadowColor = UIColor.black.cgColor
+        contentContainerView.layer.shadowOpacity = 0.08
+        contentContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        contentContainerView.layer.shadowRadius = 8
+
+        // ボタンエリアにセパレーターラインを追加
+        styleActionButton(videoButtonView)
+        styleActionButton(cameraButtonView)
+
+        // 設定エリア
+        settingContainerView.backgroundColor = .systemBackground
+        settingContainerView.layer.cornerRadius = 12
+
+        // スライダーのスタイル
+        let accentColor = UIColor(red: 0.0, green: 0.46, blue: 0.89, alpha: 1.0)
+        interValSlider.tintColor = accentColor
+        clonesSlider.tintColor = accentColor
+
+        // AI品質セグメントのスタイル
+        qualityPicker.layer.cornerRadius = 8
+        qualityPicker.clipsToBounds = true
+    }
+
+    private func styleActionButton(_ buttonView: UIView) {
+        buttonView.layer.cornerRadius = 12
+        buttonView.backgroundColor = UIColor.systemBackground
+        buttonView.layer.shadowColor = UIColor.black.cgColor
+        buttonView.layer.shadowOpacity = 0.05
+        buttonView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        buttonView.layer.shadowRadius = 4
+    }
+
     public func premiumChng() {
         appReviewButton.isHidden = true
         bannerView.isHidden = true
     }
-    
-    
+
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestAppStoreReview()
@@ -182,7 +224,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func onSettingTap(_ sender: Any) {
         hidden.toggle()
         self.settingButton.isSelected = !hidden
-        settingCollection.forEach{ $0.isHidden = hidden }
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut) {
+            self.settingCollection.forEach { $0.isHidden = self.hidden }
+            self.settingCollection.forEach { $0.alpha = self.hidden ? 0 : 1 }
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func onReset(_ sender: Any) {
@@ -211,31 +257,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dataList.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return qualityPicker.frame.size.height
     }
 
-    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         let label = (view as? UILabel) ?? UILabel(frame: CGRect(x: 0, y: 0, width: qualityPicker.frame.size.width, height: qualityPicker.frame.size.height))
         label.text = self.dataList[row]
-        label.textColor = .black
+        label.textColor = .label
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         return label
     }
-    
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataList[row]
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,  inComponent component: Int) {
         VisionManager.shared.personSegmentationRequest?.qualityLevel = qualityList[row]
     }

@@ -55,16 +55,31 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         AVCaptureManager.shared.addAudioListener(listener: self)
         AVCaptureManager.shared.initializeCamera(self.cameraRotate, frameRateInput: self.frameRate, preset: self.preset)
         VisionManager.shared.initClearBackground(cameraSize: AVCaptureManager.shared.getVideoSize() ?? CGSize(width: 1280, height: 720))
-        
+
         self.count = 0
-        self.showTimerView();
-        
-        recBottonContainer.layer.borderWidth  = 1
-        recBottonContainer.layer.borderColor  = CGColor.init(red: 0, green: 0, blue: 0, alpha: 1)
+        self.showTimerView()
+
+        recBottonContainer.layer.borderWidth = 2.5
+        recBottonContainer.layer.borderColor = UIColor.white.cgColor
         recBottonContainer.layer.cornerRadius = recBottonContainer.frame.size.width / 2.0
-        constraintHeight.constant = recBottonContainer.frame.height - 6
-        constraintWidth.constant = recBottonContainer.frame.height - 6
-        recBottonView.layer.cornerRadius =  recBottonContainer.frame.size.width / 2.0
+        constraintHeight.constant = recBottonContainer.frame.height - 8
+        constraintWidth.constant = recBottonContainer.frame.height - 8
+        recBottonView.layer.cornerRadius = recBottonContainer.frame.size.width / 2.0
+
+        applyCameraModernStyling()
+    }
+
+    private func applyCameraModernStyling() {
+        // タイマーラベルの背景を角丸に
+        timeLabel.superview?.layer.cornerRadius = 8
+        timeLabel.superview?.clipsToBounds = true
+        timeLabel.superview?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+
+        // 録画ボタンのシャドウ
+        recBottonContainer.layer.shadowColor = UIColor.black.cgColor
+        recBottonContainer.layer.shadowOpacity = 0.3
+        recBottonContainer.layer.shadowOffset = CGSize(width: 0, height: 2)
+        recBottonContainer.layer.shadowRadius = 4
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
