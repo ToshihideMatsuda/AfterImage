@@ -18,6 +18,9 @@ class CompositImageViewController: UIViewController{
     var imageQueue:[CIImage] = []
     private var prevTime    :CMTime = CMTime.zero
     private var icon    :CIImage? = nil
+#if DEBUG
+    private var debugCompositeFrameCount = 0
+#endif
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,6 +57,13 @@ class CompositImageViewController: UIViewController{
         
         let currentImageQueue = imageQueue + [currentPersonImage]
         var compositImage = videoImage
+
+#if DEBUG
+        debugCompositeFrameCount += 1
+        if debugCompositeFrameCount == 1 || debugCompositeFrameCount % 30 == 0 {
+            print("[ShadowCloneDebug][Composite] frame=\(debugCompositeFrameCount) extent=\(videoImage.extent) frameDelta=\(frameTime.seconds) interval=\(interval) queue=\(imageQueue.count)/\(queueSize) hasPerson=\(currentPersonImage != nil) willComposite=\(imageQueue.count >= 1)")
+        }
+#endif
         
         if(imageQueue.count >= 1) {
             for i in 0 ..< currentImageQueue.count {
@@ -67,15 +77,15 @@ class CompositImageViewController: UIViewController{
             }
         }
         
+        registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
+
         guard let icon = self.icon,
-                let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
+              let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
                 kCIInputImageKey            : icon,
                 kCIInputBackgroundImageKey  : compositImage
                 ])?.outputImage else { return compositImage }
         compositImage = blended
-        
-        registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
-        
+
         return compositImage
         
     }
@@ -84,12 +94,22 @@ class CompositImageViewController: UIViewController{
         
         if self.prevTime == CMTime.zero {
             self.prevTime = currentTime
+#if DEBUG
+            print("[ShadowCloneDebug][Composite] initialize prevTime=\(currentTime.seconds) interval=\(interval) queueSize=\(queueSize)")
+#endif
         } else if frameTime.seconds >= interval {
             // 次回のためにQueueを更新
             self.prevTime = currentTime
             if let currentPersonImage = currentPersonImage {
                 imageQueue += [currentPersonImage]
                 while( imageQueue.count > queueSize ) { imageQueue.removeFirst() }
+#if DEBUG
+                print("[ShadowCloneDebug][Composite] enqueue frameDelta=\(frameTime.seconds) queue=\(imageQueue.count)/\(queueSize) personExtent=\(currentPersonImage.extent)")
+#endif
+            } else {
+#if DEBUG
+                print("[ShadowCloneDebug][Composite] skip enqueue: currentPersonImage is nil frameDelta=\(frameTime.seconds)")
+#endif
             }
         }
     }

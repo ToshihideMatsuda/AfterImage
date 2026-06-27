@@ -34,30 +34,32 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
     private var videolistenerDic:[String:VideoListener] = [:]
     private var audiolistenerDic:[String:AudioListener] = [:]
+    private let sessionQueue = DispatchQueue.init(label: "toshihide.matsuda.AVCaptureManager.sessionQueue")
+    private let sessionQueueKey = DispatchSpecificKey<Void>()
     private let videoOutputQueue = DispatchQueue.init(label: "toshihide.matsuda.AVCaptureManager.videoOutputQueue")
     private let audioOutputQueue = DispatchQueue.init(label: "toshihide.matsuda.AVCaptureManager.audioOutputQueue")
 
     private var captureSession : AVCaptureSession?
     private var device         : AVCaptureDevice?
 
-    private var videoOutput : AVCaptureVideoDataOutput?
-    private var audioOutput : AVCaptureAudioDataOutput?
+    private lazy var audioOutput : AVCaptureAudioDataOutput = {
+        let captureAudioOutput = AVCaptureAudioDataOutput()
+        captureAudioOutput.setSampleBufferDelegate(self, queue: audioOutputQueue)
+        return captureAudioOutput
+    }()
 
-    private func createVideoOutput() -> AVCaptureVideoDataOutput {
+    private lazy var videoOutput : AVCaptureVideoDataOutput = {
         let captureVideoOutput = AVCaptureVideoDataOutput()
         captureVideoOutput.setSampleBufferDelegate(self, queue: videoOutputQueue)
         captureVideoOutput.videoSettings = [String(kCVPixelBufferPixelFormatTypeKey) : AVCaptureManager.pixcelFormat]
         return captureVideoOutput
-    }
-
-    private func createAudioOutput() -> AVCaptureAudioDataOutput {
-        let captureAudioOutput = AVCaptureAudioDataOutput()
-        captureAudioOutput.setSampleBufferDelegate(self, queue: audioOutputQueue)
-        return captureAudioOutput
-    }
+    }()
 
     // 外部から初期化不可能にしておく
-    private override init() {}
+    private override init() {
+        super.init()
+        sessionQueue.setSpecific(key: sessionQueueKey, value: ())
+    }
 
     public func initializeCamera(_ isFront:Bool = true, frameRateInput:Int32 = 20, preset:AVCaptureSession.Preset = .low) {
 
@@ -67,20 +69,25 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
         let captureSession = AVCaptureSession()
         self.captureSession = captureSession
-
-        // カメラ切替時にOutput を新規作成して前セッションとの干渉を防ぐ
-        let newVideoOutput = createVideoOutput()
-        let newAudioOutput = createAudioOutput()
-        self.videoOutput = newVideoOutput
-        self.audioOutput = newAudioOutput
+#if DEBUG
+        print("[ShadowCloneDebug][Capture] initializeCamera isFront=\(isFront) frameRate=\(frameRateInput) preset=\(preset.rawValue) pixelFormat=\(AVCaptureManager.pixcelFormat)")
+#endif
 
         captureSession.beginConfiguration()
 
-        videoCaptureSettingInTransaction(captureSession, videoOutput: newVideoOutput, isFront:isFront, frameRateInput:frameRateInput, preset:preset)
-        audioCaptureSettingInTransaction(captureSession, audioOutput: newAudioOutput)
+        videoCaptureSettingInTransaction(captureSession, isFront:isFront, frameRateInput:frameRateInput, preset:preset)
+        audioCaptureSettingInTransaction(captureSession)
 
         captureSession.commitConfiguration()
-        captureSession.startRunning()
+        sessionQueue.async { [weak self, weak captureSession] in
+            guard let self = self,
+                  let captureSession = captureSession,
+                  self.captureSession === captureSession else { return }
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] startRunning onMain=\(Thread.isMainThread)")
+#endif
+            captureSession.startRunning()
+        }
     }
 
     public func getPreviewLayer(size:CGSize) -> AVCaptureVideoPreviewLayer? {
@@ -93,7 +100,7 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
         return nil
     }
 
-    fileprivate func videoCaptureSettingInTransaction(_ captureSession:AVCaptureSession, videoOutput:AVCaptureVideoDataOutput, isFront:Bool, frameRateInput:Int32, preset:AVCaptureSession.Preset) {
+    fileprivate func videoCaptureSettingInTransaction(_ captureSession:AVCaptureSession, isFront:Bool, frameRateInput:Int32, preset:AVCaptureSession.Preset) {
         // DeviceSetting
         let cap = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInTelephotoCamera, .builtInWideAngleCamera],
                                                    mediaType: .video,
@@ -142,15 +149,21 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
             device.unlockForConfiguration()
         } catch { /* nop */ }
 
-        if captureSession.canAddOutput(videoOutput) {
-            captureSession.addOutput(videoOutput)
-            settingVirtualVideoLayer(videoOutput: videoOutput)
+        if captureSession.canAddOutput(self.videoOutput) {
+            captureSession.addOutput(self.videoOutput)
+            settingVirtualVideoLayer()
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] video output added connections=\(self.videoOutput.connections.count) settings=\(self.videoOutput.videoSettings)")
+#endif
         } else {
             print("fail add videoOutput")
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] video output add failed canAddOutput=false")
+#endif
         }
     }
 
-    fileprivate func audioCaptureSettingInTransaction(_ captureSession:AVCaptureSession, audioOutput:AVCaptureAudioDataOutput) {
+    fileprivate func audioCaptureSettingInTransaction(_ captureSession:AVCaptureSession) {
         guard let audioDevice = AVCaptureDevice.default(for: .audio) else { return }
         let audioInput:AVCaptureDeviceInput
         do { try audioInput = AVCaptureDeviceInput(device: audioDevice) } catch { return }
@@ -158,18 +171,23 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
         if captureSession.canAddInput(audioInput) {
             captureSession.addInput(audioInput)
         }
-        if captureSession.canAddOutput(audioOutput) {
-            captureSession.addOutput(audioOutput)
+        if captureSession.canAddOutput(self.audioOutput) {
+            captureSession.addOutput(self.audioOutput)
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] audio output added connections=\(self.audioOutput.connections.count)")
+#endif
         } else {
             print("fail add audioOutput")
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] audio output add failed canAddOutput=false")
+#endif
         }
     }
 
-    public func settingVirtualVideoLayer(videoOutput: AVCaptureVideoDataOutput? = nil) {
-        guard let output = videoOutput ?? self.videoOutput else { return }
+    public func settingVirtualVideoLayer() {
         // videoConnection の方向を直す
         guard let orientation = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.windowScene?.interfaceOrientation else { return }
-        output.connections.forEach {
+        self.videoOutput.connections.forEach {
             if self.device?.position == .back {
                 $0.isVideoMirrored = false
             } else {
@@ -179,6 +197,9 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
                                   orientation == .landscapeRight      ? .landscapeRight :
                                   orientation == .portrait            ? .portrait :
                                   orientation == .portraitUpsideDown  ? .portraitUpsideDown : $0.videoOrientation
+#if DEBUG
+            print("[ShadowCloneDebug][Capture] connection orientation=\($0.videoOrientation.rawValue) mirrored=\($0.isVideoMirrored) devicePosition=\(String(describing: self.device?.position.rawValue))")
+#endif
         }
     }
 
@@ -209,13 +230,21 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
     fileprivate func stopCapture() {
         guard let captureSession = captureSession else { return }
-        captureSession.stopRunning()
-        captureSession.inputs.forEach { captureSession.removeInput($0) }
-        captureSession.outputs.forEach { captureSession.removeOutput($0) }
-
-        self.videoOutput = nil
-        self.audioOutput = nil
         self.captureSession = nil
+
+        let stopSession = {
+            if captureSession.isRunning {
+                captureSession.stopRunning()
+            }
+            captureSession.inputs.forEach { captureSession.removeInput($0) }
+            captureSession.outputs.forEach { captureSession.removeOutput($0) }
+        }
+
+        if DispatchQueue.getSpecific(key: sessionQueueKey) != nil {
+            stopSession()
+        } else {
+            sessionQueue.sync(execute: stopSession)
+        }
     }
 
     public func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -262,15 +291,15 @@ public class AVCaptureManager : NSObject, AVCaptureVideoDataOutputSampleBufferDe
     }
 
     public func recommendedVideoSettingsForAssetWriter(writingTo fileType:AVFileType) -> [String:Any]? {
-        return videoOutput?.recommendedVideoSettingsForAssetWriter(writingTo: fileType)
+        return videoOutput.recommendedVideoSettingsForAssetWriter(writingTo: fileType)
     }
 
     public func recommendedAudioSettingsForAssetWriter(writingTo fileType: AVFileType) -> [String:Any]? {
-        return audioOutput?.recommendedAudioSettingsForAssetWriter(writingTo: fileType)
+        return audioOutput.recommendedAudioSettingsForAssetWriter(writingTo: fileType)
     }
 
     public func availableHEVC(fileType: AVFileType) -> Bool {
-        return videoOutput?.availableVideoCodecTypesForAssetWriter(writingTo: fileType).contains(.hevc) ?? false
+        return videoOutput.availableVideoCodecTypesForAssetWriter(writingTo: fileType).contains(.hevc)
     }
 }
 

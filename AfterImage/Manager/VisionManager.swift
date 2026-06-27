@@ -23,6 +23,10 @@ public class  VisionManager {
         }
     }
     private init() {}
+#if DEBUG
+    private var debugPersonImageCount = 0
+    private var debugMaskRequestCount = 0
+#endif
 
     lazy var personSegmentationRequest:VNGeneratePersonSegmentationRequest? = {
         let request = VNGeneratePersonSegmentationRequest()
@@ -63,15 +67,36 @@ public class  VisionManager {
         if let image = image { clearBackground = CIImage(image:image) }
     }
     public func personImage(ciImage:CIImage) -> CIImage? {
-        guard let maskImage = personMaskImage(ciImage:ciImage) else { return ciImage }
+#if DEBUG
+        debugPersonImageCount += 1
+#endif
+        guard let maskImage = personMaskImage(ciImage:ciImage) else {
+#if DEBUG
+            print("[ShadowCloneDebug][Vision] personImage fallback: mask is nil inputExtent=\(ciImage.extent)")
+#endif
+            return ciImage
+        }
 
         if let background = getClearBackground(cameraSize:ciImage.extent.size) {
             guard let blended = CIFilter(name: "CIBlendWithMask", parameters: [
                 kCIInputImageKey: ciImage,
                 kCIInputBackgroundImageKey:background,
-                kCIInputMaskImageKey:maskImage])?.outputImage  else { return ciImage }
+                kCIInputMaskImageKey:maskImage])?.outputImage  else {
+#if DEBUG
+                print("[ShadowCloneDebug][Vision] personImage fallback: CIBlendWithMask failed inputExtent=\(ciImage.extent) maskExtent=\(maskImage.extent)")
+#endif
+                return ciImage
+            }
+#if DEBUG
+            if debugPersonImageCount == 1 || debugPersonImageCount % 30 == 0 {
+                print("[ShadowCloneDebug][Vision] blended person image count=\(debugPersonImageCount) inputExtent=\(ciImage.extent) maskExtent=\(maskImage.extent) backgroundExtent=\(background.extent)")
+            }
+#endif
             return blended
         } else {
+#if DEBUG
+            print("[ShadowCloneDebug][Vision] personImage fallback: clear background is nil cameraSize=\(ciImage.extent.size)")
+#endif
             return ciImage
         }
     }
@@ -80,19 +105,41 @@ public class  VisionManager {
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         do {
             // request
-            guard let personSegmentationRequest = personSegmentationRequest else { return nil }
+            guard let personSegmentationRequest = personSegmentationRequest else {
+#if DEBUG
+                print("[ShadowCloneDebug][Vision] personMask failed: request is nil")
+#endif
+                return nil
+            }
+#if DEBUG
+            debugMaskRequestCount += 1
+#endif
             let request: [VNRequest] = [personSegmentationRequest]
             // perform
             try handler.perform(request)
             // result
-            guard let result = personSegmentationRequest.results?.first as? VNPixelBufferObservation else { print("Image processing failed.Please try with another image.") ; return nil }
+            guard let result = personSegmentationRequest.results?.first as? VNPixelBufferObservation else {
+                print("Image processing failed.Please try with another image.")
+#if DEBUG
+                print("[ShadowCloneDebug][Vision] personMask failed: empty results count=\(debugMaskRequestCount) inputExtent=\(ciImage.extent) quality=\(personSegmentationRequest.qualityLevel)")
+#endif
+                return nil
+            }
 
             let maskCIImage = CIImage(cvPixelBuffer: result.pixelBuffer)
             let size = CGSize(width: ciImage.extent.width, height: ciImage.extent.height)
+#if DEBUG
+            if debugMaskRequestCount == 1 || debugMaskRequestCount % 30 == 0 {
+                print("[ShadowCloneDebug][Vision] mask success count=\(debugMaskRequestCount) maskExtent=\(maskCIImage.extent) resizedTo=\(size) quality=\(personSegmentationRequest.qualityLevel)")
+            }
+#endif
             return maskCIImage.resize(as: size)
             
         } catch let error {
             print("Vision error \(error)")
+#if DEBUG
+            print("[ShadowCloneDebug][Vision] personMask exception inputExtent=\(ciImage.extent)")
+#endif
             return nil
         }
     }

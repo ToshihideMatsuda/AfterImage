@@ -43,6 +43,9 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
     private let frameRate:Int32  = 20
     private var additionalMessage = ""
     private var processedVideoURL: URL? = nil
+#if DEBUG
+    private var debugVideoCaptureCount = 0
+#endif
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,6 +212,12 @@ class CameraViewController:CompositImageViewController, VideoListener, AudioList
         guard let imageBuffer = imageBufferObj else { return }
 
         let currentTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+#if DEBUG
+        debugVideoCaptureCount += 1
+        if debugVideoCaptureCount == 1 || debugVideoCaptureCount % 30 == 0 {
+            print("[ShadowCloneDebug][Camera] video frame=\(debugVideoCaptureCount) timestamp=\(currentTime.seconds) bufferSize=\(size) orientation=\(connection.videoOrientation.rawValue) mirrored=\(connection.isVideoMirrored) queue=\(imageQueue.count)/\(queueSize) interval=\(interval)")
+        }
+#endif
         let compositImage = createCompositImage(imageBuffer: imageBuffer, currentTime:currentTime)
 
         DispatchQueue.main.async {
