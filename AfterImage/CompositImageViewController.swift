@@ -79,7 +79,13 @@ class CompositImageViewController: UIViewController{
         
         registImageIntoQueue(currentTime: currentTime, frameTime: frameTime, currentPersonImage: currentPersonImage)
 
-        guard let icon = self.icon,
+        let watermarkMargin = CGFloat(24)
+        let watermarkImage = icon?.transformed(by: CGAffineTransform(
+            translationX: compositImage.extent.maxX - (icon?.extent.width ?? 0) - watermarkMargin,
+            y: compositImage.extent.minY + watermarkMargin
+        ))
+
+        guard let icon = watermarkImage,
               let blended = CIFilter(name:"CISourceOverCompositing", parameters:[
                 kCIInputImageKey            : icon,
                 kCIInputBackgroundImageKey  : compositImage
